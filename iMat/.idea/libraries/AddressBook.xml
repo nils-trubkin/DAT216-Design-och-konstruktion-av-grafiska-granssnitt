@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="AddressBook">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/AddressBook.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
