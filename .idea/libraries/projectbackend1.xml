@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="projectbackend1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/iMat/out/production/iMat/iMat/resources/projectbackend.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

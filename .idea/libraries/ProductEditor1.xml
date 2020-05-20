@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ProductEditor1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/iMat/src/iMat/resources/producteditor/ProductEditor.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

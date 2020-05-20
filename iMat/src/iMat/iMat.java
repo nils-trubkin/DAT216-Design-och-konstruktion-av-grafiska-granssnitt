@@ -7,6 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import se.chalmers.cse.dat216.project.CreditCard;
+import se.chalmers.cse.dat216.project.Customer;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.ShoppingCart;
+import se.chalmers.cse.dat216.project.ShoppingItem;
 
 public class iMat extends Application {
     
@@ -14,13 +20,15 @@ public class iMat extends Application {
     public void start(Stage stage) throws Exception {
         
         ResourceBundle bundle = java.util.ResourceBundle.getBundle("iMat/resources/iMat");
-        
-        Parent root = FXMLLoader.load(getClass().getResource("imat.fxml"), bundle);
-        
+
+        Parent root = FXMLLoader.load(getClass().getResource("main_view.fxml"), bundle);
+
         Scene scene = new Scene(root, 600, 400);
         
         stage.setTitle(bundle.getString("application.name"));
         stage.setScene(scene);
+        stage.setMinWidth(1000);
+        stage.setMinHeight(700);
         stage.show();
     }
 
@@ -29,6 +37,13 @@ public class iMat extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Model.getInstance().shutDown();
+            }
+        }));
     }
     
 }

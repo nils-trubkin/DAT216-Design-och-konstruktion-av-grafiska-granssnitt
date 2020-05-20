@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/iMat/out/production/iMat/iMat/resources/producteditor/lib/projectbackend.jar!/" />
+      <root url="jar://$PROJECT_DIR$/iMat/out/production/iMat/iMat/resources/producteditor/lib/swing-layout-1.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/iMat/out/production/iMat/iMat/resources/producteditor/lib/swing-worker-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/iMat/out/production/iMat/iMat/resources/producteditor/lib/appframework-1.0.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
