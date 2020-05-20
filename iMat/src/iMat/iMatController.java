@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -73,44 +74,30 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     private void updateProductList(List<Product> products) {
+        VBox vbox = new VBox();
+        HBox hbox = new HBox();
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
 
-        // create new constraints for columns and set their percentage
-        ColumnConstraints columnConstraints = new ColumnConstraints();
-        columnConstraints.setHgrow(Priority.NEVER);
-        columnConstraints.setPercentWidth(30.0);
+        vbox.getChildren().add(hbox);
+        scrollPane.setContent(vbox);
 
-        // create new constraints for row and set their percentage
-        RowConstraints rowConstraints = new RowConstraints();
-        rowConstraints.setVgrow(Priority.NEVER);
-        columnConstraints.setPercentWidth(30.0);
-
-        // don't set preferred size or anything on gridpane
-        GridPane gridPane = new GridPane();
-        gridPane.getRowConstraints().add(rowConstraints);
-        gridPane.getColumnConstraints().add(columnConstraints);
-
-        AnchorPane.setBottomAnchor(gridPane, 0.0);
-        AnchorPane.setTopAnchor(gridPane, 0.0);
-        AnchorPane.setLeftAnchor(gridPane, 0.0);
-        AnchorPane.setRightAnchor(gridPane, 0.0);
-
-
-
-        // suppose your scroll pane id is scrollPane
-        scrollPane.setContent(gridPane);
-
-        gridPane.getChildren().clear();
-        int row = 0;
         int col = 0;
         for (Product product : products) {
             if(col > 2){
-                row++;
+                hbox = new HBox();
+                vbox.getChildren().add(hbox);
                 col = 0;
             }
-            gridPane.add(new ProductPanel(product), col++, row);
-            System.out.println("Adding: " + product.toString());
-        }
 
+            hbox.getChildren().add(new ProductPanel(product));
+            col++;
+            hbox.setAlignment(Pos.CENTER);
+            hbox.setSpacing(10.0);
+            hbox.setAlignment(Pos.CENTER);
+            vbox.setSpacing(10.0);
+            //System.out.println("Adding: " + product.toString());
+        }
     }
     
     @FXML 
