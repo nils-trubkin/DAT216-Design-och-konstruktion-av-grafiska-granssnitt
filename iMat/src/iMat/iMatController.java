@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -93,9 +94,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
             hbox.getChildren().add(new ProductPanel(product));
             col++;
             hbox.setAlignment(Pos.CENTER);
-            hbox.setSpacing(10.0);
+            hbox.setSpacing(30.0);
             hbox.setAlignment(Pos.CENTER);
-            vbox.setSpacing(10.0);
+            vbox.setSpacing(30.0);
+            vbox.setPadding(new Insets(30d,0d,0d,0d));
             //System.out.println("Adding: " + product.toString());
         }
     }

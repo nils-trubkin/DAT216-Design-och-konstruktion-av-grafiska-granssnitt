@@ -1,26 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.iMatController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.iMatController">
     <children>
-        <SplitPane dividerPositions="0.1, 0.7" layoutX="358.0" layoutY="225.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+        <SplitPane dividerPositions="0.1, 0.7" layoutX="358.0" layoutY="225.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
             <items>
-                <AnchorPane maxHeight="-Infinity" maxWidth="100.0" minHeight="160.0" minWidth="100.0" prefHeight="1000.0" prefWidth="100.0">
+                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="200.0">
                     <children>
-                        <VBox alignment="CENTER" maxWidth="100.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="%categoryButton.1.text" wrapText="true" />
-                                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="%categoryButton.2.text" wrapText="true" />
-                                <Button layoutX="25.0" layoutY="268.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="%categoryButton.3.text" wrapText="true" />
-                                <Button layoutX="25.0" layoutY="223.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="%categoryButton.4.text" wrapText="true" />
-                                <Button layoutX="25.0" layoutY="177.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="%categoryButton.5.text" wrapText="true" />
-                                <Button layoutX="25.0" layoutY="132.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="%categoryButton.6.text" wrapText="true" />
-                                <Button layoutX="25.0" layoutY="177.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="%categoryButton.7.text" wrapText="true" />
-                                <Button layoutX="25.0" layoutY="233.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="%categoryButton.8.text" wrapText="true" />
-                                <Button layoutX="25.0" layoutY="435.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="%categoryButton.9.text" wrapText="true" />
+                                <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.1.text" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
+                                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.2.text" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
+                                <Button layoutX="25.0" layoutY="268.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.3.text" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
+                                <Button layoutX="25.0" layoutY="223.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.4.text" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
+                                <Button layoutX="25.0" layoutY="177.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.5.text" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
+                                <Button layoutX="25.0" layoutY="132.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.6.text" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
+                                <Button layoutX="25.0" layoutY="177.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.7.text" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
+                                <Button layoutX="25.0" layoutY="233.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.8.text" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
+                                <Button layoutX="25.0" layoutY="435.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.9.text" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
                             </children>
                         </VBox>
                     </children></AnchorPane>
@@ -36,9 +64,18 @@
                                                     <children>
                                                         <HBox alignment="CENTER" layoutX="132.0" layoutY="-2.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                             <children>
-                                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="161.0" text="%allProductsButton.text" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
-                                                                <TextField alignment="CENTER" prefHeight="48.0" prefWidth="290.0" />
-                                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="52.0" text="%searchButton.text" />
+                                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="161.0" text="%allProductsButton.text" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font></Button>
+                                                                <TextField alignment="CENTER" prefHeight="48.0" prefWidth="290.0">
+                                                   <font>
+                                                      <Font name="System Bold" size="20.0" />
+                                                   </font></TextField>
+                                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="70.0" text="%searchButton.text">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font></Button>
                                                             </children>
                                                         </HBox>
                                                     </children></AnchorPane>
@@ -46,20 +83,29 @@
                                                     <children>
                                                         <HBox alignment="CENTER" layoutX="105.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                             <children>
-                                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" text="%subcategoryButton.1.text">
+                                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="%subcategoryButton.1.text">
                                                                     <graphic>
                                                                         <RadioButton alignment="TOP_CENTER" mnemonicParsing="false" />
                                                                     </graphic>
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
                                                                 </Button>
-                                                                <Button alignment="CENTER" layoutX="225.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" text="%subcategoryButton.2.text">
+                                                                <Button alignment="CENTER" layoutX="225.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="%subcategoryButton.2.text">
                                                                     <graphic>
                                                                         <RadioButton alignment="TOP_CENTER" mnemonicParsing="false" />
                                                                     </graphic>
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
                                                                 </Button>
-                                                                <Button alignment="CENTER" layoutX="310.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" text="%subcategoryButton.3.text">
+                                                                <Button alignment="CENTER" layoutX="310.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="%subcategoryButton.3.text">
                                                                     <graphic>
                                                                         <RadioButton alignment="TOP_CENTER" mnemonicParsing="false" />
                                                                     </graphic>
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
                                                                 </Button>
                                                             </children></HBox>
                                                     </children>
@@ -76,7 +122,7 @@
                         </SplitPane>
                     </children>
                 </AnchorPane>
-                <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0">
+                <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0">
                     <children>
                         <SplitPane dividerPositions="0.2, 0.8" layoutX="53.0" layoutY="246.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <items>
@@ -87,41 +133,60 @@
                                                 <Font name="System Bold" size="25.0" />
                                             </font>
                                         </Label>
-                                        <Button layoutX="14.0" layoutY="60.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="184.0" text="%cart.saveButton.text" textAlignment="CENTER" wrapText="true" />
-                                        <Button layoutX="219.0" layoutY="60.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="61.0" text="%cart.clearButton.text" textAlignment="CENTER" wrapText="true" />
+                                        <Button layoutX="14.0" layoutY="60.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" text="%cart.saveButton.text" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font></Button>
+                                        <Button layoutX="223.0" layoutY="60.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="161.0" text="%cart.clearButton.text" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font></Button>
                                     </children></AnchorPane>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                    <children>
-                                        <ListView AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                    </children></AnchorPane>
+                           <children>
+                              <VBox layoutX="128.0" layoutY="209.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children></AnchorPane>
                                 <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="130.0" prefWidth="200.0">
                                     <children>
-                                        <Label layoutX="97.0" layoutY="29.0" prefHeight="60.0" prefWidth="294.0" text="%cart.total.text" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                        <Button layoutY="66.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="294.0" text="%cart.buy.text" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                        <Label layoutX="97.0" layoutY="29.0" prefHeight="60.0" prefWidth="294.0" text="%cart.total.text" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="30.0" />
+                                 </padding></Label>
+                                        <Button layoutY="66.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="294.0" text="%cart.buy.text" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font></Button>
                                     </children></AnchorPane>
                             </items>
                         </SplitPane>
                     </children></AnchorPane>
             </items>
         </SplitPane>
-        <MenuBar prefHeight="25.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <menus>
-                <Menu mnemonicParsing="false" text="File">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
+      <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="%menubar.title.text">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font></Label>
+            <Button mnemonicParsing="false" text="%menubar.pages.text">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" text="%menubar.lists.text">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" text="%menubar.history.text">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+         </children>
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+      </HBox>
     </children>
 </AnchorPane>
