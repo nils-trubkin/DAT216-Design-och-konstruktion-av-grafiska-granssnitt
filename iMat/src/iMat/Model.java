@@ -59,6 +59,10 @@ public class Model {
         return iMatDataHandler.getProducts();
     }
 
+    public List<Product> getProducts(ProductCategory pc) {
+        return iMatDataHandler.getProducts(pc);
+    }
+
     public Product getProduct(int idNbr) {
         return iMatDataHandler.getProduct(idNbr);
     }

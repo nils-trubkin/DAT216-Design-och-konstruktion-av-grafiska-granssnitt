@@ -5,62 +5,62 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.iMatController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" SplitPane.resizableWithParent="false" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.iMatController">
     <children>
         <SplitPane dividerPositions="0.1, 0.7" layoutX="358.0" layoutY="225.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
             <items>
-                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="200.0">
+                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="200.0" SplitPane.resizableWithParent="false">
                     <children>
                         <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.1.text" wrapText="true">
+                                <Button fx:id="categoryBtn1" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.1.text" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font></Button>
-                                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.2.text" wrapText="true">
+                                <Button fx:id="categoryBtn2" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.2.text" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font></Button>
-                                <Button layoutX="25.0" layoutY="268.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.3.text" wrapText="true">
+                                <Button fx:id="categoryBtn3" layoutX="25.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.3.text" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font></Button>
-                                <Button layoutX="25.0" layoutY="223.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.4.text" wrapText="true">
+                                <Button fx:id="categoryBtn4" layoutX="25.0" layoutY="223.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.4.text" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font></Button>
-                                <Button layoutX="25.0" layoutY="177.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.5.text" wrapText="true">
+                                <Button fx:id="categoryBtn5" layoutX="25.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.5.text" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font></Button>
-                                <Button layoutX="25.0" layoutY="132.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.6.text" wrapText="true">
+                                <Button fx:id="categoryBtn6" layoutX="25.0" layoutY="132.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.6.text" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font></Button>
-                                <Button layoutX="25.0" layoutY="177.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.7.text" wrapText="true">
+                                <Button fx:id="categoryBtn7" layoutX="25.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.7.text" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font></Button>
-                                <Button layoutX="25.0" layoutY="233.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.8.text" wrapText="true">
+                                <Button fx:id="categoryBtn8" layoutX="25.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.8.text" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font></Button>
-                                <Button layoutX="25.0" layoutY="435.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.9.text" wrapText="true">
+                                <Button fx:id="categoryBtn9" layoutX="25.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.9.text" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font></Button>
                             </children>
                         </VBox>
                     </children></AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
                     <children>
                         <SplitPane dividerPositions="0.2" layoutX="268.0" layoutY="234.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <items>
-                                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="500.0">
+                                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="500.0" SplitPane.resizableWithParent="false">
                                     <children>
                                         <SplitPane dividerPositions="0.5" layoutX="136.0" layoutY="35.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <items>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                                                     <children>
                                                         <HBox alignment="CENTER" layoutX="132.0" layoutY="-2.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                             <children>
@@ -79,41 +79,15 @@
                                                             </children>
                                                         </HBox>
                                                     </children></AnchorPane>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                                <AnchorPane fx:id="subcategoryAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                                                     <children>
-                                                        <HBox alignment="CENTER" layoutX="105.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                            <children>
-                                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="%subcategoryButton.1.text">
-                                                                    <graphic>
-                                                                        <RadioButton alignment="TOP_CENTER" mnemonicParsing="false" />
-                                                                    </graphic>
-                                                   <font>
-                                                      <Font size="20.0" />
-                                                   </font>
-                                                                </Button>
-                                                                <Button alignment="CENTER" layoutX="225.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="%subcategoryButton.2.text">
-                                                                    <graphic>
-                                                                        <RadioButton alignment="TOP_CENTER" mnemonicParsing="false" />
-                                                                    </graphic>
-                                                   <font>
-                                                      <Font size="20.0" />
-                                                   </font>
-                                                                </Button>
-                                                                <Button alignment="CENTER" layoutX="310.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="%subcategoryButton.3.text">
-                                                                    <graphic>
-                                                                        <RadioButton alignment="TOP_CENTER" mnemonicParsing="false" />
-                                                                    </graphic>
-                                                   <font>
-                                                      <Font size="20.0" />
-                                                   </font>
-                                                                </Button>
-                                                            </children></HBox>
+                                                        <HBox fx:id="subcategoryHbox" alignment="CENTER" layoutX="105.0" maxHeight="0.0" prefHeight="50.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                     </children>
                                                 </AnchorPane>
                                             </items>
                                         </SplitPane>
                                     </children></AnchorPane>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                                     <children>
                                         <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="480.0" prefWidth="594.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                     </children>
@@ -122,11 +96,11 @@
                         </SplitPane>
                     </children>
                 </AnchorPane>
-                <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0">
+                <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" SplitPane.resizableWithParent="false">
                     <children>
                         <SplitPane dividerPositions="0.2, 0.8" layoutX="53.0" layoutY="246.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <items>
-                                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="160.0">
+                                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                                     <children>
                                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="98.0" layoutY="30.0" prefHeight="60.0" text="%cart.title.text" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <font>
@@ -142,11 +116,11 @@
                                     <Font size="20.0" />
                                  </font></Button>
                                     </children></AnchorPane>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                            <children>
                               <VBox layoutX="128.0" layoutY="209.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children></AnchorPane>
-                                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="130.0" prefWidth="200.0">
+                                <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="130.0" prefWidth="200.0" SplitPane.resizableWithParent="false">
                                     <children>
                                         <Label layoutX="97.0" layoutY="29.0" prefHeight="60.0" prefWidth="294.0" text="%cart.total.text" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>

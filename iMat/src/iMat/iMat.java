@@ -15,6 +15,7 @@ import se.chalmers.cse.dat216.project.ShoppingCart;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 public class iMat extends Application {
+
     
     @Override
     public void start(Stage stage) throws Exception {
