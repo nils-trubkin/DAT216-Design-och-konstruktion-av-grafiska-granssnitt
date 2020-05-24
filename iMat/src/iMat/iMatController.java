@@ -59,6 +59,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private Label purchasesLabel;
 
+    // History pane
+    @FXML
+    private FlowPane historyFlowPaneMain;
+
+    @FXML
+    private FlowPane historyFlowPaneDetail;
+
     // Other variables
     private final Model model = Model.getInstance();
 
@@ -126,5 +133,21 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @Override
     public void shoppingCartChanged(CartEvent evt) {
         /*updateBottomPanel();*/
+    }
+
+    // History pane methods
+
+    // Clears the history detail list
+    // Should be run when the history view is opened for the first time
+    public void clearHistoryDetailList(){
+        // Removes previous items in the flowpane
+        historyFlowPaneDetail.getChildren().clear();
+    }
+
+    // Updates the product detail view with the given products
+    public void updateHistoryDetailList(Product[] products){
+        for (Product product : products){
+            historyFlowPaneDetail.getChildren().add(new HistoryListItemDetail(product, this));
+        }
     }
 }
