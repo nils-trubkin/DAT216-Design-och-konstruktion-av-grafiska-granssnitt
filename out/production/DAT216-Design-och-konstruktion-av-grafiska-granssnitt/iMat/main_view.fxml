@@ -64,15 +64,15 @@
                                                     <children>
                                                         <HBox alignment="CENTER" layoutX="132.0" layoutY="-2.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                             <children>
-                                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="48.0" prefWidth="161.0" text="%allProductsButton.text" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                                                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAllProducts" prefHeight="48.0" prefWidth="161.0" text="%allProductsButton.text" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
                                                    <font>
                                                       <Font size="20.0" />
                                                    </font></Button>
-                                                                <TextField alignment="CENTER" prefHeight="48.0" prefWidth="290.0">
+                                                                <TextField fx:id="searchField" alignment="CENTER" prefHeight="48.0" prefWidth="290.0" promptText="%prdoductPanel.searchField.text">
                                                    <font>
                                                       <Font name="System Bold" size="20.0" />
                                                    </font></TextField>
-                                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="70.0" text="%searchButton.text">
+                                                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="44.0" prefWidth="70.0" text="%searchButton.text">
                                                    <font>
                                                       <Font size="20.0" />
                                                    </font></Button>

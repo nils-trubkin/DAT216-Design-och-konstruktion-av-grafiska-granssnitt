@@ -35,39 +35,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     // Shopping Pane
     @FXML
-    private AnchorPane shopPane;
-    @FXML
-    private TextField searchField;
-    @FXML
-    private Label itemsLabel;
-    @FXML
-    private Label costLabel;
-    @FXML
-    private GridPane productsGridPane;
-    @FXML
     private ScrollPane scrollPane;
     @FXML
     private HBox subcategoryHbox;
     @FXML
     private AnchorPane subcategoryAnchorPane;
-
-    // Account Pane
     @FXML
-    private AnchorPane accountPane;
-    @FXML
-    ComboBox cardTypeCombo;
-    @FXML
-    private TextField numberTextField;
-    @FXML
-    private TextField nameTextField;
-    @FXML
-    private ComboBox monthCombo;
-    @FXML
-    private ComboBox yearCombo;
-    @FXML
-    private TextField cvcField;
-    @FXML
-    private Label purchasesLabel;
+    private TextField searchField;
 
     // History pane
     @FXML
@@ -112,7 +86,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
             col++;
             hbox.setAlignment(Pos.CENTER);
             hbox.setSpacing(30.0);
-            hbox.setAlignment(Pos.CENTER);
+            vbox.setAlignment(Pos.CENTER);
             vbox.setSpacing(30.0);
             vbox.setPadding(new Insets(30d,0d,0d,0d));
             //System.out.println("Adding: " + product.toString());
@@ -338,10 +312,23 @@ public class iMatController implements Initializable, ShoppingCartListener {
         iMatStage.hide();
     }
 
-    // Shope pane methods
     @Override
     public void shoppingCartChanged(CartEvent evt) {
         /*updateBottomPanel();*/
+    }
+
+    @FXML
+    private void handleSearchAction(ActionEvent event) {
+        List<Product> matches = model.findProducts(searchField.getText());
+        updateProductList(matches);
+        System.out.println("# matching products: " + matches.size());
+    }
+
+    @FXML
+    private void handleAllProducts(ActionEvent event) {
+        List<Product> matches = model.getProducts();
+        updateProductList(matches);
+        System.out.println("# matching products: " + matches.size());
     }
 
     // History pane methods
