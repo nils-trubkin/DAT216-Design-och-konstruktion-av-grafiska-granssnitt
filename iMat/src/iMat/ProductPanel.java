@@ -11,13 +11,15 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.ShoppingItem;
 
 public class ProductPanel extends AnchorPane {
 
     @FXML ImageView imageView;
     @FXML Label nameLabel;
-    /*@FXML Label prizeLabel;
-    @FXML Label ecoLabel;*/
+    @FXML Label amountLabel;
+    @FXML Label priceLabel;
+    //@FXML Label ecoLabel;
 
     private Model model = Model.getInstance();
 
@@ -43,6 +45,12 @@ public class ProductPanel extends AnchorPane {
 
         this.product = product;
         nameLabel.setText(product.getName());
+        priceLabel.setText(product.getPrice() + " " + product.getUnit());
+        for (ShoppingItem si : model.getShoppingCart().getItems()){
+            if(si.getProduct().equals(product)){
+                amountLabel.setText(String.valueOf((int) si.getAmount()));
+            }
+        }
         /*prizeLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());*/
         imageView.setImage(model.getImage(product, kImageWidth, kImageWidth*kImageRatio));
         /*if (!product.isEcological()) {
@@ -54,5 +62,23 @@ public class ProductPanel extends AnchorPane {
     private void handleAddAction(ActionEvent event) {
         System.out.println("Add " + product.getName());
         model.addToShoppingCart(product);
+        for (ShoppingItem si : model.getShoppingCart().getItems()){
+            if(si.getProduct().equals(product)){
+                amountLabel.setText(String.valueOf((int) si.getAmount()));
+            }
+        }
+    }
+
+    @FXML
+    private void handleSubtractAction(ActionEvent event) {
+        System.out.println("Subtract " + product.getName());
+        model.subtractFromShoppingCart(product);
+        for (ShoppingItem si : model.getShoppingCart().getItems()){
+            if(si.getProduct().equals(product)){
+                amountLabel.setText(String.valueOf((int) si.getAmount()));
+                return;
+            }
+        }
+        amountLabel.setText(String.valueOf(0));
     }
 }
