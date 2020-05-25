@@ -36,6 +36,7 @@ public class HistoryListItemDetail extends AnchorPane {
         addInfo();
     }
 
+    // Adds all order information to the image and text components
     private void addInfo(){
         historyProductText.setText(item.getProduct().getName());
         historyProductCostText.setText(item.getTotal() + "kr");

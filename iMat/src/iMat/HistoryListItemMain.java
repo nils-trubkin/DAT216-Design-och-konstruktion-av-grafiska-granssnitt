@@ -39,18 +39,24 @@ public class HistoryListItemMain extends AnchorPane {
         addInfo();
     }
 
+    // Runs when an order is clicked with the mouse
+    // Calls the controller and populates the detail view
     @FXML
     protected void onClick(Event event){
         parentController.updateHistoryListDetail(order.getItems());
     }
 
+    // Adds all order information to the image and text components
     private void addInfo(){
         historyOrderDateText.setText(order.getDate().toString());
         historyOrderCountText.setText(order.getItems().size() + "st");
-        historyOrderCostText.setText(getOrderPrice(order.getItems()) + "kr");
+        historyOrderCostText.setText(getOrderPrice(order) + "kr");
     }
 
-    private int getOrderPrice(List<ShoppingItem> items){
+    // Returns the total price of an order
+    private int getOrderPrice(Order order){
+        List<ShoppingItem> items = order.getItems();
+
         int totalCost = 0;
 
         for (ShoppingItem item : items){

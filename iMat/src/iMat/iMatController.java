@@ -333,6 +333,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     // History pane methods
 
+    // TODO: Run when switching to the history pane
     // Initializes the history pane
     // Should be run every time it is switched to
     public void historyPaneInit(){
