@@ -80,12 +80,31 @@ public class Model {
     }
 
     public void addToShoppingCart(Product p) {
-        ShoppingCart shoppingCart = iMatDataHandler.getShoppingCart();
-
         ShoppingItem item = new ShoppingItem(p);
-        Model.getInstance().getShoppingCart().addItem(item);
-        
-        //shoppingCart.addProduct(p);
+        for(ShoppingItem si : Model.getInstance().getShoppingCart().getItems()){
+            if (si.getProduct().equals(p)){
+                si.setAmount(si.getAmount() + 1);
+                Model.getInstance().getShoppingCart().fireShoppingCartChanged(si, true);
+                return;
+            }
+        }
+        Model.getInstance().getShoppingCart().addProduct(p);
+    }
+
+    public void subtractFromShoppingCart(Product p) {
+        ShoppingItem item = new ShoppingItem(p);
+        for(ShoppingItem si : Model.getInstance().getShoppingCart().getItems()){
+            if (si.getProduct().equals(p)){
+                if (si.getAmount() > 1) {
+                    si.setAmount(si.getAmount() - 1);
+                    Model.getInstance().getShoppingCart().fireShoppingCartChanged(si, true);
+                }
+                else {
+                    Model.getInstance().getShoppingCart().removeItem(si);
+                }
+                return;
+            }
+        }
     }
 
     public List<String> getCardTypes() {

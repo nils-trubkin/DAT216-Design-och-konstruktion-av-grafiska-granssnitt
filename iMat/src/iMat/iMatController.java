@@ -42,6 +42,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private AnchorPane subcategoryAnchorPane;
     @FXML
     private TextField searchField;
+    @FXML
+    private VBox cartVbox;
 
     // History pane
     @FXML
@@ -52,6 +54,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     // Other variables
     private final Model model = Model.getInstance();
+    List<Product> currentProductList;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -59,13 +62,15 @@ public class iMatController implements Initializable, ShoppingCartListener {
         model.getShoppingCart().addShoppingCartListener(this);
 
         updateProductList(model.getProducts());
-        /*updateBottomPanel();
+        updateCart();
+    }
 
-        setupAccountPane();*/
-
+    private void updateProductList() {
+        updateProductList(currentProductList);
     }
 
     private void updateProductList(List<Product> products) {
+        currentProductList = products;
         VBox vbox = new VBox();
         HBox hbox = new HBox();
         scrollPane.setFitToHeight(true);
@@ -314,7 +319,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @Override
     public void shoppingCartChanged(CartEvent evt) {
-        /*updateBottomPanel();*/
+        System.out.println("Shopping cart changed");
+        updateCart();
     }
 
     @FXML
@@ -329,6 +335,23 @@ public class iMatController implements Initializable, ShoppingCartListener {
         List<Product> matches = model.getProducts();
         updateProductList(matches);
         System.out.println("# matching products: " + matches.size());
+    }
+
+    private void updateCart(){
+        cartVbox.getChildren().clear();
+        for (ShoppingItem item : model.getShoppingCart().getItems()){
+            HBox hbox = new HBox();
+            cartVbox.getChildren().add(hbox);
+            hbox.getChildren().add(new Label(item.getProduct().getName() + " " + item.getAmount()));
+        }
+    }
+
+    @FXML
+    private void clearCart(){
+        System.out.println("Clearing cart");
+        model.getShoppingCart().clear();
+        updateCart();
+        updateProductList();
     }
 
     // History pane methods

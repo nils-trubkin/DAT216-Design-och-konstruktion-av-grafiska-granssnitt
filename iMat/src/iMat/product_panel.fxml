@@ -18,6 +18,11 @@
                            <font>
                               <Font size="20.0" />
                            </font></Label>
+                        <Label fx:id="priceLabel" layoutX="73.0" layoutY="151.0" text="Price">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
                </children>
@@ -26,15 +31,15 @@
                <children>
                   <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button mnemonicParsing="false" text="%productPanel.plusButton.text">
+                        <Button mnemonicParsing="false" onAction="#handleSubtractAction" text="%productPanel.minusButton.text">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font></Button>
-                        <Label text="%productPanel.amount.text">
+                        <Label fx:id="amountLabel" text="%productPanel.amount.text">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font></Label>
-                        <Button mnemonicParsing="false" text="%productPanel.minusButton.text">
+                        <Button mnemonicParsing="false" onAction="#handleAddAction" text="%productPanel.plusButton.text">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font></Button>
