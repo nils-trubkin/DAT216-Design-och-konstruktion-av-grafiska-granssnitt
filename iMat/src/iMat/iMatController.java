@@ -358,7 +358,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
             hbox.getChildren().add(new ImageView(model.getImage(item.getProduct(), kImageWidth, kImageWidth*kImageRatio)));
             Label nameLabel = new Label(item.getProduct().getName() + " ");
             Label antalLabel = null;
-            Label totalLabel = new Label(String.valueOf(Math.round(item.getTotal() * 10) / 10.0));
+            Label totalLabel = new Label(String.valueOf(Math.round(item.getTotal() * 10) / 10.0) + "kr");
             if (item.getProduct().getUnit().equals("kr/kg")){
                 antalLabel = new Label(Math.round(item.getAmount() * 10) / 10.0 + " "
                         + item.getProduct().getUnitSuffix() + " ");
