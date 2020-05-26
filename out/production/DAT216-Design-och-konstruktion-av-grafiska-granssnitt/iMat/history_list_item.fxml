@@ -6,15 +6,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="100.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.44377510040160645" prefHeight="100.0" prefWidth="500.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ImageView fitHeight="98.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text layoutX="97.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%datum%">
+                  <ImageView fx:id="historyOrderImage" fitHeight="98.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fx:id="historyOrderDateText" layoutX="97.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%datum%">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -27,7 +26,7 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Text layoutX="18.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%antal%">
+                              <Text fx:id="historyOrderCountText" layoutX="18.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%antal%">
                                  <font>
                                     <Font size="25.0" />
                                  </font>
@@ -36,7 +35,7 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Text layoutX="28.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%pris%">
+                              <Text fx:id="historyOrderPriceText" layoutX="28.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%pris%">
                                  <font>
                                     <Font size="25.0" />
                                  </font>

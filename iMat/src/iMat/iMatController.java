@@ -45,7 +45,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private TextField searchField;
     @FXML
-    private VBox cartVbox;
+    private ScrollPane cartScrollPane;
     @FXML
     private Label totalLabel;
     @FXML
@@ -348,27 +348,48 @@ public class iMatController implements Initializable, ShoppingCartListener {
         totalLabel.setText("Totalt: " + Math.round(model.getShoppingCart().getTotal() * 100) / 100.0 + "kr");
         double kImageWidth = 50.0;
         double kImageRatio = 0.75;
-        cartVbox.getChildren().clear();
+        VBox vbox = new VBox();
+        cartScrollPane.setContent(vbox);
         for (ShoppingItem item : model.getShoppingCart().getItems()){
             HBox hbox = new HBox();
-            cartVbox.getChildren().add(hbox);
+            vbox.getChildren().add(hbox);
             hbox.setAlignment(Pos.CENTER_LEFT);
             hbox.setSpacing(20d);
-            cartVbox.setSpacing(10d);
+            hbox.setPadding(new Insets(10d,0,0,10d));
+            vbox.setSpacing(10d);
 
             hbox.getChildren().add(new ImageView(model.getImage(item.getProduct(), kImageWidth, kImageWidth*kImageRatio)));
+            Label nameLabel = new Label(item.getProduct().getName() + " ");
+            Label antalLabel = null;
+            Label totalLabel = new Label(String.valueOf(Math.round(item.getTotal() * 10) / 10.0));
             if (item.getProduct().getUnit().equals("kr/kg")){
-                hbox.getChildren().add(new Label(item.getProduct().getName() + " "
-                        + Math.round(item.getAmount() * 10) / 10.0 + " "
-                        + item.getProduct().getUnitSuffix() + " "
-                        + Math.round(item.getTotal() * 10) / 10.0));
+                antalLabel = new Label(Math.round(item.getAmount() * 10) / 10.0 + " "
+                        + item.getProduct().getUnitSuffix() + " ");
             }
             else {
-                hbox.getChildren().add(new Label(item.getProduct().getName() + " "
-                        + Math.round(item.getAmount()) + " "
-                        + item.getProduct().getUnitSuffix() + " "
-                        + Math.round(item.getTotal() * 10) / 10.0));
+                antalLabel = new Label(Math.round(item.getAmount()) + " "
+                        + item.getProduct().getUnitSuffix() + " ");
             }
+            nameLabel.setFont(new Font(20d));
+            antalLabel.setFont(new Font(20d));
+            totalLabel.setFont(new Font(20d));
+
+            double width1 = 120d;
+            double width2 = 80d;
+            double width3 = 50d;
+            nameLabel.setMinWidth(width1);
+            nameLabel.setMaxWidth(width1);
+            nameLabel.setPrefWidth(width1);
+
+            antalLabel.setMinWidth(width2);
+            antalLabel.setMaxWidth(width2);
+            antalLabel.setPrefWidth(width2);
+
+            totalLabel.setPrefWidth(width3);
+            totalLabel.setMaxWidth(width3);
+            totalLabel.setMinWidth(width3);
+
+            hbox.getChildren().addAll(nameLabel, antalLabel, totalLabel);
         }
     }
 
