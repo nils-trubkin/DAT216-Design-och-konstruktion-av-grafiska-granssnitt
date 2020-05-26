@@ -48,11 +48,14 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private VBox cartVbox;
     @FXML
     private Label totalLabel;
+    @FXML
+    private Button historyButtonMain;
 
     // History pane
     @FXML
+    private AnchorPane historyPane;
+    @FXML
     private FlowPane historyFlowPaneMain;
-
     @FXML
     private FlowPane historyFlowPaneDetail;
 
@@ -377,6 +380,14 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateProductList();
     }
 
+    // Pane switching methods
+    @FXML
+    protected void focusHistoryPane (ActionEvent event){
+        System.out.println("Loading History Pane");
+
+        historyPane.toFront();
+    }
+
     // History pane methods
 
     // TODO: Run when switching to the history pane
@@ -400,8 +411,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void updateHistoryListDetail(List<ShoppingItem> items){
         historyFlowPaneDetail.getChildren().clear();
 
-        for (ShoppingItem item : items){
-            historyFlowPaneDetail.getChildren().add(new HistoryListItemDetail(item, this));
+        for (ShoppingItem shoppingItem : items){
+            historyFlowPaneDetail.getChildren().add(new HistoryListItemDetail(shoppingItem, this));
         }
     }
 }
