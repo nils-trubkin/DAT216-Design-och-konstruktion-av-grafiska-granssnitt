@@ -379,17 +379,29 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     // History pane methods
 
-    // Clears the history detail list
-    // Should be run when the history view is opened for the first time
-    public void clearHistoryDetailList(){
-        // Removes previous items in the flowpane
-        historyFlowPaneDetail.getChildren().clear();
+    // TODO: Run when switching to the history pane
+    // Initializes the history pane
+    // Should be run every time it is switched to
+    public void historyPaneInit(){
+        List<Order> orders = IMatDataHandler.getInstance().getOrders();
+        updateHistoryListMain(orders);
     }
 
     // Updates the product detail view with the given products
-    public void updateHistoryDetailList(Product[] products){
-        for (Product product : products){
-            historyFlowPaneDetail.getChildren().add(new HistoryListItemDetail(product, this));
+    public void updateHistoryListMain(List<Order> orders){
+        historyFlowPaneMain.getChildren().clear();
+
+        for (Order order : orders){
+            historyFlowPaneMain.getChildren().add(new HistoryListItemMain(order, this));
+        }
+    }
+
+    // Updates the product detail view with the given products
+    public void updateHistoryListDetail(List<ShoppingItem> items){
+        historyFlowPaneDetail.getChildren().clear();
+
+        for (ShoppingItem item : items){
+            historyFlowPaneDetail.getChildren().add(new HistoryListItemDetail(item, this));
         }
     }
 }
