@@ -56,6 +56,58 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private FlowPane historyFlowPaneDetail;
 
+    // My account pane
+    @FXML
+    private SplitPane myAccountSplitPane;
+    @FXML
+    private Button myInformationButton;
+    @FXML
+    private Button addressButton;
+    @FXML
+    private Button paymentMethodButton;
+    @FXML
+    private AnchorPane paymentMethodPane;
+    @FXML
+    private TextField cardNumberTextField;
+    @FXML
+    private ComboBox monthComboBox;
+    @FXML
+    private ComboBox yearComboBox;
+    @FXML
+    private TextField cardNameTextField;
+    @FXML
+    private Button savCardInfoButton;
+    @FXML
+    private AnchorPane addressPane;
+    @FXML
+    private TextField streetAddressTextField;
+    @FXML
+    private TextField postcodeTextField;
+    @FXML
+    private TextField cityTextField;
+    @FXML
+    private Button saveAddressButton;
+    @FXML
+    private AnchorPane myInformationPane;
+    @FXML
+    private TextField firstNameTextField;
+    @FXML
+    private TextField lastNameTextField;
+    @FXML
+    private TextField emailTextField;
+    @FXML
+    private TextField telephoneTextField;
+    @FXML
+    private Button saveInfoButton;
+    @FXML
+    private Label myInformationLabel;
+    @FXML
+    private Label addressLabel;
+    @FXML
+    private Label cardLabel;
+    @FXML
+    private Button myAccountButton;
+
     // Other variables
     private final Model model = Model.getInstance();
     List<Product> currentProductList;
@@ -67,6 +119,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
         updateProductList(model.getProducts());
         updateCart();
+
+        //yearComboBox.getItems().addAll("2020","2021","2022","2023","2024","2025","2026","2027","2028","2029","2030");
+        //monthComboBox.getItems().addAll("01","02","03","04","05","06","07","08","09","10","11","12");
+
     }
 
     private void updateProductList() {
@@ -425,4 +481,122 @@ public class iMatController implements Initializable, ShoppingCartListener {
             historyFlowPaneDetail.getChildren().add(new HistoryListItemDetail(item, this));
         }
     }
+
+    // My account pane methods
+
+    @FXML
+    public void informationButtonPressed() {
+        myInformationButton.setStyle("-fx-background-color: #416788");
+        myInformationLabel.setStyle("-fx-text-fill: #FFFFFF");
+
+        paymentMethodButton.setStyle("-fx-background-color: #94BFFF");
+        cardLabel.setStyle("-fx-text-fill: #000000");
+        addressButton.setStyle("-fx-background-color: #94BFFF");
+        addressLabel.setStyle("-fx-text-fill: #000000");
+    }
+
+    @FXML
+    public void addressButtonPressed() {
+        addressButton.setStyle("-fx-background-color: #416788");
+        addressLabel.setStyle("-fx-text-fill: #FFFFFF");
+
+        myInformationButton.setStyle("-fx-background-color: #94BFFF");
+        myInformationLabel.setStyle("-fx-text-fill: #000000");
+        paymentMethodButton.setStyle("-fx-background-color: #94BFFF");
+        cardLabel.setStyle("-fx-text-fill: #000000");
+    }
+
+    @FXML
+    public void paymentButtonPressed() {
+        paymentMethodButton.setStyle("-fx-background-color: #416788");
+        cardLabel.setStyle("-fx-text-fill: #FFFFFF");
+
+        myInformationButton.setStyle("-fx-background-color:  #94BFFF");
+        myInformationLabel.setStyle("-fx-text-fill: #000000");
+        addressButton.setStyle("-fx-background-color: #94BFFF");
+        addressLabel.setStyle("-fx-text-fill: #000000");
+    }
+
+    @FXML
+    private void handleShowAccountAction (ActionEvent event){
+        updateAccountPanel();
+    }
+
+    public void openAddressView(ActionEvent actionEvent) {
+        addressPane.toFront();
+    }
+
+    public void openMyInformationView(ActionEvent actionEvent) {
+        myInformationPane.toFront();
+    }
+
+
+    public void openPaymentView(ActionEvent actionEvent) {
+        paymentMethodPane.toFront();
+    }
+
+    @FXML
+    private void handleSavePaymentInformation(ActionEvent event){
+        updatePaymentInformation();
+    }
+
+
+    @FXML
+    private void handleSaveAddressInformation(ActionEvent event){
+        updateAddressInformation();
+    }
+
+    @FXML
+    private void handleSavePersonalInformation(ActionEvent event){
+        updatePersonalInformation();
+    }
+
+
+    private void updateAccountPanel(){
+        Customer c = model.getCustomer();
+        CreditCard card = model.getCreditCard();
+
+        firstNameTextField.setText(c.getFirstName());
+        lastNameTextField.setText(c.getLastName());
+        emailTextField.setText(c.getEmail());
+        telephoneTextField.setText(c.getPhoneNumber());
+        postcodeTextField.setText(c.getPostCode());
+        cityTextField.setText(c.getPostAddress());
+        cardNumberTextField.setText(card.getCardNumber());
+        cardNameTextField.setText(card.getHoldersName());
+        monthComboBox.getSelectionModel().select(""+card.getValidMonth());
+        yearComboBox.getSelectionModel().select(""+card.getValidYear());
+    }
+
+
+    private void updatePersonalInformation(){
+        Customer customer = model.getCustomer();
+
+        customer.setFirstName(firstNameTextField.getText());
+        customer.setLastName(lastNameTextField.getText());
+        customer.setEmail(emailTextField.getText());
+        customer.setPhoneNumber(telephoneTextField.getText());
+    }
+
+    private void updateAddressInformation(){
+        Customer customer = model.getCustomer();
+
+        //customer.setAddress(streetAddressTextField.getText());
+        customer.setPostCode(postcodeTextField.getText());
+        customer.setPostAddress(cityTextField.getText());
+    }
+
+    private void updatePaymentInformation(){
+        CreditCard c = model.getCreditCard();
+
+        c.setCardNumber(cardNumberTextField.getText());
+        c.setHoldersName(cardNameTextField.getText());
+
+        String selectedValue = (String) monthComboBox.getSelectionModel().getSelectedItem();
+        c.setValidMonth(Integer.parseInt(selectedValue));
+
+        selectedValue = (String) yearComboBox.getSelectionModel().getSelectedItem();
+        c.setValidYear(Integer.parseInt(selectedValue));
+    }
+
 }
