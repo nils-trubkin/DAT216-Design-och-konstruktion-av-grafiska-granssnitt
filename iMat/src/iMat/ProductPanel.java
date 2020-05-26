@@ -48,7 +48,13 @@ public class ProductPanel extends AnchorPane {
         priceLabel.setText(product.getPrice() + " " + product.getUnit());
         for (ShoppingItem si : model.getShoppingCart().getItems()){
             if(si.getProduct().equals(product)){
-                amountLabel.setText(String.valueOf((int) si.getAmount()));
+                double value = (Math.round(si.getAmount() * 10) / 10.0);
+                if(si.getProduct().getUnitSuffix().equals("kg")){
+                    amountLabel.setText(String.valueOf(value));
+                }
+                else{
+                    amountLabel.setText(String.valueOf((int) value));
+                }
             }
         }
         /*prizeLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());*/
@@ -64,7 +70,13 @@ public class ProductPanel extends AnchorPane {
         model.addToShoppingCart(product);
         for (ShoppingItem si : model.getShoppingCart().getItems()){
             if(si.getProduct().equals(product)){
-                amountLabel.setText(String.valueOf((int) si.getAmount()));
+                double value = (Math.round(si.getAmount() * 10) / 10.0);
+                if(si.getProduct().getUnitSuffix().equals("kg")){
+                    amountLabel.setText(String.valueOf(value));
+                }
+                else{
+                    amountLabel.setText(String.valueOf((int) value));
+                }
             }
         }
     }
@@ -75,7 +87,13 @@ public class ProductPanel extends AnchorPane {
         model.subtractFromShoppingCart(product);
         for (ShoppingItem si : model.getShoppingCart().getItems()){
             if(si.getProduct().equals(product)){
-                amountLabel.setText(String.valueOf((int) si.getAmount()));
+                double value = (Math.round(si.getAmount() * 10) / 10.0);
+                if(si.getProduct().getUnitSuffix().equals("kg")){
+                    amountLabel.setText(String.valueOf(value));
+                }
+                else{
+                    amountLabel.setText(String.valueOf((int) value));
+                }
                 return;
             }
         }

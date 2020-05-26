@@ -83,7 +83,12 @@ public class Model {
         ShoppingItem item = new ShoppingItem(p);
         for(ShoppingItem si : Model.getInstance().getShoppingCart().getItems()){
             if (si.getProduct().equals(p)){
-                si.setAmount(si.getAmount() + 1);
+                if(si.getProduct().getUnitSuffix().equals("kg")){
+                    si.setAmount(si.getAmount() + 0.1);
+                }
+                else{
+                    si.setAmount(si.getAmount() + 1);
+                }
                 Model.getInstance().getShoppingCart().fireShoppingCartChanged(si, true);
                 return;
             }
@@ -95,14 +100,24 @@ public class Model {
         ShoppingItem item = new ShoppingItem(p);
         for(ShoppingItem si : Model.getInstance().getShoppingCart().getItems()){
             if (si.getProduct().equals(p)){
-                if (si.getAmount() > 1) {
-                    si.setAmount(si.getAmount() - 1);
-                    Model.getInstance().getShoppingCart().fireShoppingCartChanged(si, true);
+                if(si.getProduct().getUnitSuffix().equals("kg")){
+                    if (si.getAmount() >= 0.1) {
+                        si.setAmount(si.getAmount() - 0.1);
+                        Model.getInstance().getShoppingCart().fireShoppingCartChanged(si, true);
+                    }
+                    else {
+                        Model.getInstance().getShoppingCart().removeItem(si);
+                    }
                 }
                 else {
-                    Model.getInstance().getShoppingCart().removeItem(si);
+                    if (si.getAmount() >= 1) {
+                        si.setAmount(si.getAmount() - 1);
+                        Model.getInstance().getShoppingCart().fireShoppingCartChanged(si, true);
+                    } else {
+                        Model.getInstance().getShoppingCart().removeItem(si);
+                    }
+                    return;
                 }
-                return;
             }
         }
     }

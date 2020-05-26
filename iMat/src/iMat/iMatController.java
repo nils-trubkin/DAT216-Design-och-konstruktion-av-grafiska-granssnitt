@@ -19,6 +19,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
@@ -44,6 +46,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private TextField searchField;
     @FXML
     private VBox cartVbox;
+    @FXML
+    private Label totalLabel;
 
     // History pane
     @FXML
@@ -338,11 +342,30 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     private void updateCart(){
+        totalLabel.setText("Totalt: " + Math.round(model.getShoppingCart().getTotal() * 100) / 100.0 + "kr");
+        double kImageWidth = 50.0;
+        double kImageRatio = 0.75;
         cartVbox.getChildren().clear();
         for (ShoppingItem item : model.getShoppingCart().getItems()){
             HBox hbox = new HBox();
             cartVbox.getChildren().add(hbox);
-            hbox.getChildren().add(new Label(item.getProduct().getName() + " " + item.getAmount()));
+            hbox.setAlignment(Pos.CENTER_LEFT);
+            hbox.setSpacing(20d);
+            cartVbox.setSpacing(10d);
+
+            hbox.getChildren().add(new ImageView(model.getImage(item.getProduct(), kImageWidth, kImageWidth*kImageRatio)));
+            if (item.getProduct().getUnit().equals("kr/kg")){
+                hbox.getChildren().add(new Label(item.getProduct().getName() + " "
+                        + Math.round(item.getAmount() * 10) / 10.0 + " "
+                        + item.getProduct().getUnitSuffix() + " "
+                        + Math.round(item.getTotal() * 10) / 10.0));
+            }
+            else {
+                hbox.getChildren().add(new Label(item.getProduct().getName() + " "
+                        + Math.round(item.getAmount()) + " "
+                        + item.getProduct().getUnitSuffix() + " "
+                        + Math.round(item.getTotal() * 10) / 10.0));
+            }
         }
     }
 

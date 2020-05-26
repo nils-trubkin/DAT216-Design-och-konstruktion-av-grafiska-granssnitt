@@ -122,7 +122,7 @@
                            </children></AnchorPane>
                                 <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="130.0" prefWidth="200.0" SplitPane.resizableWithParent="false">
                                     <children>
-                                        <Label layoutX="97.0" layoutY="29.0" prefHeight="60.0" prefWidth="294.0" text="%cart.total.text" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <Label fx:id="totalLabel" layoutX="97.0" layoutY="29.0" prefHeight="60.0" prefWidth="294.0" text="%cart.total.text" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
