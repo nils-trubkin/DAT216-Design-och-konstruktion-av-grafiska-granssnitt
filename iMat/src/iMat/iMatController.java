@@ -373,7 +373,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
             double width1 = 120d;
             double width2 = 80d;
-            double width3 = 50d;
+            double width3 = 80d;
             nameLabel.setMinWidth(width1);
             nameLabel.setMaxWidth(width1);
             nameLabel.setPrefWidth(width1);
