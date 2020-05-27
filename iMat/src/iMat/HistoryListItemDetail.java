@@ -2,11 +2,11 @@ package iMat;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
-import javax.swing.text.html.ImageView;
 import java.io.IOException;
 
 public class HistoryListItemDetail extends AnchorPane {
@@ -14,7 +14,7 @@ public class HistoryListItemDetail extends AnchorPane {
     @FXML private ImageView historyProductImage;
     @FXML private Text historyProductText;
     @FXML private Text historyProductCountText;
-    @FXML private Text historyProductCostText;
+    @FXML private Text historyProductPriceText;
 
     ShoppingItem item;
     iMatController parentController;
@@ -38,8 +38,9 @@ public class HistoryListItemDetail extends AnchorPane {
 
     // Adds all order information to the image and text components
     private void addInfo(){
+        historyProductImage.setImage(Model.getInstance().getImage(item.getProduct()));
         historyProductText.setText(item.getProduct().getName());
-        historyProductCostText.setText(item.getTotal() + "kr");
+        historyProductPriceText.setText(item.getTotal() + "kr");
         historyProductCountText.setText(item.getAmount() + "st");
     }
 }

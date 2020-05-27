@@ -8,16 +8,14 @@ import javafx.scene.text.Text;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
-import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.util.List;
 
 public class HistoryListItemMain extends AnchorPane {
 
-    @FXML private ImageView historyOrderImage;
     @FXML private Text historyOrderDateText;
     @FXML private Text historyOrderCountText;
-    @FXML private Text historyOrderCostText;
+    @FXML private Text historyOrderPriceText;
 
     Order order;
     iMatController parentController;
@@ -43,14 +41,15 @@ public class HistoryListItemMain extends AnchorPane {
     // Calls the controller and populates the detail view
     @FXML
     protected void onClick(Event event){
-        parentController.updateHistoryListDetail(order.getItems());
+        System.out.println("Loading Previous Order...");
+        parentController.updateHistoryListDetail(order);
     }
 
     // Adds all order information to the image and text components
     private void addInfo(){
         historyOrderDateText.setText(order.getDate().toString());
         historyOrderCountText.setText(order.getItems().size() + "st");
-        historyOrderCostText.setText(getOrderPrice(order) + "kr");
+        historyOrderPriceText.setText(getOrderPrice(order) + "kr");
     }
 
     // Returns the total price of an order

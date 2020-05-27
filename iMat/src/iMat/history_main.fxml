@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="700.0" maxWidth="1000.0" minHeight="700.0" minWidth="1000.0" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.iMatController">
+<AnchorPane id="AnchorPane" fx:id="historyPane" maxHeight="800.0" maxWidth="1500.0" minHeight="800.0" minWidth="1500.0" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.iMatController">
    <children>
       <MenuBar fx:id="menuBar" maxHeight="30.0" maxWidth="600.0" minHeight="30.0" minWidth="600.0" prefHeight="30.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
@@ -27,29 +27,29 @@
           </Menu>
         </menus>
       </MenuBar>
-    <AnchorPane layoutY="28.0" minHeight="0.0" minWidth="0.0" prefHeight="132.0" prefWidth="736.0">
+    <AnchorPane layoutY="28.0" minHeight="0.0" minWidth="0.0" prefHeight="774.0" prefWidth="1500.0">
          <children>
-            <SplitPane dividerPositions="0.6192384769539078" layoutY="-1.0" prefHeight="725.0" prefWidth="1000.0">
+            <SplitPane dividerPositions="0.6315086782376502" layoutY="-1.0" prefHeight="774.0" prefWidth="1500.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="705.0" prefWidth="615.0">
                      <children>
-                      <AnchorPane layoutY="94.0" minHeight="0.0" minWidth="0.0" prefHeight="697.0" prefWidth="608.0">
+                      <AnchorPane layoutY="94.0" minHeight="0.0" minWidth="0.0" prefHeight="697.0" prefWidth="943.0">
                            <children>
-                              <SplitPane dividerPositions="0.10344827586206896" layoutX="1.0" layoutY="-95.0" orientation="VERTICAL" prefHeight="723.0" prefWidth="608.0">
+                              <SplitPane dividerPositions="0.10344827586206896" layoutX="1.0" layoutY="-95.0" orientation="VERTICAL" prefHeight="772.0" prefWidth="943.0">
                                 <items>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="72.0" prefWidth="612.0">
                                        <children>
-                                          <Text layoutX="59.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beställning">
+                                          <Text layoutX="154.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beställning">
                                              <font>
                                                 <Font name="System Bold" size="25.0" />
                                              </font>
                                           </Text>
-                                          <Text layoutX="266.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antal Varor">
+                                          <Text layoutX="488.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antal Varor">
                                              <font>
                                                 <Font name="System Bold" size="25.0" />
                                              </font>
                                           </Text>
-                                          <Text layoutX="488.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pris">
+                                          <Text layoutX="783.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pris">
                                              <font>
                                                 <Font name="System Bold" size="25.0" />
                                              </font>
@@ -58,13 +58,10 @@
                                     </AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                        <children>
-                                          <ScrollPane prefHeight="643.0" prefWidth="606.0">
-                                            <content>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="635.0" prefWidth="600.0">
-                                                   <children>
-                                                      <FlowPane fx:id="historyFlowPaneMain" layoutX="6.0" prefHeight="643.0" prefWidth="606.0" />
-                                                   </children></AnchorPane>
-                                            </content>
+                                          <ScrollPane prefHeight="687.0" prefWidth="943.0">
+                                             <content>
+                                                <FlowPane fx:id="historyFlowPaneMain" prefHeight="682.0" prefWidth="938.0" />
+                                             </content>
                                           </ScrollPane>
                                        </children>
                                     </AnchorPane>
@@ -76,45 +73,45 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="669.0" prefWidth="441.0">
                      <children>
-                        <SplitPane dividerPositions="0.21264367816091953" orientation="VERTICAL" prefHeight="723.0" prefWidth="377.0">
+                        <SplitPane dividerPositions="0.21264367816091953" orientation="VERTICAL" prefHeight="772.0" prefWidth="549.0">
                           <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #E3E3E3;">
                                  <children>
-                                    <Text layoutX="95.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beställning">
+                                    <Text layoutX="182.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beställning">
                                        <font>
                                           <Font name="System Bold" size="35.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="103.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%datum%">
+                                    <Text fx:id="historyDetailDateText" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%datum%" textAlignment="CENTER" wrappingWidth="547.0">
                                        <font>
                                           <Font name="System Bold" size="35.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="14.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vara">
+                                    <Text layoutX="88.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vara">
                                        <font>
                                           <Font name="System Bold" size="25.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="156.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antal">
+                                    <Text layoutX="242.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antal">
                                        <font>
                                           <Font name="System Bold" size="25.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="317.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pris">
+                                    <Text layoutX="418.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pris">
                                        <font>
                                           <Font name="System Bold" size="25.0" />
                                        </font>
                                     </Text>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="544.0" prefWidth="375.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="570.0" prefWidth="375.0">
                                  <children>
-                                    <Button layoutX="-1.0" layoutY="180.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="377.0" text="Spara i Mina Listor" AnchorPane.bottomAnchor="75.0">
+                                    <Button layoutX="-1.0" layoutY="180.0" mnemonicParsing="false" onAction="#addHistoryToCart" prefHeight="75.0" prefWidth="549.0" styleClass="history" stylesheets="@history.css" text="Spara i Mina Listor" AnchorPane.bottomAnchor="75.0">
                                        <font>
                                           <Font size="28.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="-1.0" layoutY="255.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="377.0" text="Lägg Till i Kundvagn" AnchorPane.bottomAnchor="0.0">
+                                    <Button fx:id="historyAddToCartButton" layoutX="-1.0" layoutY="255.0" mnemonicParsing="false" onAction="#saveHistoryAsFavorite" prefHeight="75.0" prefWidth="549.0" styleClass="history" stylesheets="@history.css" text="Lägg Till i Kundvagn" AnchorPane.bottomAnchor="0.0">
                                        <font>
                                           <Font size="28.0" />
                                        </font>
@@ -124,18 +121,15 @@
                                           <Font size="26.0" />
                                        </font>
                                     </Text>
-                                    <Text layoutX="264.0" layoutY="385.328125" strokeType="OUTSIDE" strokeWidth="0.0" text="\%pris%" textAlignment="RIGHT" wrappingWidth="96.408203125" AnchorPane.bottomAnchor="153.146484375">
+                                    <Text fx:id="historyTotalPriceText" layoutX="280.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%pris%" textAlignment="RIGHT" wrappingWidth="252.408203125" AnchorPane.bottomAnchor="154.0">
                                        <font>
                                           <Font size="26.0" />
                                        </font>
                                     </Text>
-                                    <ScrollPane prefHeight="346.0" prefWidth="375.0">
-                                      <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="340.0" prefWidth="369.0">
-                                             <children>
-                                                <FlowPane fx:id="historyFlowPaneDetail" prefHeight="346.0" prefWidth="377.0" />
-                                             </children></AnchorPane>
-                                      </content>
+                                    <ScrollPane prefHeight="403.0" prefWidth="547.0">
+                                       <content>
+                                          <FlowPane fx:id="historyFlowPaneDetail" prefHeight="392.0" prefWidth="542.0" />
+                                       </content>
                                     </ScrollPane>
                                  </children>
                               </AnchorPane>

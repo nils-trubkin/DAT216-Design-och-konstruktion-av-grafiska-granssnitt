@@ -1,0 +1,22 @@
+.history-list-item{
+    -fx-border-width: 1px;
+    -fx-border-color: #999999;
+    -fx-border-radius: 1px;
+    -fx-background-radius: 1px;
+}
+
+.history-list-item:hover{
+    -fx-border-width: 1px;
+    -fx-border-color: #999999;
+    -fx-border-radius: 1px;
+    -fx-background-radius: 1px;
+    -fx-background-color: #FCFCFC;
+}
+
+.history-list-item:pressed{
+    -fx-border-width: 1px;
+    -fx-border-color: #999999;
+    -fx-border-radius: 1px;
+    -fx-background-radius: 1px;
+    -fx-background-color: #D0D0D0;
+}

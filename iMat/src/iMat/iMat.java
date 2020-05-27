@@ -3,6 +3,8 @@ package iMat;
 
 import java.util.ResourceBundle;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,19 +17,18 @@ import se.chalmers.cse.dat216.project.ShoppingCart;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 public class iMat extends Application {
-
     
     @Override
     public void start(Stage stage) throws Exception {
-        
+
         ResourceBundle bundle = java.util.ResourceBundle.getBundle("iMat/resources/iMat");
 
-        Parent root = FXMLLoader.load(getClass().getResource("main_view.fxml"), bundle);
+        Parent rootMain = FXMLLoader.load(getClass().getResource("iMat.fxml"), bundle);
 
-        Scene scene = new Scene(root, 600, 400);
+        Scene main = new Scene(rootMain, 1500, 800);
         
         stage.setTitle(bundle.getString("application.name"));
-        stage.setScene(scene);
+        stage.setScene(main);
         stage.setMinWidth(1500);
         stage.setMinHeight(800);
         stage.show();
