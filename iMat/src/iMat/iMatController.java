@@ -72,16 +72,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        /*
         // TODO
         model.getShoppingCart().addShoppingCartListener(this);
 
         updateProductList(model.getProducts());
         updateCart();
 
-         */
-
-        historyPaneInit();
+        // historyPaneInit();
     }
 
     private void updateProductList() {
