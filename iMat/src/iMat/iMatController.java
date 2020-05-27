@@ -4,12 +4,14 @@ package iMat;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,6 +25,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import se.chalmers.cse.dat216.project.*;
@@ -58,6 +61,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private FlowPane historyFlowPaneMain;
     @FXML
     private FlowPane historyFlowPaneDetail;
+    @FXML
+    private Text historyDetailDateText;
+    @FXML
+    private Text historyTotalPriceText;
 
     // Other variables
     private final Model model = Model.getInstance();
@@ -65,11 +72,16 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        /*
         // TODO
         model.getShoppingCart().addShoppingCartListener(this);
 
         updateProductList(model.getProducts());
         updateCart();
+
+         */
+
+        historyPaneInit();
     }
 
     private void updateProductList() {
@@ -401,22 +413,48 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateProductList();
     }
 
+    // TODO
     // Pane switching methods
     @FXML
     protected void focusHistoryPane (ActionEvent event){
-        System.out.println("Loading History Pane");
-
-        historyPane.toFront();
+        System.out.println("(NYI) Loading History Pane...");
     }
 
     // History pane methods
 
-    // TODO: Run when switching to the history pane
+    private Order currentOrderHistory;
+
+    @FXML
+    protected void addHistoryToCart(Event event){
+        System.out.println("Adding Previous Order to the Cart...");
+
+        IMatDataHandler handler = IMatDataHandler.getInstance();
+        ShoppingCart cart = handler.getShoppingCart();
+
+        List<ShoppingItem> items = currentOrderHistory.getItems();
+        for (ShoppingItem item : items){
+            cart.addItem(item);
+        }
+    }
+
+    @FXML
+    protected void saveHistoryAsFavorite(Event event){
+        System.out.println("(NYI) Saving History as Favourite");
+    }
+
     // Initializes the history pane
     // Should be run every time it is switched to
     public void historyPaneInit(){
         List<Order> orders = IMatDataHandler.getInstance().getOrders();
+        historyDetailDateText.setText("Ingen Beställning Vald");
+
+        //orders.add(createTestOrder());
+
         updateHistoryListMain(orders);
+
+        historyTotalPriceText.setText("");
+
+        currentOrderHistory = null;
     }
 
     // Updates the product detail view with the given products
@@ -429,11 +467,71 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     // Updates the product detail view with the given products
-    public void updateHistoryListDetail(List<ShoppingItem> items){
+    public void updateHistoryListDetail(Order order){
+        System.out.println("Sorting Detail View...");
+
+        List<ShoppingItem> items = order.getItems();
+        insertionSort(items);
+        System.out.println("Sorting Finished");
+
         historyFlowPaneDetail.getChildren().clear();
+
+        historyDetailDateText.setText(order.getDate().toString());
+
+        int totalPrice = 0;
 
         for (ShoppingItem shoppingItem : items){
             historyFlowPaneDetail.getChildren().add(new HistoryListItemDetail(shoppingItem, this));
+            totalPrice += shoppingItem.getTotal();
         }
+
+        historyTotalPriceText.setText(totalPrice + " kr");
+
+        currentOrderHistory = order;
+    }
+
+    // Insertion sort.
+
+    private static void insertionSort(List<ShoppingItem> array) {
+
+        int length = array.size();
+
+        // Loops through the unsorted array
+        for (int i = 1; i < length; i++){
+            // First unsorted variable in the array from the left
+            ShoppingItem current = array.get(i);
+
+            // Loops through the remaining unsorted array backwards
+            // until current is larger than the next element (to the left) in the sorted portion
+            int j = i - 1;
+            while (j >= 0 && array.get(j).getProduct().getName().compareTo(current.getProduct().getName()) > 0){
+                // Moves the insertion gap one step to the right
+                array.set(j+1, array.get(j));
+                j-=1;
+            }
+            // Places the unsorted element into the correct position in the sorted array
+            array.set(j+1, current);
+        }
+    }
+
+    private Order createTestOrder(){
+        Order order = new Order();
+
+        List<ShoppingItem> items = new ArrayList<>();
+        List<Product> allProducts = IMatDataHandler.getInstance().getProducts();
+
+        for (Product product : allProducts){
+            items.add(new ShoppingItem(product, 1));
+        }
+
+        order.setItems(items);
+
+        Date date = new Date();
+        date.setTime(100);
+        order.setDate(date);
+
+        order.setOrderNumber(1);
+
+        return order;
     }
 }

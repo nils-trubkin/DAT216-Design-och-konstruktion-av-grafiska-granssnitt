@@ -1,52 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="100.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root onMouseClicked="#onClick" prefHeight="100.0" prefWidth="938.0" styleClass="history-list-item" stylesheets="@history-list-item.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <SplitPane dividerPositions="0.44377510040160645" prefHeight="100.0" prefWidth="500.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <ImageView fx:id="historyOrderImage" fitHeight="98.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" />
-                  <Text fx:id="historyOrderDateText" layoutX="97.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%datum%">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="146.0" prefWidth="265.0">
-               <children>
-                  <SplitPane dividerPositions="0.4927007299270073" prefHeight="100.0" prefWidth="276.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                           <children>
-                              <Text fx:id="historyOrderCountText" layoutX="18.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%antal%">
-                                 <font>
-                                    <Font size="25.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                           <children>
-                              <Text fx:id="historyOrderPriceText" layoutX="28.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%pris%">
-                                 <font>
-                                    <Font size="25.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
+      <Text fx:id="historyOrderDateText" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%datum%" textAlignment="CENTER" wrappingWidth="426.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Line endX="35.0" endY="62.5" layoutX="648.0" layoutY="40.0" startX="35.0" startY="-40.0" />
+      <Line endX="35.0" endY="43.0" layoutX="391.0" layoutY="57.0" startX="35.0" startY="-57.0" />
+      <Text fx:id="historyOrderCountText" layoutX="427.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%antal%" textAlignment="CENTER" wrappingWidth="256.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text fx:id="historyOrderPriceText" layoutX="684.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%pris%" textAlignment="CENTER" wrappingWidth="240.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
    </children>
-</AnchorPane>
+</fx:root>
