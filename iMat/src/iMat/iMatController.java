@@ -40,6 +40,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     // Shopping Pane
     @FXML
+    private SplitPane mainViewPane;
+    @FXML
     private ScrollPane scrollPane;
     @FXML
     private HBox subcategoryHbox;
@@ -56,7 +58,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     // History pane
     @FXML
-    private AnchorPane historyPane;
+    private AnchorPane historyViewPane;
     @FXML
     private FlowPane historyFlowPaneMain;
     @FXML
@@ -414,7 +416,17 @@ public class iMatController implements Initializable, ShoppingCartListener {
     // Pane switching methods
     @FXML
     protected void focusHistoryPane (ActionEvent event){
-        System.out.println("(NYI) Loading History Pane...");
+        System.out.println("Loading History Pane...");
+
+        historyPaneInit();
+        historyViewPane.toFront();
+    }
+
+    @FXML
+    protected void focusMainPane (ActionEvent event){
+        System.out.println("Loading Main Pane...");
+
+        mainViewPane.toFront();
     }
 
     // History pane methods
