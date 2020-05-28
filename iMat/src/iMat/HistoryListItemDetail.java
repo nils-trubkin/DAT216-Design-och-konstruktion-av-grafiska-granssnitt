@@ -41,6 +41,6 @@ public class HistoryListItemDetail extends AnchorPane {
         historyProductImage.setImage(Model.getInstance().getImage(item.getProduct()));
         historyProductText.setText(item.getProduct().getName());
         historyProductPriceText.setText(item.getTotal() + "kr");
-        historyProductCountText.setText(item.getAmount() + "st");
+        historyProductCountText.setText(item.getAmount() + item.getProduct().getUnitSuffix());
     }
 }
