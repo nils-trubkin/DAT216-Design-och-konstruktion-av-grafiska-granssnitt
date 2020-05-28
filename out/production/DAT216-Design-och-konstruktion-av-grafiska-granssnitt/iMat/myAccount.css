@@ -1,0 +1,45 @@
+.account_button {
+    -fx-background-radius: 0;
+    -fx-background-radius: 15 15 15 15;
+    -fx-background-color: #94BFFF ;
+    -fx-text-fill: black;
+}
+
+.account_button:hover {
+    -fx-background-color: #BED8FF;
+}
+
+.account_button:focused{
+ -fx-background-color:#416788;
+ -fx-text-fill: white;
+}
+
+.account_save {
+    -fx-background-radius: 0;
+    -fx-background-radius: 15 15 15 15;
+    -fx-background-color:  #FDF300;
+    -fx-text-fill: black;
+}
+
+.account_save:hover{
+-fx-background-color: #FFF853;
+}
+
+.account_save:pressed{
+     -fx-border-width: 1px;
+     -fx-border-color: #999999;
+     -fx-border-radius: 1px;
+     -fx-background-radius: 1px;
+     -fx-background-color: #D0D0D0;
+ }
+
+.combo-box-popup  {
+    -fx-font-size : 15pt;
+}
+.list-view{
+ -fx-font-size : 15pt;
+}
+
+
+
+

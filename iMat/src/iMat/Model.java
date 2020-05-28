@@ -101,13 +101,14 @@ public class Model {
         for(ShoppingItem si : Model.getInstance().getShoppingCart().getItems()){
             if (si.getProduct().equals(p)){
                 if(si.getProduct().getUnitSuffix().equals("kg")){
-                    if (si.getAmount() > 0.1) {
+                    if (si.getAmount() > 0.11) {
                         si.setAmount(si.getAmount() - 0.1);
                         Model.getInstance().getShoppingCart().fireShoppingCartChanged(si, true);
                     }
                     else {
                         Model.getInstance().getShoppingCart().removeItem(si);
                     }
+                    return;
                 }
                 else {
                     if (si.getAmount() > 1) {

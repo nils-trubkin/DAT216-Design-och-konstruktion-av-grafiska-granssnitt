@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -19,6 +20,7 @@ public class ProductPanel extends AnchorPane {
     @FXML Label nameLabel;
     @FXML Label amountLabel;
     @FXML Label priceLabel;
+    @FXML Button subtractButton;
     //@FXML Label ecoLabel;
 
     private Model model = Model.getInstance();
@@ -49,6 +51,8 @@ public class ProductPanel extends AnchorPane {
         for (ShoppingItem si : model.getShoppingCart().getItems()){
             if(si.getProduct().equals(product)){
                 double value = (Math.round(si.getAmount() * 10) / 10.0);
+                if(value != 0)
+                    subtractButton.setDisable(false);
                 if(si.getProduct().getUnitSuffix().equals("kg")){
                     amountLabel.setText(String.valueOf(value));
                 }
@@ -79,15 +83,18 @@ public class ProductPanel extends AnchorPane {
                 }
             }
         }
+        subtractButton.setDisable(false);
     }
 
     @FXML
     private void handleSubtractAction(ActionEvent event) {
+        double value = 0;
         System.out.println("Subtract " + product.getName());
         model.subtractFromShoppingCart(product);
         for (ShoppingItem si : model.getShoppingCart().getItems()){
             if(si.getProduct().equals(product)){
-                double value = (Math.round(si.getAmount() * 10) / 10.0);
+                value = (Math.round(si.getAmount() * 10) / 10.0);
+                System.out.println(value);
                 if(si.getProduct().getUnitSuffix().equals("kg")){
                     amountLabel.setText(String.valueOf(value));
                 }
@@ -98,5 +105,6 @@ public class ProductPanel extends AnchorPane {
             }
         }
         amountLabel.setText(String.valueOf(0));
+        subtractButton.setDisable(true);
     }
 }
