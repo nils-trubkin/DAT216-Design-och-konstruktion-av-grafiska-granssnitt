@@ -207,6 +207,11 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
+             <Button layoutX="446.0" layoutY="13.0" mnemonicParsing="false" onAction="#focusMainPane" text="%menubar.main.text">
+                 <font>
+                     <Font size="20.0" />
+                 </font>
+             </Button>
             <Button mnemonicParsing="false" onAction="#handleShowAccountAction" text="%menubar.pages.text">
                <font>
                   <Font size="20.0" />

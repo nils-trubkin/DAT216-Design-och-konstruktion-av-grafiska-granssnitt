@@ -31,7 +31,7 @@
                <children>
                   <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#handleSubtractAction" text="%productPanel.minusButton.text">
+                        <Button fx:id="subtractButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleSubtractAction" prefHeight="50.0" prefWidth="50.0" styleClass="small_button" text="%productPanel.minusButton.text">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font></Button>
@@ -39,7 +39,7 @@
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font></Label>
-                        <Button mnemonicParsing="false" onAction="#handleAddAction" text="%productPanel.plusButton.text">
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddAction" prefHeight="50.0" prefWidth="50.0" styleClass="small_button" text="%productPanel.plusButton.text">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font></Button>

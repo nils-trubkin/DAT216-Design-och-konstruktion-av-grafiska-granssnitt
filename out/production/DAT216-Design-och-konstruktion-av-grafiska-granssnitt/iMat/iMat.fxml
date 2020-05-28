@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.iMatController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.iMatController">
    <children>
-      <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="1367.0" spacing="30.0">
+      <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="1367.0" AnchorPane.leftAnchor="0.0">
          <children>
             <Label text="%menubar.title.text">
                <font>
                   <Font name="System Bold" size="40.0" />
                </font>
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
             </Label>
-            <Button mnemonicParsing="false" text="%menubar.pages.text">
+            <Button layoutX="446.0" layoutY="13.0" mnemonicParsing="false" onAction="#focusMainPane" styleClass="menu_button" text="%menubar.main.text">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="%menubar.lists.text">
+            <Button mnemonicParsing="false" onAction="#focusAccountPane" styleClass="menu_button" text="%menubar.pages.text">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#focusHistoryPane" text="%menubar.history.text">
+            <Button mnemonicParsing="false" styleClass="menu_button" text="%menubar.lists.text">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#focusHistoryPane" styleClass="menu_button" text="%menubar.history.text">
+               <font>
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
          </children>
@@ -159,53 +159,262 @@
                   </SplitPane>
                </children>
             </AnchorPane>
+            <SplitPane fx:id="myAccountPane" dividerPositions="0.22067901234567902" orientation="VERTICAL" prefHeight="744.0" prefWidth="1500.0" stylesheets="@myAccount.css">
+               <items>
+                  <AnchorPane prefHeight="50.0" prefWidth="1000.0">
+                     <children>
+                        <ToolBar layoutX="-41.0" layoutY="2.0" prefHeight="52.0" prefWidth="1019.0" style="-fx-background-color: rgba(111, 162, 238, 0.33)rgba(111, 162, 238, 0.33);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <items>
+                              <Label prefHeight="25.0" prefWidth="360.0" text="    Mina Sidor ">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="42.0" />
+                                 </font>
+                              </Label>
+                           </items>
+                        </ToolBar>
+                        <HBox layoutX="19.0" layoutY="56.0" prefHeight="111.0" prefWidth="1571.0" spacing="80.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-68.0" AnchorPane.topAnchor="50.0">
+                           <children>
+                              <Button fx:id="myInformationButton" mnemonicParsing="false" onAction="#openMyInformationView" prefHeight="63.0" prefWidth="290.0" styleClass="account_button" text="Mina uppgifter">
+                                 <font>
+                                    <Font name="Avenir Book" size="25.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="30.0" top="30.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="addressButton" mnemonicParsing="false" onAction="#openAddressView" prefHeight="65.0" prefWidth="311.0" styleClass="account_button" text="Leveransadress">
+                                 <font>
+                                    <Font name="Avenir Book" size="25.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="30.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="paymentMethodButton" mnemonicParsing="false" onAction="#openPaymentView" prefHeight="63.0" prefWidth="297.0" styleClass="account_button" text="Betalkort">
+                                 <font>
+                                    <Font name="Avenir Book" size="25.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="30.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="200.0" right="200.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <StackPane prefHeight="468.0" prefWidth="1003.0">
+                     <children>
+                        <AnchorPane fx:id="paymentMethodPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1);">
+                           <children>
+                              <Label layoutX="302.0" layoutY="9.0" prefHeight="43.0" prefWidth="213.0" text="Betalkort  " AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="1060.0">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="228.0" layoutY="49.0" prefHeight="29.0" prefWidth="397.0" text="Spara dina kortuppgifter" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="878.0">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="297.0" layoutY="113.0" text="Kortnummer:" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="298.0" layoutY="240.0" prefHeight="36.0" prefWidth="267.0" text="Sista giltighetsdatum:" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="300.0" layoutY="368.0" prefHeight="36.0" prefWidth="195.0" text="Namn på kortet:" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="25.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="cardNumberTextField" layoutX="293.0" layoutY="155.0" prefHeight="59.0" prefWidth="593.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="617.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="cardNameTextField" layoutX="296.0" layoutY="415.0" prefHeight="59.0" prefWidth="579.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </TextField>
+                              <ComboBox fx:id="monthComboBox" editable="true" layoutX="294.0" layoutY="280.0" prefHeight="69.0" prefWidth="181.0" promptText="           Månad " AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="1092.0">
+                                 <styleClass>
+                                    <String fx:value="combo-box-popup" />
+                                    <String fx:value="list-view" />
+                                 </styleClass></ComboBox>
+                              <ComboBox fx:id="yearComboBox" editable="true" layoutX="437.0" layoutY="280.0" prefHeight="69.0" prefWidth="168.0" promptText="           År " AnchorPane.leftAnchor="437.0" AnchorPane.rightAnchor="898.0">
+                                 <styleClass>
+                                    <String fx:value="combo-box-popup" />
+                                    <String fx:value="list-view" />
+                                 </styleClass></ComboBox>
+                              <Button fx:id="savCardInfoButton" layoutX="1094.0" layoutY="458.0" mnemonicParsing="false" onAction="#handleSavePaymentInformation" prefHeight="86.0" prefWidth="333.0" styleClass="account_save" text="Spara uppgifter" AnchorPane.leftAnchor="1094.0" AnchorPane.rightAnchor="76.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="29.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="addressPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1);">
+                           <children>
+                              <Label layoutX="53.0" layoutY="103.0" prefHeight="36.0" prefWidth="350.0" text="Gata och husnummer:" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="923.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="236.0" layoutY="242.0" prefHeight="36.0" prefWidth="240.0" text="Postnummer:" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="1027.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="240.0" layoutY="367.0" prefHeight="36.0" prefWidth="84.0" text="Ort:" AnchorPane.leftAnchor="240.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="25.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="streetAddressTextField" layoutX="77.0" layoutY="146.0" prefHeight="59.0" prefWidth="598.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="698.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="postcodeTextField" layoutX="236.0" layoutY="279.0" prefHeight="59.0" prefWidth="598.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="692.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="cityTextField" layoutX="240.0" layoutY="411.0" prefHeight="59.0" prefWidth="598.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="688.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </TextField>
+                              <Label layoutX="72.0" layoutY="7.0" prefHeight="43.0" prefWidth="266.0" text="Leveransadress" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="665.0">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="72.0" layoutY="50.0" prefHeight="29.0" prefWidth="316.0" text="Spara din leveransadress" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="957.0">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="saveAddressButton" layoutX="1095.0" layoutY="456.0" mnemonicParsing="false" onAction="#handleSaveAddressInformation" prefHeight="86.0" prefWidth="333.0" styleClass="account_save" text="Spara uppgifter" AnchorPane.leftAnchor="1095.0" AnchorPane.rightAnchor="75.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="29.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="myInformationPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1);">
+                           <children>
+                              <Label layoutX="230.0" layoutY="57.0" prefHeight="39.0" prefWidth="165.0" text="Förnamn:" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="231.0" layoutY="181.0" prefHeight="39.0" prefWidth="165.0" text="Efternamn:" AnchorPane.leftAnchor="231.0" AnchorPane.rightAnchor="607.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="232.0" layoutY="301.0" prefHeight="43.0" prefWidth="217.0" text="E-postadress:" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="607.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="25.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="firstNameTextField" layoutX="226.0" layoutY="101.0" prefHeight="59.0" prefWidth="578.0" AnchorPane.leftAnchor="226.0" AnchorPane.rightAnchor="699.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="lastNameTextField" layoutX="227.0" layoutY="224.0" prefHeight="59.0" prefWidth="578.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="698.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="emailTextField" layoutX="228.0" layoutY="350.0" prefHeight="52.0" prefWidth="590.0" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="685.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="telephoneTextField" layoutX="230.0" layoutY="478.0" prefHeight="59.0" prefWidth="590.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="683.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </TextField>
+                              <Button fx:id="saveInfoButton" layoutX="1094.0" layoutY="462.0" mnemonicParsing="false" onAction="#handleSavePersonalInformation" prefHeight="86.0" prefWidth="333.0" styleClass="account_save" text="Spara uppgifter" AnchorPane.leftAnchor="1094.0" AnchorPane.rightAnchor="76.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="29.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="230.0" layoutY="14.0" text="Mina uppgifter" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="542.0">
+                                 <font>
+                                    <Font name="Avenir Next Bold" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="234.0" layoutY="431.0" prefHeight="43.0" prefWidth="242.0" text="Telefonummer:" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="527.0">
+                                 <font>
+                                    <Font name="Avenir Book" size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+               </items>
+            </SplitPane>
             <SplitPane fx:id="mainViewPane" dividerPositions="0.1, 0.7" prefHeight="160.0" prefWidth="200.0">
                <items>
                   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="200.0" SplitPane.resizableWithParent="false">
                      <children>
                         <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Button fx:id="categoryBtn1" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.1.text" wrapText="true">
+                              <Button fx:id="categoryBtn1" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.1.text" wrapText="true" styleClass="category_button">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="categoryBtn2" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.2.text" wrapText="true">
+                              <Button fx:id="categoryBtn2" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.2.text" wrapText="true" styleClass="category_button">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="categoryBtn3" layoutX="25.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.3.text" wrapText="true">
+                              <Button fx:id="categoryBtn3" layoutX="25.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.3.text" wrapText="true" styleClass="category_button">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="categoryBtn4" layoutX="25.0" layoutY="223.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.4.text" wrapText="true">
+                              <Button fx:id="categoryBtn4" layoutX="25.0" layoutY="223.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.4.text" wrapText="true" styleClass="category_button">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="categoryBtn5" layoutX="25.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.5.text" wrapText="true">
+                              <Button fx:id="categoryBtn5" layoutX="25.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.5.text" wrapText="true" styleClass="category_button">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="categoryBtn6" layoutX="25.0" layoutY="132.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.6.text" wrapText="true">
+                              <Button fx:id="categoryBtn6" layoutX="25.0" layoutY="132.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.6.text" wrapText="true" styleClass="category_button">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="categoryBtn7" layoutX="25.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.7.text" wrapText="true">
+                              <Button fx:id="categoryBtn7" layoutX="25.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.7.text" wrapText="true" styleClass="category_button">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="categoryBtn8" layoutX="25.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.8.text" wrapText="true">
+                              <Button fx:id="categoryBtn8" layoutX="25.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.8.text" wrapText="true" styleClass="category_button">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="categoryBtn9" layoutX="25.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.9.text" wrapText="true">
+                              <Button fx:id="categoryBtn9" layoutX="25.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleChangeCategory" prefHeight="70.0" prefWidth="150.0" text="%categoryButton.9.text" wrapText="true" styleClass="category_button">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -226,9 +435,9 @@
                                              <children>
                                                 <HBox alignment="CENTER" layoutX="132.0" layoutY="-2.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
-                                                      <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAllProducts" prefHeight="48.0" prefWidth="161.0" text="%allProductsButton.text" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                                                      <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAllProducts" prefHeight="48.0" prefWidth="203.0" styleClass="default_button" text="%allProductsButton.text" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
                                                          <font>
-                                                            <Font size="20.0" />
+                                                            <Font name="System Bold" size="20.0" />
                                                          </font>
                                                       </Button>
                                                       <TextField fx:id="searchField" alignment="CENTER" prefHeight="48.0" prefWidth="290.0" promptText="%prdoductPanel.searchField.text">
@@ -236,9 +445,9 @@
                                                             <Font name="System Bold" size="20.0" />
                                                          </font>
                                                       </TextField>
-                                                      <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="44.0" prefWidth="70.0" text="%searchButton.text">
+                                                      <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="44.0" prefWidth="70.0" styleClass="default_button" text="%searchButton.text">
                                                          <font>
-                                                            <Font size="20.0" />
+                                                            <Font name="System Bold" size="20.0" />
                                                          </font>
                                                       </Button>
                                                    </children>
@@ -274,12 +483,12 @@
                                           <Font name="System Bold" size="25.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="14.0" layoutY="60.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" text="%cart.saveButton.text" textAlignment="CENTER" wrapText="true">
+                                    <Button layoutX="14.0" layoutY="60.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="200.0" styleClass="default_button" text="%cart.saveButton.text" textAlignment="CENTER" wrapText="true">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="223.0" layoutY="60.0" mnemonicParsing="false" onAction="#clearCart" prefHeight="62.0" prefWidth="161.0" text="%cart.clearButton.text" textAlignment="CENTER" wrapText="true">
+                                    <Button layoutX="223.0" layoutY="60.0" mnemonicParsing="false" onAction="#clearCart" prefHeight="62.0" prefWidth="161.0" styleClass="default_button" text="%cart.clearButton.text" textAlignment="CENTER" wrapText="true">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
