@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<fx:root prefHeight="51.0" prefWidth="817.0" stylesheets="@Checkout.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="1.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.4" width="209.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="628.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.4" width="209.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="419.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.4" width="209.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="210.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.4" width="209.0" />
+      <Text fx:id="name" layoutX="11.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produkt" />
+      <Text fx:id="amount" layoutX="220.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Antal" />
+      <Text fx:id="pricePerUnit" layoutX="429.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pris/produkt" />
+      <Text fx:id="totalPrice" layoutX="638.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totala Priset" />
+   </children>
+</fx:root>

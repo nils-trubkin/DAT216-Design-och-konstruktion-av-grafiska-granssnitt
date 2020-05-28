@@ -121,10 +121,64 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private Button myAccountButton;
 
+    // Checkout Pane
+    @FXML private AnchorPane checkoutViewPane;
+    @FXML private AnchorPane stepOnePane;
+    @FXML private AnchorPane stepTwoPane;
+    @FXML private AnchorPane stepThreePane;
+    @FXML private AnchorPane stepFourPane;
+    @FXML private AnchorPane purchaseCompleted;
+
+    @FXML private ScrollPane checkoutScrollPane;
+    @FXML private ScrollPane confirmationScrollPane;
+
+    @FXML private AnchorPane cardPaymentPopUp;
+    @FXML private AnchorPane bankPaymentPopUp;
+    @FXML private AnchorPane bankPayment;
+
+    @FXML private RadioButton altOne;
+    @FXML private RadioButton altTwo;
+
+    @FXML private Button continueShopping;
+    @FXML private Text totalPrice;
+    @FXML private Text totalPriceConfirmation;
+
+    @FXML private TextField deliveryAddress;
+    @FXML private ComboBox<String> checkoutMonthComboBox;
+    @FXML private ComboBox<Integer> dayComboBox;
+    @FXML private ComboBox<String> timeComboBox;
+
+    @FXML private TextField cardHolderNameField;
+    @FXML private TextField cardNumberField;
+    @FXML private TextField verificationCodeField;
+    @FXML private TextField monthField;
+    @FXML private TextField yearField;
+
+    @FXML private Text deliveryTime;
+    @FXML private Text deliveryLocation;
+
+    @FXML private Text warningMessage1;
+    @FXML private Text warningMessage2;
+    @FXML private Text warningMessage3;
+
+    @FXML private HBox mainViewOne;
+    @FXML private StackPane mainViewTwo;
+
+    private boolean cardPaymentOpen = false;
+    private boolean bankPaymentOpen = false;
+
+    private String monthValue = "";
+    private Integer dayValue  = 0;
+    private String timeValue  = "";
+    private String addressValue = "";
+
 
     // Other variables
     private final Model model = Model.getInstance();
     List<Product> currentProductList;
+
+    private Customer customer = model.getCustomer();
+    private CreditCard card = model.getCreditCard();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -135,6 +189,41 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateCart();
 
         // historyPaneInit();
+
+        // Checkout
+
+        checkoutMonthComboBox.getItems().addAll("Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "Septempber", "Oktober", "November", "December");
+        checkoutMonthComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                monthValue = newValue;
+                updateDeliveryTime();
+            }
+        });
+
+        dayComboBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31);
+        dayComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Integer>() {
+            @Override
+            public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
+                dayValue = newValue;
+                updateDeliveryTime();
+            }
+        });
+        addTime();
+        timeComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                timeValue = newValue;
+                updateDeliveryTime();
+            }
+        });
+        model.getShoppingCart().addShoppingCartListener(this);
+        updateProductList();
+        updateConfirmationTable();
+
+        setDeliveryLocation();
+        updateCardInformation();
+        finishPurchase();
     }
 
     private void updateProductList() {
@@ -468,6 +557,17 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     // TODO
     // Pane switching methods
+
+    @FXML
+    protected void focusCheckoutPane (ActionEvent event){
+        System.out.println("Loading Checkout Pane...");
+        updateCheckoutProductList();
+        mainViewOne.setVisible(false);
+        mainViewTwo.setVisible(false);
+        checkoutViewPane.setVisible(true);
+        checkoutViewPane.toFront();
+    }
+
     @FXML
     protected void focusHistoryPane (ActionEvent event){
         System.out.println("Loading History Pane...");
@@ -480,6 +580,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
     protected void focusMainPane (ActionEvent event){
         System.out.println("Loading Main Pane...");
 
+        mainViewOne.setVisible(true);
+        mainViewTwo.setVisible(true);
+        checkoutViewPane.toBack();
+        checkoutViewPane.setVisible(false);
+        mainViewPane.toFront();
         mainViewPane.toFront();
     }
 
@@ -686,5 +791,213 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
         selectedValue = (String) yearComboBox.getSelectionModel().getSelectedItem();
         c.setValidYear(Integer.parseInt(selectedValue));
+    }
+    //Checkout Methods:
+    private void updateCardInformation() {
+        deliveryAddress.setText(customer.getAddress());
+        cardHolderNameField.setText(card.getHoldersName());
+        cardNumberField.setText(card.getCardNumber());
+        monthField.setText(String.valueOf(card.getValidMonth()));
+        yearField.setText(String.valueOf(card.getValidYear()));
+        verificationCodeField.setText(String.valueOf(card.getVerificationCode()));
+    }
+
+    private void finishPurchase() {
+        customer.setAddress(deliveryAddress.getText());
+        card.setHoldersName(cardHolderNameField.getText());
+        card.setCardNumber(cardNumberField.getText());
+        if (!monthField.getText().equals("MM") && !monthField.getText().equals("")) {
+            card.setValidMonth(Integer.parseInt(monthField.getText()));
+        }
+        if (!yearField.getText().equals("YYYY") && !yearField.getText().equals("")) {
+            card.setValidYear(Integer.parseInt(yearField.getText()));
+        }
+        if (!verificationCodeField.getText().equals("")) {
+            card.setVerificationCode(Integer.parseInt(verificationCodeField.getText()));
+        }
+    }
+
+    private void setDeliveryLocation() {
+        deliveryLocation.setText("Levereras till: " + deliveryAddress.getText());
+    }
+
+
+    private void updateDeliveryTime() {
+        deliveryTime.setText("Leveranstid: " + dayValue + " " + monthValue + ". Klockan: " + timeValue);
+    }
+
+    private void addTime() {
+        for (int i = 12; i <= 20; i++) {
+            for (int j = 0; j <= 3; j++) {
+                if (j == 0) timeComboBox.getItems().addAll(i +":00");
+                else timeComboBox.getItems().addAll(i +":" + j*15);
+            }
+        }
+    }
+
+    public void monthFieldClear() {
+        if (monthField.getText().equals("MM")) monthField.setText("");
+    }
+    public void yearFieldClear() {
+        if (yearField.getText().equals("YYYYF")) yearField.setText("");
+    }
+
+    private void updateCheckoutProductList() {
+        totalPrice.setText(String.valueOf(model.getShoppingCart().getTotal()));
+        totalPriceConfirmation.setText(String.valueOf(model.getShoppingCart().getTotal()));
+        VBox vbox = new VBox();
+        checkoutScrollPane.setFitToHeight(true);
+        checkoutScrollPane.setFitToWidth(true);
+
+        vbox.getChildren();
+        checkoutScrollPane.setContent(vbox);
+
+
+        for (ShoppingItem item : model.getShoppingCart().getItems()) {
+            vbox.getChildren().add(new CheckoutProductPanel(item));
+//            vbox.setAlignment(Pos.CENTER);
+//            vbox.setPadding(new Insets(30d,0d,0d,0d));
+//            System.out.println("Adding: " + product.toString());
+        }
+    }
+
+    private void updateConfirmationTable() {
+        VBox vbox = new VBox();
+        confirmationScrollPane.setFitToHeight(true);
+        confirmationScrollPane.setFitToWidth(true);
+
+        vbox.getChildren();
+        confirmationScrollPane.setContent(vbox);
+
+
+        for (ShoppingItem item : model.getShoppingCart().getItems()) {
+            vbox.getChildren().add(new CheckoutConfirmationProductPanel(item));
+        }
+    }
+
+    public void cardPaymentOptionPressed() {
+        if (cardPaymentOpen) {
+            closeCardPayment();
+        } else {
+            openCardPayment();
+        }
+    }
+    public void openCardPayment() {
+        altOne.setSelected(true);
+        cardPaymentPopUp.toFront();
+        cardPaymentOpen = true;
+        closeBankPayment();
+        bankPayment.setLayoutY(528);
+    }
+    public void closeCardPayment() {
+        cardPaymentPopUp.toBack();
+        cardPaymentOpen = false;
+        bankPayment.setLayoutY(301);
+
+    }
+
+    public void bankPaymentOptionPressed() {
+        if (bankPaymentOpen) {
+            closeBankPayment();
+        } else {
+            openBankPayment();
+        }
+    }
+    public void openBankPayment() {
+        altTwo.setSelected(true);
+        bankPaymentPopUp.toFront();
+        bankPaymentOpen = true;
+        closeCardPayment();
+
+    }
+    public void closeBankPayment() {
+        bankPaymentPopUp.toBack();
+        bankPaymentOpen = false;
+
+    }
+
+
+    public void completePurchase() {
+        finishPurchase();
+        updateCardInformation();
+
+        continueShopping.setVisible(false);
+        purchaseCompleted.toFront();
+    }
+    public void restartShopping() {
+        model.getShoppingCart().clear();
+        mainView();
+        purchaseCompleted.toBack();
+        continueShopping.setVisible(true);
+    }
+
+    public void mainView() {
+        System.out.println("Loading Checkout Pane...");
+        mainViewOne.setVisible(false);
+        mainViewTwo.setVisible(false);
+        checkoutViewPane.setVisible(true);
+        checkoutViewPane.toFront();
+    }
+    public void checkOut() {
+        stepOnePane.toFront();
+        updateCheckoutProductList();
+        warningMessage1.setVisible(false);
+        warningMessage2.setVisible(false);
+    }
+    public void stepTwo() {
+        warningMessage1.setVisible(false);
+        warningMessage2.setVisible(false);
+        stepTwoPane.toFront();
+    }
+    public void stepThree() {
+        if (deliveryInformationNotValid()) {
+            warningMessage1.setText("Steg 2 ej ifylld!");
+            warningMessage1.setVisible(true);
+            warningMessage2.setText("Steg 2 ej ifylld!");
+            warningMessage2.setVisible(true);
+        } else {
+            warningMessage1.setVisible(false);
+            warningMessage2.setVisible(false);
+            stepThreePane.toFront();
+        }
+    }
+    public void stepFour() {
+        setDeliveryLocation();
+        if (deliveryInformationNotValid() && cardInformationNotValid()) {
+            warningMessage1.setText("Steg 2 och Steg 3 ej ifyllda!");
+            warningMessage1.setVisible(true);
+            warningMessage2.setText("Steg 2 och Steg 3 ej ifyllda!");
+            warningMessage2.setVisible(true);
+            warningMessage3.setText("Steg 2 och Steg 3 ej ifyllda!");
+            warningMessage3.setVisible(true);
+        } else if (deliveryInformationNotValid()) {
+            warningMessage1.setText("Steg 2 ej ifylld!");
+            warningMessage1.setVisible(true);
+            warningMessage2.setText("Steg 2 ej ifylld!");
+            warningMessage2.setVisible(true);
+        } else if (cardInformationNotValid()) {
+            warningMessage1.setText("Steg 3 ej ifylld!");
+            warningMessage1.setVisible(true);
+            warningMessage2.setText("Steg 3 ej ifylld!");
+            warningMessage2.setVisible(true);
+            warningMessage3.setText("Steg 3 ej ifylld!");
+            warningMessage3.setVisible(true);
+        } else{
+            warningMessage1.setVisible(false);
+            warningMessage2.setVisible(false);
+            warningMessage3.setVisible(false);
+            stepFourPane.toFront();
+        }
+    }
+
+    private boolean deliveryInformationNotValid() {
+        return customer.getAddress().equals("") || monthValue.equals("") || dayValue == 0 || timeValue.equals("");
+    }
+
+    private boolean cardInformationNotValid() {
+        return cardHolderNameField.getText().equals("") || cardNumberField.getText().equals("")
+                || monthField.getText().equals("") || monthField.getText().equals("MM")
+                || yearField.getText().equals("") || yearField.getText().equals("YYYYF")
+                || verificationCodeField.getText().equals("");
     }
 }
