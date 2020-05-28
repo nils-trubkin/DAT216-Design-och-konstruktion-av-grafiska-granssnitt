@@ -608,45 +608,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     //My account methods
 
-    @FXML
-    public void informationButtonPressed() {
-        myInformationButton.setStyle("-fx-background-color: #416788");
-        myInformationLabel.setStyle("-fx-text-fill: #FFFFFF");
-
-        paymentMethodButton.setStyle("-fx-background-color: #94BFFF");
-        cardLabel.setStyle("-fx-text-fill: #000000");
-        addressButton.setStyle("-fx-background-color: #94BFFF");
-        addressLabel.setStyle("-fx-text-fill: #000000");
-
-    }
-
-    @FXML
-    public void addressButtonPressed() {
-        addressButton.setStyle("-fx-background-color: #416788");
-        addressLabel.setStyle("-fx-text-fill: #FFFFFF");
-
-        myInformationButton.setStyle("-fx-background-color: #94BFFF");
-        myInformationLabel.setStyle("-fx-text-fill: #000000");
-        paymentMethodButton.setStyle("-fx-background-color: #94BFFF");
-        cardLabel.setStyle("-fx-text-fill: #000000");
-    }
-
-    @FXML
-    public void paymentButtonPressed() {
-        paymentMethodButton.setStyle("-fx-background-color: #416788");
-        cardLabel.setStyle("-fx-text-fill: #FFFFFF");
-
-        myInformationButton.setStyle("-fx-background-color:  #94BFFF");
-        myInformationLabel.setStyle("-fx-text-fill: #000000");
-        addressButton.setStyle("-fx-background-color: #94BFFF");
-        addressLabel.setStyle("-fx-text-fill: #000000");
-    }
-
-    @FXML
-    private void handleShowAccountAction (ActionEvent event){
-        updateAccountPanel();
-    }
-
     public void openAddressView(ActionEvent actionEvent) {
         addressPane.toFront();
     }
