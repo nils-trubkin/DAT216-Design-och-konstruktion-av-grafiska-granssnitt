@@ -14,7 +14,7 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.iMatController">
     <children>
-        <SplitPane fx:id="myAccountSplitPane" dividerPositions="0.22067901234567902" layoutX="-5.0" layoutY="45.0" orientation="VERTICAL" prefHeight="703.0" prefWidth="1005.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+        <SplitPane fx:id="myAccountSplitPane" dividerPositions="0.22067901234567902" layoutX="-5.0" layoutY="56.0" orientation="VERTICAL" prefHeight="744.0" prefWidth="1500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
             <items>
                 <AnchorPane prefHeight="50.0" prefWidth="1000.0">
                     <children>
@@ -200,32 +200,5 @@
                 </StackPane>
             </items>
         </SplitPane>
-      <HBox alignment="CENTER_LEFT" layoutX="-4.0" layoutY="-2.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="52.0" prefWidth="1507.0" spacing="30.0">
-         <children>
-            <Label prefHeight="50.0" prefWidth="409.0" text="%menubar.title.text">
-               <font>
-                  <Font name="System Bold" size="40.0" />
-               </font>
-            </Label>
-            <Button mnemonicParsing="false" onAction="#handleShowAccountAction" text="%menubar.pages.text">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" text="%menubar.lists.text">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" text="%menubar.history.text">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-         </children>
-         <padding>
-            <Insets left="30.0" />
-         </padding>
-      </HBox>
     </children>
 </AnchorPane>

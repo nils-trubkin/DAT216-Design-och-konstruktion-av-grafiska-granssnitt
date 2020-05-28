@@ -684,7 +684,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         firstNameTextField.setText(c.getFirstName());
         lastNameTextField.setText(c.getLastName());
         emailTextField.setText(c.getEmail());
-        //streetAddressTextField.setText(c.getMobilePhoneNumber());
+        streetAddressTextField.setText(c.getAddress());
         telephoneTextField.setText(c.getPhoneNumber());
         postcodeTextField.setText(c.getPostCode());
         cityTextField.setText(c.getPostAddress());
@@ -709,7 +709,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void updateAddressInformation(){
         Customer customer = model.getCustomer();
 
-        //customer.setMobilePhoneNumber(streetAddressTextField.getText());
+        customer.setAddress(streetAddressTextField.getText());
         customer.setPostCode(postcodeTextField.getText());
         customer.setPostAddress(cityTextField.getText());
     }

@@ -247,7 +247,7 @@
                                     <Font name="Avenir Book" size="25.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="streetAdressTextField" layoutX="77.0" layoutY="146.0" prefHeight="59.0" prefWidth="598.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="698.0">
+                              <TextField fx:id="streetAddressTextField" layoutX="77.0" layoutY="146.0" prefHeight="59.0" prefWidth="598.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="698.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
