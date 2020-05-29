@@ -12,6 +12,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -281,7 +282,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
         List<Product> products = new ArrayList<Product>();
         subcategoryAnchorPane.setMinHeight(USE_PREF_SIZE);
-
+        searchField.setText("");
         switch (s){
             case "categoryBtn1":
                 subcategoryHbox.getChildren().clear();
@@ -485,6 +486,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handleSearchAction(ActionEvent event) {
+        subcategoryAnchorPane.setMaxHeight(0d);
+        subcategoryAnchorPane.setMinHeight(0d);
         List<Product> matches = model.findProducts(searchField.getText());
         updateProductList(matches);
         System.out.println("# matching products: " + matches.size());
@@ -503,18 +506,23 @@ public class iMatController implements Initializable, ShoppingCartListener {
         double kImageRatio = 0.75;
         VBox vbox = new VBox();
         cartScrollPane.setContent(vbox);
+        int i = 0;
         for (ShoppingItem item : model.getShoppingCart().getItems()){
+            i++;
             HBox hbox = new HBox();
             vbox.getChildren().add(hbox);
             hbox.setAlignment(Pos.CENTER_LEFT);
             hbox.setSpacing(20d);
-            hbox.setPadding(new Insets(10d,0,0,10d));
+            hbox.setPadding(new Insets(10d,0,10d,10d));
             vbox.setSpacing(10d);
+            if(i % 2 == 0) {
+                hbox.getStyleClass().add("grey_background");
+            }
 
             hbox.getChildren().add(new ImageView(model.getImage(item.getProduct(), kImageWidth, kImageWidth*kImageRatio)));
             Label nameLabel = new Label(item.getProduct().getName() + " ");
             Label antalLabel = null;
-            Label totalLabel = new Label(String.valueOf(Math.round(item.getTotal() * 10) / 10.0));
+            Label totalLabel = new Label(String.valueOf(Math.round(item.getTotal() * 10) / 10.0) + "kr");
             if (item.getProduct().getUnit().equals("kr/kg")){
                 antalLabel = new Label(Math.round(item.getAmount() * 10) / 10.0 + " "
                         + item.getProduct().getUnitSuffix() + " ");
@@ -527,9 +535,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
             antalLabel.setFont(new Font(20d));
             totalLabel.setFont(new Font(20d));
 
-            double width1 = 120d;
-            double width2 = 80d;
-            double width3 = 50d;
+            double width1 = 100d;
+            double width2 = 60d;
+            double width3 = 90d;
             nameLabel.setMinWidth(width1);
             nameLabel.setMaxWidth(width1);
             nameLabel.setPrefWidth(width1);
@@ -542,7 +550,38 @@ public class iMatController implements Initializable, ShoppingCartListener {
             totalLabel.setMaxWidth(width3);
             totalLabel.setMinWidth(width3);
 
-            hbox.getChildren().addAll(nameLabel, antalLabel, totalLabel);
+            Button plus = new Button("+");
+            plus.getStyleClass().add("extra_small_button");
+            plus.setPrefSize(27d, 27d);
+            plus.setMinSize(27d, 27d);
+            plus.setMaxSize(27d, 27d);
+            plus.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    model.addToShoppingCart(item.getProduct());
+                    updateCart();
+                    updateProductList();
+                }
+            });
+
+            Button minus = new Button("-");
+            minus.getStyleClass().add("extra_small_button");
+            minus.setPrefSize(27d, 27d);
+            minus.setMinSize(27d, 27d);
+            minus.setMaxSize(27d, 27d);
+            minus.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    model.subtractFromShoppingCart(item.getProduct());
+                    updateCart();
+                    updateProductList();
+                }
+            });
+
+            VBox buttonVBox = new VBox();
+            buttonVBox.getChildren().addAll(plus, minus);
+
+            hbox.getChildren().addAll(nameLabel, buttonVBox, antalLabel, totalLabel);
         }
     }
 
