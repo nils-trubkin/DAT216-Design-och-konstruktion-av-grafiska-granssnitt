@@ -1,11 +1,39 @@
+.menu_button {
+    -fx-background-color: #6691FF ;
+    -fx-text-fill: black;
+    -fx-font-family: "Avenir Book";
+    -fx-font-size: 20px;
+}
+
+.menu_button:hover{
+-fx-background-color: #89AAFF;
+}
+
+.button:pressed{
+     -fx-border-width: 1px;
+     -fx-border-color: #999999;
+     -fx-border-radius: 1px;
+     -fx-background-radius: 1px;
+     -fx-background-color: #D0D0D0;
+}
+
+.logo_label {
+-fx-font-family: "Rounded Mplus 1c Bold";
+-fx-font-size: 60px;
+-fx-text-fill: #4373EE
+}
+
+
 .default_button {
     -fx-background-radius: 15 15 15 15;
     -fx-border-radius: 15 15 15 15;
     -fx-background-color: #94BFFF ;
     -fx-text-fill: black;
     -fx-border-color: black;
-    -fx-border-width: 1;
+    -fx-border-width: 0.3;
     -fx-border-style: solid;
+     -fx-font-family: "Avenir Book";
+     -fx-font-size: 15pt;
 }
 
 .default_button:hover {
@@ -36,20 +64,25 @@
  -fx-text-fill: white;
 }
 
+
 .menu_button {
-    -fx-background-color: #94BFFF ;
+    -fx-background-color: rgba(148, 191, 255, 0.72) ;
     -fx-text-fill: black;
     -fx-border-color: black;
-    -fx-border-width: 1;
+    -fx-border-width: 0.5;
     -fx-border-style: solid;
+    -fx-font-family: "Avenir Book";
+    -fx-font-size: 15pt;
+
 }
 
 .menu_button:hover {
-    -fx-background-color: #BED8FF;
+    -fx-background-color: rgba(157, 191, 242, 0.33);
 }
 
 .menu_button:focused{
  -fx-background-color:#416788;
+ -fx-font-family: "Avenir Book";
  -fx-text-fill: white;
 }
 
@@ -58,8 +91,10 @@
     -fx-border-radius: 1000;
     -fx-background-color: #94BFFF ;
     -fx-text-fill: black;
+    -fx-font-family: "Avenir Book";
+    -fx-font-size: 20px;
     -fx-border-color: black;
-    -fx-border-width: 1;
+    -fx-border-width: 0.3;
     -fx-border-style: solid;
 }
 
@@ -97,6 +132,29 @@
 .list-view{
  -fx-font-size : 15pt;
 }
+
+
+.buy_button {
+     -fx-background-radius: 1;
+     -fx-background-color:  #FDF300;
+     -fx-text-fill: black;
+     -fx-font-size: 20pt;
+     -fx-font-family: "Avenir Book";
+ }
+
+.buy_button:hover{
+ -fx-background-color: #FFF853;
+ }
+
+.buy_button:pressed{
+      -fx-border-width: 1px;
+      -fx-border-color: #999999;
+      -fx-border-radius: 1px;
+      -fx-background-radius: 1px;
+      -fx-background-color: #D0D0D0;
+  }
+
+
 
 
 
