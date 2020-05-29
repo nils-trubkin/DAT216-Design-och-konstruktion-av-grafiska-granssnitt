@@ -784,6 +784,26 @@
             </AnchorPane>
             <AnchorPane fx:id="stepFourPane" prefHeight="800.0" prefWidth="1500.0" style="-fx-background-color: white;">
                <children>
+                  <AnchorPane fx:id="purchaseCompleted" layoutX="11.0" layoutY="106.0" prefHeight="671.0" prefWidth="1467.0" style="-fx-background-color: ffffff;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e3e3e3" height="671.0" stroke="BLACK" strokeType="INSIDE" width="1467.0" />
+                        <Text layoutX="616.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Köp Slutförd!" textAlignment="CENTER" wrappingWidth="189.6328125">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="378.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tack för ditt köp, dina varor kommer att leveraras till dig inom kort!">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="653.0" layoutY="436.0" mnemonicParsing="false" onAction="#restartShopping" prefHeight="87.0" prefWidth="116.0" text="Påbörja ett nytt köp" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
                   <Text layoutX="14.0" layoutY="81.0" onMouseClicked="#mainView" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-iMat" text="IMat" wrappingWidth="158.484375">
                      <font>
                         <Font size="72.0" />
@@ -833,26 +853,6 @@
                         <Font size="22.0" />
                      </font>
                   </Text>
-                  <AnchorPane fx:id="purchaseCompleted" layoutX="11.0" layoutY="106.0" prefHeight="671.0" prefWidth="1467.0" style="-fx-background-color: ffffff;">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e3e3e3" height="671.0" stroke="BLACK" strokeType="INSIDE" width="1467.0" />
-                        <Text layoutX="616.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Köp Slutförd!" textAlignment="CENTER" wrappingWidth="189.6328125">
-                           <font>
-                              <Font size="48.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="378.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tack för ditt köp, dina varor kommer att leveraras till dig inom kort!">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Button layoutX="653.0" layoutY="436.0" mnemonicParsing="false" onAction="#restartShopping" prefHeight="87.0" prefWidth="116.0" text="Påbörja ett nytt köp" textAlignment="CENTER" wrapText="true">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
                   <Button fx:id="continueShopping" layoutX="1297.0" layoutY="23.0" mnemonicParsing="false" onAction="#focusMainPane" prefHeight="72.0" prefWidth="153.0" styleClass="continueShoppingButton" text="Fortsätt Handla" textAlignment="CENTER" wrapText="true">
                      <graphic>
                         <ImageView fitHeight="62.0" fitWidth="55.0" onMouseClicked="#mainView" pickOnBounds="true" preserveRatio="true">

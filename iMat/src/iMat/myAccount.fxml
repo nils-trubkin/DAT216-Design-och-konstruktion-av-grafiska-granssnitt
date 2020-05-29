@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.iMatController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.iMatController">
     <children>
         <SplitPane fx:id="myAccountSplitPane" dividerPositions="0.22067901234567902" layoutX="-5.0" layoutY="45.0" orientation="VERTICAL" prefHeight="703.0" prefWidth="1005.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
             <items>
@@ -83,42 +83,42 @@
                 </AnchorPane>
                 <StackPane prefHeight="468.0" prefWidth="1003.0">
                     <children>
-                        <AnchorPane fx:id="paymentMethodPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1);">
+                        <AnchorPane fx:id="myInformationPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1);">
                             <children>
-                                <Label layoutX="302.0" layoutY="9.0" prefHeight="43.0" prefWidth="213.0" text="Betalkort  " AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="1060.0">
+                                <Label layoutX="230.0" layoutY="57.0" prefHeight="39.0" prefWidth="165.0" text="Förnamn:" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0">
+                                    <font>
+                                        <Font name="Avenir Book" size="25.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="231.0" layoutY="181.0" prefHeight="39.0" prefWidth="165.0" text="Efternamn:" AnchorPane.leftAnchor="231.0" AnchorPane.rightAnchor="607.0">
+                                    <font>
+                                        <Font name="Avenir Book" size="25.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="232.0" layoutY="301.0" prefHeight="43.0" prefWidth="217.0" text="E-postadress:" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="607.0">
+                                    <font>
+                                        <Font name="Avenir Book" size="25.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="firstNameTextField" layoutX="226.0" layoutY="101.0" prefHeight="59.0" prefWidth="578.0" AnchorPane.leftAnchor="226.0" AnchorPane.rightAnchor="699.0" />
+                                <TextField fx:id="lastNameTextField" layoutX="227.0" layoutY="224.0" prefHeight="59.0" prefWidth="578.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="698.0" />
+                                <TextField fx:id="emailTextField" layoutX="228.0" layoutY="350.0" prefHeight="52.0" prefWidth="590.0" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="685.0" />
+                                <TextField fx:id="telephoneTextField" layoutX="230.0" layoutY="478.0" prefHeight="59.0" prefWidth="590.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="683.0" />
+                                <Button fx:id="saveInfoButton" layoutX="1094.0" layoutY="462.0" mnemonicParsing="false" onAction="#handleSavePersonalInformation" prefHeight="86.0" prefWidth="333.0" style="-fx-background-color: rgba(253, 243, 0, 1)rgba(253, 243, 0, 1);" text="Spara uppgifter" AnchorPane.leftAnchor="1094.0" AnchorPane.rightAnchor="76.0">
+                                    <font>
+                                        <Font name="Avenir Book" size="29.0" />
+                                    </font>
+                                </Button>
+                                <Label layoutX="230.0" layoutY="14.0" text="Mina uppgifter" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="542.0">
                                     <font>
                                         <Font name="Avenir Next Bold" size="30.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="228.0" layoutY="49.0" prefHeight="29.0" prefWidth="397.0" text="Spara dina kortuppgifter" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="878.0">
-                                    <font>
-                                        <Font size="24.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="297.0" layoutY="113.0" text="Kortnummer:" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0">
+                                <Label layoutX="234.0" layoutY="431.0" prefHeight="43.0" prefWidth="242.0" text="Telefonummer:" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="527.0">
                                     <font>
                                         <Font name="Avenir Book" size="25.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="298.0" layoutY="240.0" prefHeight="36.0" prefWidth="267.0" text="Sista giltighetsdatum:" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0">
-                                    <font>
-                                        <Font name="Avenir Book" size="25.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="300.0" layoutY="368.0" prefHeight="36.0" prefWidth="195.0" text="Namn på kortet:" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0">
-                                    <font>
-                                        <Font name="Avenir Book" size="25.0" />
-                                    </font>
-                                </Label>
-                                <TextField fx:id="cardNumberTextField" layoutX="293.0" layoutY="155.0" prefHeight="59.0" prefWidth="593.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="617.0" />
-                                <TextField fx:id="cardNameTextField" layoutX="296.0" layoutY="415.0" prefHeight="59.0" prefWidth="579.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0" />
-                                <ComboBox fx:id="monthComboBox" editable="true" layoutX="294.0" layoutY="280.0" prefHeight="69.0" prefWidth="181.0" promptText="           Månad " AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="1092.0" />
-                                <ComboBox fx:id="yearComboBox" editable="true" layoutX="437.0" layoutY="280.0" prefHeight="69.0" prefWidth="168.0" promptText="           År " AnchorPane.leftAnchor="437.0" AnchorPane.rightAnchor="898.0" />
-                        <Button fx:id="saveCardInfoButtonsaveCardInfoButton" layoutX="1094.0" layoutY="458.0" mnemonicParsing="false" onAction="#handleSavePaymentInformationhandleSavePaymentInformation" prefHeight="86.0" prefWidth="333.0" style="-fx-background-color: rgba(253, 243, 0, 1)rgba(253, 243, 0, 1);" text="Spara uppgifter" AnchorPane.leftAnchor="1094.0" AnchorPane.rightAnchor="76.0">
-                           <font>
-                              <Font name="Avenir Book" size="29.0" />
-                           </font>
-                        </Button>
                             </children>
                         </AnchorPane>
                         <AnchorPane fx:id="addressPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1);">
@@ -158,42 +158,42 @@
                         </Button>
                             </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="myInformationPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1);">
+                        <AnchorPane fx:id="paymentMethodPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)rgba(255, 255, 255, 1);">
                             <children>
-                                <Label layoutX="230.0" layoutY="57.0" prefHeight="39.0" prefWidth="165.0" text="Förnamn:" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0">
-                                    <font>
-                                        <Font name="Avenir Book" size="25.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="231.0" layoutY="181.0" prefHeight="39.0" prefWidth="165.0" text="Efternamn:" AnchorPane.leftAnchor="231.0" AnchorPane.rightAnchor="607.0">
-                                    <font>
-                                        <Font name="Avenir Book" size="25.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="232.0" layoutY="301.0" prefHeight="43.0" prefWidth="217.0" text="E-postadress:" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="607.0">
-                                    <font>
-                                        <Font name="Avenir Book" size="25.0" />
-                                    </font>
-                                </Label>
-                                <TextField fx:id="firstNameTextField" layoutX="226.0" layoutY="101.0" prefHeight="59.0" prefWidth="578.0" AnchorPane.leftAnchor="226.0" AnchorPane.rightAnchor="699.0" />
-                                <TextField fx:id="lastNameTextField" layoutX="227.0" layoutY="224.0" prefHeight="59.0" prefWidth="578.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="698.0" />
-                                <TextField fx:id="emailTextField" layoutX="228.0" layoutY="350.0" prefHeight="52.0" prefWidth="590.0" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="685.0" />
-                                <TextField fx:id="telephoneTextField" layoutX="230.0" layoutY="478.0" prefHeight="59.0" prefWidth="590.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="683.0" />
-                                <Button fx:id="saveInfoButton" layoutX="1094.0" layoutY="462.0" mnemonicParsing="false" onAction="#handleSavePersonalInformation" prefHeight="86.0" prefWidth="333.0" style="-fx-background-color: rgba(253, 243, 0, 1)rgba(253, 243, 0, 1);" text="Spara uppgifter" AnchorPane.leftAnchor="1094.0" AnchorPane.rightAnchor="76.0">
-                                    <font>
-                                        <Font name="Avenir Book" size="29.0" />
-                                    </font>
-                                </Button>
-                                <Label layoutX="230.0" layoutY="14.0" text="Mina uppgifter" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="542.0">
+                                <Label layoutX="302.0" layoutY="9.0" prefHeight="43.0" prefWidth="213.0" text="Betalkort  " AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="1060.0">
                                     <font>
                                         <Font name="Avenir Next Bold" size="30.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="234.0" layoutY="431.0" prefHeight="43.0" prefWidth="242.0" text="Telefonummer:" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="527.0">
+                                <Label layoutX="228.0" layoutY="49.0" prefHeight="29.0" prefWidth="397.0" text="Spara dina kortuppgifter" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="878.0">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="297.0" layoutY="113.0" text="Kortnummer:" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0">
                                     <font>
                                         <Font name="Avenir Book" size="25.0" />
                                     </font>
                                 </Label>
+                                <Label layoutX="298.0" layoutY="240.0" prefHeight="36.0" prefWidth="267.0" text="Sista giltighetsdatum:" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0">
+                                    <font>
+                                        <Font name="Avenir Book" size="25.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="300.0" layoutY="368.0" prefHeight="36.0" prefWidth="195.0" text="Namn på kortet:" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0">
+                                    <font>
+                                        <Font name="Avenir Book" size="25.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="cardNumberTextField" layoutX="293.0" layoutY="155.0" prefHeight="59.0" prefWidth="593.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="617.0" />
+                                <TextField fx:id="cardNameTextField" layoutX="296.0" layoutY="415.0" prefHeight="59.0" prefWidth="579.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="608.0" />
+                                <ComboBox fx:id="monthComboBox" editable="true" layoutX="294.0" layoutY="280.0" prefHeight="69.0" prefWidth="181.0" promptText="           Månad " AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="1092.0" />
+                                <ComboBox fx:id="yearComboBox" editable="true" layoutX="437.0" layoutY="280.0" prefHeight="69.0" prefWidth="168.0" promptText="           År " AnchorPane.leftAnchor="437.0" AnchorPane.rightAnchor="898.0" />
+                        <Button fx:id="saveCardInfoButtonsaveCardInfoButton" layoutX="1094.0" layoutY="458.0" mnemonicParsing="false" onAction="#handleSavePaymentInformationhandleSavePaymentInformation" prefHeight="86.0" prefWidth="333.0" style="-fx-background-color: rgba(253, 243, 0, 1)rgba(253, 243, 0, 1);" text="Spara uppgifter" AnchorPane.leftAnchor="1094.0" AnchorPane.rightAnchor="76.0">
+                           <font>
+                              <Font name="Avenir Book" size="29.0" />
+                           </font>
+                        </Button>
                             </children>
                         </AnchorPane>
                     </children>

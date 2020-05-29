@@ -1,7 +1,7 @@
 .text-iMat{
     -fx-font-size: 72px;
     -fx-fill: #4373ee;
-    -fx-font-weight: Bold
+    -fx-font-weight: Bold;
 
 }
 
@@ -9,9 +9,24 @@
     -fx-background-color: #94BFFF;
     -fx-background-radius: 32px;
     /*-fx-background-border-style: solid;*/
+    -fx-border-radius: 32;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
     -fx-font-size: 14px;
     -fx-text-fill: #000000;
     -fx-font-weight: Bold;
+}
+.circleProductButton:hover {
+    -fx-background-color: #BED8FF;
+}
+
+.circleProductButton:pressed {
+    -fx-background-radius: 32px;
+    -fx-border-radius: 32;
+    -fx-background-color: #416788;
+    -fx-text-fill: white;
+
 }
 
 .circleButtonStep{
@@ -24,10 +39,19 @@
     -fx-text-fill-font-weight: Bold;
 }
 
+.circleButtonStep:hover{
+    -fx-opacity:0.75;
+}
+
+.circleButtonStep:pressed{
+    -fx-background-radius: 50px;
+    -fx-border-radius: 50;
+    -fx-background-color: #416788;
+}
+
 .circleButtonStepChosen{
     -fx-background-color: #7493E1;
     -fx-background-radius: 50px;
-    /*-fx-background-border-style: solid;*/
     -fx-font-size: 24px;
     -fx-text-fill: #000000;
     -fx-text-fill-font-weight: Bold;
@@ -36,13 +60,22 @@
     -fx-border-width: 1;
     -fx-border-style: solid;
 }
+.circleButtonStepChosen:pressed{
+    -fx-background-radius: 50px;
+    -fx-border-radius: 50;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+    -fx-border-style: solid;
+    -fx-background-color: #7493E1;
+
+}
 
 .productBorder{
     -fx-border-style: solid;
 }
 
 .nextAndPreviousButton{
-    -fx-background-color: #9ED1FF;
+    -fx-background-color: #94BFFF;
     -fx-background-radius: 12.5px;
     -fx-font-size: 18px;
     -fx-border-radius: 12.5;
@@ -50,6 +83,19 @@
     -fx-border-width: 1;
     -fx-border-style: solid;
 }
+.nextAndPreviousButton:hover {
+    -fx-background-color: #BED8FF;
+}
+
+.nextAndPreviousButton:pressed {
+    -fx-background-radius: 12.5px;
+    -fx-border-radius: 12.5;
+    -fx-background-color: #416788;
+    -fx-text-fill: white;
+
+}
+
+
 
 .continueShoppingButton{
     -fx-background-color: #9ED1FF;
@@ -60,6 +106,13 @@
     -fx-border-width: 1;
     -fx-border-style: solid;
 
+}
+
+.continueShoppingButton:pressed {
+    -fx-background-radius: 15px;
+    -fx-border-radius: 12.5;
+    -fx-background-color: #416788;
+    -fx-text-fill: #ffffff;
 }
 
 
