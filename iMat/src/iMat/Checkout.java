@@ -17,7 +17,7 @@ public class Checkout extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("checkout.fxml"), bundle);
 
-        Scene scene = new Scene(root, 1000, 700);
+        Scene scene = new Scene(root, 1500, 800);
 
         stage.setTitle(bundle.getString("application.name"));
         stage.setScene(scene);

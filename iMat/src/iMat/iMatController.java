@@ -161,9 +161,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML private Text warningMessage2;
     @FXML private Text warningMessage3;
 
-    @FXML private HBox mainViewOne;
-    @FXML private StackPane mainViewTwo;
-
     private boolean cardPaymentOpen = false;
     private boolean bankPaymentOpen = false;
 
@@ -191,6 +188,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
         // historyPaneInit();
 
         // Checkout
+        checkoutViewPane.setVisible(false);
+
 
         checkoutMonthComboBox.getItems().addAll("Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "Septempber", "Oktober", "November", "December");
         checkoutMonthComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -562,10 +561,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
     protected void focusCheckoutPane (ActionEvent event){
         System.out.println("Loading Checkout Pane...");
         updateCheckoutProductList();
-        mainViewOne.setVisible(false);
-        mainViewTwo.setVisible(false);
         checkoutViewPane.setVisible(true);
         checkoutViewPane.toFront();
+        stepOnePane.toFront();
     }
 
     @FXML
@@ -579,12 +577,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     protected void focusMainPane (ActionEvent event){
         System.out.println("Loading Main Pane...");
-
-        mainViewOne.setVisible(true);
-        mainViewTwo.setVisible(true);
         checkoutViewPane.toBack();
         checkoutViewPane.setVisible(false);
-        mainViewPane.toFront();
         mainViewPane.toFront();
     }
 
@@ -887,12 +881,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
         cardPaymentPopUp.toFront();
         cardPaymentOpen = true;
         closeBankPayment();
-        bankPayment.setLayoutY(528);
+        bankPayment.setLayoutY(602);
     }
     public void closeCardPayment() {
         cardPaymentPopUp.toBack();
         cardPaymentOpen = false;
-        bankPayment.setLayoutY(301);
+        bankPayment.setLayoutY(372);
 
     }
 
@@ -933,8 +927,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     public void mainView() {
         System.out.println("Loading Checkout Pane...");
-        mainViewOne.setVisible(false);
-        mainViewTwo.setVisible(false);
         checkoutViewPane.setVisible(true);
         checkoutViewPane.toFront();
     }
@@ -988,6 +980,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
             warningMessage3.setVisible(false);
             stepFourPane.toFront();
         }
+        updateConfirmationTable();
     }
 
     private boolean deliveryInformationNotValid() {
@@ -997,7 +990,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private boolean cardInformationNotValid() {
         return cardHolderNameField.getText().equals("") || cardNumberField.getText().equals("")
                 || monthField.getText().equals("") || monthField.getText().equals("MM")
-                || yearField.getText().equals("") || yearField.getText().equals("YYYYF")
+                || yearField.getText().equals("") || yearField.getText().equals("YYYY")
                 || verificationCodeField.getText().equals("");
     }
 }

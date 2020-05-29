@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root prefHeight="145.0" prefWidth="900.0" stylesheets="@checkout.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">   <children>
+<fx:root prefHeight="145.0" prefWidth="1395.0" stylesheets="@checkout.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">   <children>
       <ImageView fx:id="imageView" fitHeight="102.0" fitWidth="154.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@resources/imat/images/noImage.jpg" />
@@ -24,17 +24,17 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fx:id="totalPrice" layoutX="736.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totalt: xx kr">
+      <Text fx:id="totalPrice" layoutX="1279.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totalt: xx kr">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <ImageView fitHeight="42.0" fitWidth="45.0" layoutX="796.0" layoutY="14.0" onMouseClicked="#deleteAll" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="42.0" fitWidth="45.0" layoutX="1339.0" layoutY="14.0" onMouseClicked="#deleteAll" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@resources/imat/images/Delete.png" />
          </image>
       </ImageView>
-      <Button layoutX="613.0" layoutY="84.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleSubtractAction" prefHeight="32.0" prefWidth="32.0" styleClass="circleProductButton" text="-" />
-      <Button layoutX="677.0" layoutY="84.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddAction" prefHeight="32.0" prefWidth="32.0" styleClass="circleProductButton" text="+" />
-      <Text fx:id="amountLabel" layoutX="645.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="32.00001418590546" />
+      <Button layoutX="1156.0" layoutY="84.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleSubtractAction" prefHeight="32.0" prefWidth="32.0" styleClass="circleProductButton" text="-" />
+      <Button layoutX="1220.0" layoutY="84.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddAction" prefHeight="32.0" prefWidth="32.0" styleClass="circleProductButton" text="+" />
+      <Text fx:id="amountLabel" layoutX="1188.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="32.00001418590546" />
    </children>
 </fx:root>

@@ -82,6 +82,7 @@ public class CheckoutController implements Initializable, ShoppingCartListener {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
 //        deliveryLocation.setText("Levereras till: " + addressValue);
         monthCheckoutComboBox.getItems().addAll("Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "Septempber", "Oktober", "November", "December");
         monthCheckoutComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -233,12 +234,12 @@ public class CheckoutController implements Initializable, ShoppingCartListener {
         cardPaymentPopUp.toFront();
         cardPaymentOpen = true;
         closeBankPayment();
-        bankPayment.setLayoutY(528);
+        bankPayment.setLayoutY(602);
     }
     public void closeCardPayment() {
         cardPaymentPopUp.toBack();
         cardPaymentOpen = false;
-        bankPayment.setLayoutY(301);
+        bankPayment.setLayoutY(512);
 
     }
 
