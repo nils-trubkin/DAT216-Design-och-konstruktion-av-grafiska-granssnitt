@@ -22,7 +22,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
@@ -31,7 +30,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import se.chalmers.cse.dat216.project.*;
 
-import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 import static javafx.scene.control.PopupControl.USE_PREF_SIZE;
 import static se.chalmers.cse.dat216.project.ProductCategory.*;
 
@@ -158,9 +156,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML private Text deliveryTime;
     @FXML private Text deliveryLocation;
 
-    @FXML private Text warningMessage1;
-    @FXML private Text warningMessage2;
-    @FXML private Text warningMessage3;
+    @FXML private Text warningMessage;
 
     private boolean cardPaymentOpen = false;
     private boolean bankPaymentOpen = false;
@@ -843,12 +839,14 @@ public class iMatController implements Initializable, ShoppingCartListener {
         if (!monthField.getText().equals("MM") && !monthField.getText().equals("")) {
             card.setValidMonth(Integer.parseInt(monthField.getText()));
         }
-        if (!yearField.getText().equals("YYYY") && !yearField.getText().equals("")) {
+        if (!yearField.getText().equals("YY") && !yearField.getText().equals("")) {
             card.setValidYear(Integer.parseInt(yearField.getText()));
         }
         if (!verificationCodeField.getText().equals("")) {
             card.setVerificationCode(Integer.parseInt(verificationCodeField.getText()));
         }
+
+        model.placeOrder();
     }
 
     private void setDeliveryLocation() {
@@ -873,12 +871,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
         if (monthField.getText().equals("MM")) monthField.setText("");
     }
     public void yearFieldClear() {
-        if (yearField.getText().equals("YYYYF")) yearField.setText("");
+        if (yearField.getText().equals("YY")) yearField.setText("");
     }
 
-    private void updateCheckoutProductList() {
-        totalPrice.setText(String.valueOf(model.getShoppingCart().getTotal()));
-        totalPriceConfirmation.setText(String.valueOf(model.getShoppingCart().getTotal()));
+    public void updateCheckoutProductList() {
+        updateTotalPrice();
         VBox vbox = new VBox();
         checkoutScrollPane.setFitToHeight(true);
         checkoutScrollPane.setFitToWidth(true);
@@ -888,11 +885,14 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
 
         for (ShoppingItem item : model.getShoppingCart().getItems()) {
-            vbox.getChildren().add(new CheckoutProductPanel(item));
-//            vbox.setAlignment(Pos.CENTER);
-//            vbox.setPadding(new Insets(30d,0d,0d,0d));
-//            System.out.println("Adding: " + product.toString());
+            vbox.getChildren().add(new CheckoutProductPanel(item, this));
         }
+    }
+
+    public void updateTotalPrice() {
+        double total = Math.round(model.getShoppingCart().getTotal() * 100) / 100.0;
+        totalPrice.setText("Totalt: " + total + " kr");
+        totalPriceConfirmation.setText("Totalt: " + total + " kr");
     }
 
     private void updateConfirmationTable() {
@@ -975,64 +975,78 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void checkOut() {
         stepOnePane.toFront();
         updateCheckoutProductList();
-        warningMessage1.setVisible(false);
-        warningMessage2.setVisible(false);
+        warningMessage.setVisible(false);
+
     }
     public void stepTwo() {
-        warningMessage1.setVisible(false);
-        warningMessage2.setVisible(false);
+        warningMessage.setVisible(false);
         stepTwoPane.toFront();
     }
     public void stepThree() {
-        if (deliveryInformationNotValid()) {
-            warningMessage1.setText("Steg 2 ej ifylld!");
-            warningMessage1.setVisible(true);
-            warningMessage2.setText("Steg 2 ej ifylld!");
-            warningMessage2.setVisible(true);
+        /*if (deliveryInformationNotValid()) {
+            warningMessage.setText("Steg 2 ej ifylld!");
+            warningMessage.setVisible(true);
         } else {
-            warningMessage1.setVisible(false);
-            warningMessage2.setVisible(false);
-            stepThreePane.toFront();
-        }
+            warningMessage.setVisible(false);
+
+        }*/
+        stepThreePane.toFront();
+        warningMessagePopUp();
     }
     public void stepFour() {
+
         setDeliveryLocation();
-        if (deliveryInformationNotValid() && cardInformationNotValid()) {
-            warningMessage1.setText("Steg 2 och Steg 3 ej ifyllda!");
-            warningMessage1.setVisible(true);
-            warningMessage2.setText("Steg 2 och Steg 3 ej ifyllda!");
-            warningMessage2.setVisible(true);
-            warningMessage3.setText("Steg 2 och Steg 3 ej ifyllda!");
-            warningMessage3.setVisible(true);
-        } else if (deliveryInformationNotValid()) {
-            warningMessage1.setText("Steg 2 ej ifylld!");
-            warningMessage1.setVisible(true);
-            warningMessage2.setText("Steg 2 ej ifylld!");
-            warningMessage2.setVisible(true);
-        } else if (cardInformationNotValid()) {
-            warningMessage1.setText("Steg 3 ej ifylld!");
-            warningMessage1.setVisible(true);
-            warningMessage2.setText("Steg 3 ej ifylld!");
-            warningMessage2.setVisible(true);
-            warningMessage3.setText("Steg 3 ej ifylld!");
-            warningMessage3.setVisible(true);
-        } else{
-            warningMessage1.setVisible(false);
-            warningMessage2.setVisible(false);
-            warningMessage3.setVisible(false);
-            stepFourPane.toFront();
-        }
+//        if (deliveryInformationNotValid() && cardInformationNotValid()) {
+//            warningMessage.setText("Steg 2 och Steg 3 ej ifyllda!");
+//            warningMessage.setVisible(true);
+//        } else if (deliveryInformationNotValid()) {
+//            warningMessage.setText("Steg 2 ej ifylld!");
+//            warningMessage.setVisible(true);
+//        } else if (cardInformationNotValid()) {
+//            warningMessage.setText("Steg 3 ej ifylld!");
+//            warningMessage.setVisible(true);
+//        } else{
+//            warningMessage.setVisible(false);
+//            stepFourPane.toFront();
+//        }
         updateConfirmationTable();
+        warningMessagePopUp();
     }
 
-    private boolean deliveryInformationNotValid() {
-        return customer.getAddress().equals("") || monthValue.equals("") || dayValue == 0 || timeValue.equals("");
+    private void warningMessagePopUp() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Fyll i");
+        int warnings = 0;
+        if (deliveryAddressNotValid()) warnings++;
+        if (deliveryTimeNotValid()) warnings++;
+        if (cardInformationNotValid()) warnings++;
+
+        if (deliveryAddressNotValid()) sb.append(" leveransadress");
+        if (warnings == 2) sb.append(" och");
+        if (warnings == 3) sb.append(",");
+
+        if (deliveryTimeNotValid()) sb.append(" leveranstid");
+        if (warnings == 3) sb.append(" och");
+
+        if (cardInformationNotValid()) sb.append(" kortuppgifter");
+        sb.append(" för att fortsätta.");
+        warningMessage.setText(sb.toString());
+        warningMessage.setVisible(true);
+        warningMessage.toFront();
+    }
+
+    private boolean deliveryAddressNotValid() {
+        return deliveryAddress.getText().equals("");
+    }
+
+    private boolean deliveryTimeNotValid() {
+        return monthValue.equals("") || dayValue == 0 || timeValue.equals("");
     }
 
     private boolean cardInformationNotValid() {
         return cardHolderNameField.getText().equals("") || cardNumberField.getText().equals("")
                 || monthField.getText().equals("") || monthField.getText().equals("MM")
-                || yearField.getText().equals("") || yearField.getText().equals("YYYY")
+                || yearField.getText().equals("") || yearField.getText().equals("YY")
                 || verificationCodeField.getText().equals("");
     }
 }

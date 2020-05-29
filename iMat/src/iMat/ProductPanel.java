@@ -88,6 +88,7 @@ public class ProductPanel extends AnchorPane {
 
     @FXML
     private void handleSubtractAction(ActionEvent event) {
+
         double value = 0;
         System.out.println("Subtract " + product.getName());
         model.subtractFromShoppingCart(product);

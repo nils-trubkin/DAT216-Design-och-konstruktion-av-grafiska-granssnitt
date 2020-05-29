@@ -27,341 +27,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" stylesheets="@iMat.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMat.iMatController">
    <children>
-      <AnchorPane id="AnchorPane" fx:id="checkoutViewPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" stylesheets="@checkout.css">
-         <children>
-            <AnchorPane fx:id="stepThreePane" prefHeight="800.0" prefWidth="1500.0" style="-fx-background-color: white;">
-               <children>
-                  <AnchorPane fx:id="cardPaymentPopUp" layoutX="51.0" layoutY="331.0" prefHeight="230.0" prefWidth="900.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="260.0" layoutY="-1.0" stroke="#9a9a9a" strokeType="INSIDE" width="1389.0" />
-                        <Text layoutX="91.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Namn på kortägare: " />
-                        <Text layoutX="91.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kortnummer: " />
-                        <Text layoutX="91.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giltighetstid:" />
-                        <Text layoutX="255.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kortkontrollnummer:" />
-                        <TextField fx:id="cardNumberField" layoutX="91.0" layoutY="115.0" prefHeight="31.0" prefWidth="423.0" />
-                        <TextField fx:id="cardHolderNameField" layoutX="91.0" layoutY="47.0" prefHeight="31.0" prefWidth="423.0" />
-                        <TextField fx:id="monthField" alignment="CENTER" layoutX="89.0" layoutY="186.0" onMouseClicked="#monthFieldClear" prefHeight="31.0" prefWidth="50.0" text="MM" />
-                        <TextField fx:id="verificationCodeField" layoutX="255.0" layoutY="186.0" prefHeight="31.0" prefWidth="158.0" />
-                        <Button fx:id="backButton" layoutX="1216.0" layoutY="180.0" mnemonicParsing="false" onAction="#closeCardPayment" styleClass="nextAndPreviousButton" text="Tillbaka">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <TextField fx:id="yearField" alignment="CENTER" layoutX="157.0" layoutY="186.0" onMouseClicked="#yearFieldClear" prefHeight="31.0" prefWidth="57.0" text="YYYY" />
-                        <Text layoutX="137.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" textAlignment="CENTER" wrappingWidth="24.000000208616257" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="bankPaymentPopUp" layoutX="50.0" layoutY="512.0" prefHeight="230.0" prefWidth="1389.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="230.0" layoutY="-1.0" stroke="#9a9a9a" strokeType="INSIDE" width="1389.0" />
-                        <Button fx:id="backButton1" layoutX="1206.0" layoutY="150.0" mnemonicParsing="false" onAction="#closeBankPayment" text="Tillbaka">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Text layoutX="697.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inget här!">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </AnchorPane>
-                  <Text layoutX="14.0" layoutY="81.0" onMouseClicked="#mainView" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-iMat" text="IMat" wrappingWidth="158.484375">
-                     <font>
-                        <Font size="72.0" />
-                     </font>
-                  </Text>
-                  <Button layoutX="1297.0" layoutY="23.0" mnemonicParsing="false" onAction="#focusMainPane" prefHeight="72.0" prefWidth="153.0" styleClass="continueShoppingButton" text="Fortsätt Handla" textAlignment="CENTER" wrapText="true">
-                     <graphic>
-                        <ImageView fitHeight="62.0" fitWidth="55.0" onMouseClicked="#mainView" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@resources/imat/images/cart.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Text layoutX="58.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Betalningssätt">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Text>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e3e3e3" height="671.0" layoutX="11.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="1467.0" />
-                  <Button layoutX="1319.0" layoutY="131.0" mnemonicParsing="false" onAction="#stepFour" prefHeight="49.0" prefWidth="102.0" styleClass="nextAndPreviousButton" text="Nästa" />
-                  <Button layoutX="268.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#checkOut" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="1" />
-                  <Button layoutX="600.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepFour" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="4" />
-                  <Button layoutX="381.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepTwo" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="2" />
-                  <Button layoutX="493.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStepChosen" text="3" />
-                  <Line endX="-62.5" layoutX="435.0" layoutY="166.0" startX="-87.5" />
-                  <Line endX="-62.5" layoutX="544.0" layoutY="166.0" startX="-87.5" />
-                  <Line endX="-62.5" layoutX="650.0" layoutY="166.0" startX="-87.5" />
-                  <Button layoutX="1186.0" layoutY="131.0" mnemonicParsing="false" onAction="#stepTwo" prefHeight="49.0" prefWidth="102.0" styleClass="nextAndPreviousButton" text="Tillbaka" />
-                  <AnchorPane layoutX="50.0" layoutY="211.0" prefHeight="100.0" prefWidth="900.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="120.0" onMouseClicked="#cardPaymentOptionPressed" stroke="#9a9a9a" strokeType="INSIDE" width="1389.0" />
-                        <RadioButton fx:id="altOne" layoutX="34.0" layoutY="52.0" mnemonicParsing="false" onAction="#cardPaymentOptionPressed" prefHeight="21.0" prefWidth="0.0" selected="true">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="payment" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <Text layoutX="99.0" layoutY="60.0" onMouseClicked="#cardPaymentOptionPressed" strokeType="OUTSIDE" strokeWidth="0.0" text="Betala med kort">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="99.0" layoutY="85.0" onMouseClicked="#cardPaymentOptionPressed" strokeType="OUTSIDE" strokeWidth="0.0" text="Fyll i dina kortuppgifter.">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                        <ImageView fitHeight="72.0" fitWidth="91.0" layoutX="1217.0" layoutY="26.0" onMouseClicked="#cardPaymentOptionPressed" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@resources/imat/images/Card.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="bankPayment" layoutX="50.0" layoutY="372.0" prefHeight="100.0" prefWidth="900.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="140.0" onMouseClicked="#bankPaymentOptionPressed" stroke="#9a9a9a" strokeType="INSIDE" width="1389.0" />
-                        <RadioButton fx:id="altTwo" layoutX="35.0" layoutY="59.0" mnemonicParsing="false" onAction="#bankPaymentOptionPressed" prefHeight="21.0" prefWidth="0.0" toggleGroup="$payment" />
-                        <Text layoutX="100.0" layoutY="67.0" onMouseClicked="#bankPaymentOptionPressed" strokeType="OUTSIDE" strokeWidth="0.0" text="Direktbetalning">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <ImageView fitHeight="65.0" fitWidth="71.0" layoutX="1246.0" layoutY="38.0" onMouseClicked="#bankPaymentOptionPressed" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@resources/imat/images/Bank.png" />
-                           </image>
-                        </ImageView>
-                        <Text layoutX="100.0" layoutY="92.0" onMouseClicked="#bankPaymentOptionPressed" strokeType="OUTSIDE" strokeWidth="0.0" text="Betala via banken.">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </AnchorPane>
-                  <Text fx:id="warningMessage3" fill="RED" layoutX="165.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Varning meddelande" textAlignment="CENTER" visible="false" x="412.0" y="218.0">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="stepFourPane" prefHeight="800.0" prefWidth="1500.0" style="-fx-background-color: white;">
-               <children>
-                  <AnchorPane fx:id="purchaseCompleted" layoutX="11.0" layoutY="106.0" prefHeight="671.0" prefWidth="1467.0" style="-fx-background-color: ffffff;">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e3e3e3" height="671.0" stroke="BLACK" strokeType="INSIDE" width="1467.0" />
-                        <Text layoutX="392.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Köp Slutförd!" textAlignment="CENTER" wrappingWidth="189.6328125">
-                           <font>
-                              <Font size="48.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="154.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tack för ditt köp, dina varor kommer att leveraras till dig inom kort!">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Button layoutX="429.0" layoutY="345.0" mnemonicParsing="false" onAction="#restartShopping" prefHeight="87.0" prefWidth="116.0" text="Påbörja ett nytt köp" textAlignment="CENTER" wrapText="true">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-                  <Text layoutX="14.0" layoutY="81.0" onMouseClicked="#mainView" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-iMat" text="IMat" wrappingWidth="158.484375">
-                     <font>
-                        <Font size="72.0" />
-                     </font>
-                  </Text>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e3e3e3" height="671.0" layoutX="11.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="1467.0" />
-                  <Text layoutX="58.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bekräftelse">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
-                  </Text>
-                  <Button layoutX="268.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#checkOut" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="1" />
-                  <Button layoutX="600.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStepChosen" text="4" />
-                  <Button layoutX="381.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepTwo" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="2" />
-                  <Button layoutX="493.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepThree" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="3" />
-                  <Line endX="-62.5" layoutX="435.0" layoutY="166.0" startX="-87.5" />
-                  <Line endX="-62.5" layoutX="544.0" layoutY="166.0" startX="-87.5" />
-                  <Line endX="-62.5" layoutX="650.0" layoutY="166.0" startX="-87.5" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="532.0" layoutX="47.0" layoutY="209.0" stroke="BLACK" strokeType="INSIDE" width="1395.0" />
-                  <Text fx:id="deliveryTime" layoutX="86.0" layoutY="657.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Leveranstid: xx xxxx.  Klockan xx:xx">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="deliveryLocation" layoutX="86.0" layoutY="681.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Levereras till: xxxxxxxxx">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-                  <TableView layoutX="86.0" layoutY="215.0" prefHeight="416.0" prefWidth="1320.0">
-                     <columns>
-                        <TableColumn prefWidth="330.0" text="Produkt" />
-                        <TableColumn prefWidth="330.0" text="Antal" />
-                        <TableColumn prefWidth="330.0" text="Pris/produkt" />
-                        <TableColumn prefWidth="330.0" text="Totala Priset" />
-                     </columns>
-                  </TableView>
-                  <Button layoutX="1252.0" layoutY="651.0" mnemonicParsing="false" onAction="#completePurchase" styleClass="nextAndPreviousButton" text="Slutför Köp">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="1186.0" layoutY="131.0" mnemonicParsing="false" onAction="#stepThree" prefHeight="49.0" prefWidth="102.0" styleClass="nextAndPreviousButton" text="Tillbaka" />
-                  <ScrollPane fx:id="confirmationScrollPane" layoutX="86.0" layoutY="239.0" prefHeight="391.0" prefWidth="1320.0" />
-                  <Text fx:id="totalPriceConfirmation" layoutX="881.0" layoutY="681.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totalt: xxxx kr">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Text>
-                  <Button fx:id="continueShopping" layoutX="1297.0" layoutY="23.0" mnemonicParsing="false" onAction="#focusMainPane" prefHeight="72.0" prefWidth="153.0" styleClass="continueShoppingButton" text="Fortsätt Handla" textAlignment="CENTER" wrapText="true">
-                     <graphic>
-                        <ImageView fitHeight="62.0" fitWidth="55.0" onMouseClicked="#mainView" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@resources/imat/images/cart.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="stepOnePane" prefHeight="800.0" prefWidth="1500.0" style="-fx-background-color: white;">
-               <children>
-                  <Text layoutX="14.0" layoutY="81.0" onMouseClicked="#mainView" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-iMat" text="IMat" wrappingWidth="158.484375">
-                     <font>
-                        <Font size="72.0" />
-                     </font>
-                  </Text>
-                  <Button fx:id="continueShopping" layoutX="802.0" layoutY="23.0" mnemonicParsing="false" onAction="#focusMainPane" onMouseClicked="#mainView" prefHeight="72.0" prefWidth="153.0" styleClass="continueShoppingButton" text="Fortsätt Handla" textAlignment="CENTER" wrapText="true" AnchorPane.rightAnchor="54.0">
-                     <graphic>
-                        <ImageView fitHeight="62.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@resources/imat/images/cart.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e3e3e3" height="671.0" layoutX="11.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="1467.0" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="106.0" />
-                  <Text fx:id="totalPrice" layoutX="1215.0" layoutY="738.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totalt:  xxx kr">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Text>
-                  <Button layoutX="259.0" layoutY="123.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStepChosen" text="1">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="1319.0" layoutY="131.0" mnemonicParsing="false" onAction="#stepTwo" prefHeight="49.0" prefWidth="102.0" styleClass="nextAndPreviousButton" text="Nästa">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Text layoutX="58.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Din Varukorg">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
-                  </Text>
-                  <Button layoutX="592.0" layoutY="123.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepFour" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="4" />
-                  <Button layoutX="370.0" layoutY="122.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepTwo" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="2" />
-                  <Button layoutX="480.0" layoutY="123.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepThree" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="3" />
-                  <Line endX="-62.5" layoutX="426.0" layoutY="154.0" startX="-87.5" />
-                  <Line endX="-62.5" layoutX="534.0" layoutY="154.0" startX="-87.5" />
-                  <Line endX="-62.5" layoutX="645.0" layoutY="154.0" startX="-87.5" />
-                  <ScrollPane fx:id="checkoutScrollPane" layoutX="47.0" layoutY="204.0" prefHeight="493.0" prefWidth="1395.0" AnchorPane.leftAnchor="47.0" AnchorPane.topAnchor="204.0">
-                     <content>
-                        <VBox prefHeight="200.0" prefWidth="100.0" />
-                     </content>
-                  </ScrollPane>
-                  <Text fx:id="warningMessage1" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Varning meddelande" textAlignment="CENTER" visible="false" x="412.0" y="218.0">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="stepTwoPane" prefHeight="800.0" prefWidth="1500.0" style="-fx-background-color: white;">
-               <children>
-                  <Text layoutX="14.0" layoutY="81.0" onMouseClicked="#mainView" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-iMat" text="IMat" wrappingWidth="158.484375">
-                     <font>
-                        <Font size="72.0" />
-                     </font>
-                  </Text>
-                  <Button fx:id="continueShopping1" layoutX="1297.0" layoutY="23.0" mnemonicParsing="false" onAction="#focusMainPane" prefHeight="72.0" prefWidth="153.0" styleClass="continueShoppingButton" text="Fortsätt Handla" textAlignment="CENTER" wrapText="true">
-                     <graphic>
-                        <ImageView fitHeight="62.0" fitWidth="55.0" onMouseClicked="#mainView" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@resources/imat/images/cart.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e3e3e3" height="671.0" layoutX="11.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="1467.0" />
-                  <Button layoutX="1319.0" layoutY="131.0" mnemonicParsing="false" onAction="#stepThree" prefHeight="49.0" prefWidth="102.0" styleClass="nextAndPreviousButton" text="Nästa" />
-                  <Text layoutX="58.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Leveranssätt">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Text>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="521.0" layoutX="47.0" layoutY="209.0" stroke="BLACK" strokeType="INSIDE" width="1395.0" />
-                  <Text layoutX="85.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Välj leveransadress:">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="93.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Välj leveranstid:">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <TextField fx:id="deliveryAddress" layoutX="281.0" layoutY="278.0" />
-                  <Label layoutX="123.0" layoutY="579.0" text="Månad:">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="468.0" layoutY="579.0" text="Dag:">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="742.0" layoutY="582.0" text="Tid:">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="1186.0" layoutY="131.0" mnemonicParsing="false" onAction="#checkOut" prefHeight="49.0" prefWidth="102.0" styleClass="nextAndPreviousButton" text="Tillbaka" />
-                  <ComboBox fx:id="checkoutMonthComboBox" layoutX="210.0" layoutY="572.0" prefHeight="40.0" prefWidth="189.0" promptText="Välj Månad" />
-                  <ComboBox fx:id="dayComboBox" layoutX="519.0" layoutY="574.0" prefHeight="40.0" prefWidth="143.0" promptText="Välj Dag" />
-                  <ComboBox fx:id="timeComboBox" layoutX="786.0" layoutY="574.0" prefHeight="40.0" prefWidth="190.0" promptText="Välj Klockslag" />
-                  <Text fx:id="warningMessage2" fill="RED" layoutX="412.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Varning meddelande" textAlignment="CENTER" visible="false" x="165.0" y="23.0">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Text>
-                  <Button layoutX="268.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#checkOut" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="1">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="600.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepFour" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="4" />
-                  <Button layoutX="381.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStepChosen" text="2" />
-                  <Button layoutX="493.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepThree" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="3" />
-                  <Line endX="-62.5" layoutX="650.0" layoutY="166.0" startX="-87.5" />
-                  <Line endX="-62.5" layoutX="544.0" layoutY="166.0" startX="-87.5" />
-                  <Line endX="-62.5" layoutX="435.0" layoutY="166.0" startX="-87.5" />
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
       <HBox fx:id="mainViewOne" alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="1367.0" AnchorPane.leftAnchor="0.0">
          <children>
             <Label prefHeight="66.0" prefWidth="193.0" text="%menubar.title.text">
@@ -881,5 +546,330 @@
             </SplitPane>
          </children>
       </StackPane>
+      <AnchorPane id="AnchorPane" fx:id="checkoutViewPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" stylesheets="@checkout.css">
+         <children>
+            <AnchorPane fx:id="stepThreePane" prefHeight="800.0" prefWidth="1500.0" style="-fx-background-color: white;">
+               <children>
+                  <AnchorPane fx:id="cardPaymentPopUp" layoutX="51.0" layoutY="331.0" prefHeight="230.0" prefWidth="900.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="260.0" layoutY="-1.0" stroke="#9a9a9a" strokeType="INSIDE" width="1389.0" />
+                        <Text layoutX="91.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Namn på kortägare: " />
+                        <Text layoutX="91.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kortnummer: " />
+                        <Text layoutX="91.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giltighetstid:" />
+                        <Text layoutX="255.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kortkontrollnummer:" />
+                        <TextField fx:id="cardNumberField" layoutX="91.0" layoutY="115.0" prefHeight="31.0" prefWidth="423.0" />
+                        <TextField fx:id="cardHolderNameField" layoutX="91.0" layoutY="47.0" prefHeight="31.0" prefWidth="423.0" />
+                        <TextField fx:id="monthField" alignment="CENTER" layoutX="89.0" layoutY="186.0" onMouseClicked="#monthFieldClear" prefHeight="31.0" prefWidth="50.0" text="MM" />
+                        <TextField fx:id="verificationCodeField" layoutX="255.0" layoutY="186.0" prefHeight="31.0" prefWidth="158.0" />
+                        <Button fx:id="backButton" layoutX="1216.0" layoutY="180.0" mnemonicParsing="false" onAction="#closeCardPayment" styleClass="nextAndPreviousButton" text="Tillbaka">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="yearField" alignment="CENTER" layoutX="157.0" layoutY="186.0" onMouseClicked="#yearFieldClear" prefHeight="31.0" prefWidth="57.0" text="YYYY" />
+                        <Text layoutX="137.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" textAlignment="CENTER" wrappingWidth="24.000000208616257" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="bankPaymentPopUp" layoutX="50.0" layoutY="512.0" prefHeight="230.0" prefWidth="1389.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="230.0" layoutY="-1.0" stroke="#9a9a9a" strokeType="INSIDE" width="1389.0" />
+                        <Button fx:id="backButton1" layoutX="1206.0" layoutY="150.0" mnemonicParsing="false" onAction="#closeBankPayment" text="Tillbaka">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Text layoutX="697.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inget här!">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <Text layoutX="14.0" layoutY="81.0" onMouseClicked="#mainView" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-iMat" text="IMat" wrappingWidth="158.484375">
+                     <font>
+                        <Font size="72.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="1297.0" layoutY="23.0" mnemonicParsing="false" onAction="#focusMainPane" prefHeight="72.0" prefWidth="153.0" styleClass="continueShoppingButton" text="Fortsätt Handla" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="62.0" fitWidth="55.0" onMouseClicked="#mainView" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/imat/images/cart.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Text layoutX="58.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Betalningssätt">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e3e3e3" height="671.0" layoutX="11.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="1467.0" />
+                  <Button layoutX="1319.0" layoutY="131.0" mnemonicParsing="false" onAction="#stepFour" prefHeight="49.0" prefWidth="102.0" styleClass="nextAndPreviousButton" text="Nästa" />
+                  <Button layoutX="268.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#checkOut" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="1" />
+                  <Button layoutX="600.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepFour" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="4" />
+                  <Button layoutX="381.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepTwo" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="2" />
+                  <Button layoutX="493.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStepChosen" text="3" />
+                  <Line endX="-62.5" layoutX="435.0" layoutY="166.0" startX="-87.5" />
+                  <Line endX="-62.5" layoutX="544.0" layoutY="166.0" startX="-87.5" />
+                  <Line endX="-62.5" layoutX="650.0" layoutY="166.0" startX="-87.5" />
+                  <Button layoutX="1186.0" layoutY="131.0" mnemonicParsing="false" onAction="#stepTwo" prefHeight="49.0" prefWidth="102.0" styleClass="nextAndPreviousButton" text="Tillbaka" />
+                  <AnchorPane layoutX="50.0" layoutY="211.0" prefHeight="100.0" prefWidth="900.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="120.0" onMouseClicked="#cardPaymentOptionPressed" stroke="#9a9a9a" strokeType="INSIDE" width="1389.0" />
+                        <RadioButton fx:id="altOne" layoutX="34.0" layoutY="52.0" mnemonicParsing="false" onAction="#cardPaymentOptionPressed" prefHeight="21.0" prefWidth="0.0" selected="true">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="payment" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <Text layoutX="99.0" layoutY="60.0" onMouseClicked="#cardPaymentOptionPressed" strokeType="OUTSIDE" strokeWidth="0.0" text="Betala med kort">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="99.0" layoutY="85.0" onMouseClicked="#cardPaymentOptionPressed" strokeType="OUTSIDE" strokeWidth="0.0" text="Fyll i dina kortuppgifter.">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="72.0" fitWidth="91.0" layoutX="1217.0" layoutY="26.0" onMouseClicked="#cardPaymentOptionPressed" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/imat/images/Card.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="bankPayment" layoutX="50.0" layoutY="372.0" prefHeight="100.0" prefWidth="900.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="140.0" onMouseClicked="#bankPaymentOptionPressed" stroke="#9a9a9a" strokeType="INSIDE" width="1389.0" />
+                        <RadioButton fx:id="altTwo" layoutX="35.0" layoutY="59.0" mnemonicParsing="false" onAction="#bankPaymentOptionPressed" prefHeight="21.0" prefWidth="0.0" toggleGroup="$payment" />
+                        <Text layoutX="100.0" layoutY="67.0" onMouseClicked="#bankPaymentOptionPressed" strokeType="OUTSIDE" strokeWidth="0.0" text="Direktbetalning">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="65.0" fitWidth="71.0" layoutX="1246.0" layoutY="38.0" onMouseClicked="#bankPaymentOptionPressed" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/imat/images/Bank.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="100.0" layoutY="92.0" onMouseClicked="#bankPaymentOptionPressed" strokeType="OUTSIDE" strokeWidth="0.0" text="Betala via banken.">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="stepTwoPane" prefHeight="800.0" prefWidth="1500.0" style="-fx-background-color: white;">
+               <children>
+                  <Text layoutX="14.0" layoutY="81.0" onMouseClicked="#mainView" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-iMat" text="IMat" wrappingWidth="158.484375">
+                     <font>
+                        <Font size="72.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="continueShopping1" layoutX="1297.0" layoutY="23.0" mnemonicParsing="false" onAction="#focusMainPane" prefHeight="72.0" prefWidth="153.0" styleClass="continueShoppingButton" text="Fortsätt Handla" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="62.0" fitWidth="55.0" onMouseClicked="#mainView" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/imat/images/cart.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e3e3e3" height="671.0" layoutX="11.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="1467.0" />
+                  <Button layoutX="1319.0" layoutY="131.0" mnemonicParsing="false" onAction="#stepThree" prefHeight="49.0" prefWidth="102.0" styleClass="nextAndPreviousButton" text="Nästa" />
+                  <Text layoutX="58.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Leveranssätt">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="521.0" layoutX="47.0" layoutY="209.0" stroke="BLACK" strokeType="INSIDE" width="1395.0" />
+                  <Text layoutX="85.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Välj leveransadress:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="93.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Välj leveranstid:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="deliveryAddress" layoutX="281.0" layoutY="278.0" />
+                  <Label layoutX="123.0" layoutY="579.0" text="Månad:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="468.0" layoutY="579.0" text="Dag:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="742.0" layoutY="582.0" text="Tid:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="1186.0" layoutY="131.0" mnemonicParsing="false" onAction="#checkOut" prefHeight="49.0" prefWidth="102.0" styleClass="nextAndPreviousButton" text="Tillbaka" />
+                  <ComboBox fx:id="checkoutMonthComboBox" layoutX="210.0" layoutY="572.0" prefHeight="40.0" prefWidth="189.0" promptText="Välj Månad" />
+                  <ComboBox fx:id="dayComboBox" layoutX="519.0" layoutY="574.0" prefHeight="40.0" prefWidth="143.0" promptText="Välj Dag" />
+                  <ComboBox fx:id="timeComboBox" layoutX="786.0" layoutY="574.0" prefHeight="40.0" prefWidth="190.0" promptText="Välj Klockslag" />
+                  <Button layoutX="268.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#checkOut" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="1">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="600.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepFour" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="4" />
+                  <Button layoutX="381.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStepChosen" text="2" />
+                  <Button layoutX="493.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepThree" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="3" />
+                  <Line endX="-62.5" layoutX="650.0" layoutY="166.0" startX="-87.5" />
+                  <Line endX="-62.5" layoutX="544.0" layoutY="166.0" startX="-87.5" />
+                  <Line endX="-62.5" layoutX="435.0" layoutY="166.0" startX="-87.5" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="stepOnePane" prefHeight="800.0" prefWidth="1500.0" style="-fx-background-color: white;">
+               <children>
+                  <Text layoutX="14.0" layoutY="81.0" onMouseClicked="#mainView" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-iMat" text="IMat" wrappingWidth="158.484375">
+                     <font>
+                        <Font size="72.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="continueShopping" layoutX="1297.0" layoutY="23.0" mnemonicParsing="false" onAction="#focusMainPane" prefHeight="72.0" prefWidth="153.0" styleClass="continueShoppingButton" text="Fortsätt Handla" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="62.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/imat/images/cart.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e3e3e3" height="671.0" layoutX="11.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="1467.0" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="106.0" />
+                  <Text fx:id="totalPrice" layoutX="1215.0" layoutY="738.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totalt:  xxx kr">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="268.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStepChosen" text="1">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="1319.0" layoutY="131.0" mnemonicParsing="false" onAction="#stepTwo" prefHeight="49.0" prefWidth="102.0" styleClass="nextAndPreviousButton" text="Nästa">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Text layoutX="58.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Din Varukorg">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="600.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepFour" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="4" />
+                  <Button layoutX="381.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepTwo" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="2" />
+                  <Button layoutX="493.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepThree" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="3" />
+                  <Line endX="-62.5" layoutX="435.0" layoutY="166.0" startX="-87.5" />
+                  <Line endX="-62.5" layoutX="544.0" layoutY="166.0" startX="-87.5" />
+                  <Line endX="-62.5" layoutX="650.0" layoutY="166.0" startX="-87.5" />
+                  <ScrollPane fx:id="checkoutScrollPane" hbarPolicy="NEVER" layoutX="47.0" layoutY="204.0" prefHeight="493.0" prefWidth="1395.0" AnchorPane.leftAnchor="47.0" AnchorPane.topAnchor="204.0">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="stepFourPane" prefHeight="800.0" prefWidth="1500.0" style="-fx-background-color: white;">
+               <children>
+                  <AnchorPane fx:id="purchaseCompleted" layoutX="11.0" layoutY="106.0" prefHeight="671.0" prefWidth="1467.0" style="-fx-background-color: ffffff;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e3e3e3" height="671.0" stroke="BLACK" strokeType="INSIDE" width="1467.0" />
+                        <Text layoutX="392.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Köp Slutförd!" textAlignment="CENTER" wrappingWidth="189.6328125">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="154.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tack för ditt köp, dina varor kommer att leveraras till dig inom kort!">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="429.0" layoutY="345.0" mnemonicParsing="false" onAction="#restartShopping" prefHeight="87.0" prefWidth="116.0" text="Påbörja ett nytt köp" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <Text layoutX="14.0" layoutY="81.0" onMouseClicked="#mainView" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-iMat" text="IMat" wrappingWidth="158.484375">
+                     <font>
+                        <Font size="72.0" />
+                     </font>
+                  </Text>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e3e3e3" height="671.0" layoutX="11.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="1467.0" />
+                  <Text layoutX="58.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bekräftelse">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="268.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#checkOut" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="1" />
+                  <Button layoutX="600.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStepChosen" text="4" />
+                  <Button layoutX="381.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepTwo" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="2" />
+                  <Button layoutX="493.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stepThree" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="3" />
+                  <Line endX="-62.5" layoutX="435.0" layoutY="166.0" startX="-87.5" />
+                  <Line endX="-62.5" layoutX="544.0" layoutY="166.0" startX="-87.5" />
+                  <Line endX="-62.5" layoutX="650.0" layoutY="166.0" startX="-87.5" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="532.0" layoutX="47.0" layoutY="209.0" stroke="BLACK" strokeType="INSIDE" width="1395.0" />
+                  <Text fx:id="deliveryTime" layoutX="86.0" layoutY="657.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Leveranstid: xx xxxx.  Klockan xx:xx">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="deliveryLocation" layoutX="86.0" layoutY="681.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Levereras till: xxxxxxxxx">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <TableView layoutX="86.0" layoutY="215.0" prefHeight="416.0" prefWidth="1320.0">
+                     <columns>
+                        <TableColumn prefWidth="330.0" text="Produkt" />
+                        <TableColumn prefWidth="330.0" text="Antal" />
+                        <TableColumn prefWidth="330.0" text="Pris/produkt" />
+                        <TableColumn prefWidth="330.0" text="Totala Priset" />
+                     </columns>
+                  </TableView>
+                  <Button layoutX="1252.0" layoutY="651.0" mnemonicParsing="false" onAction="#completePurchase" styleClass="nextAndPreviousButton" text="Slutför Köp">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="1186.0" layoutY="131.0" mnemonicParsing="false" onAction="#stepThree" prefHeight="49.0" prefWidth="102.0" styleClass="nextAndPreviousButton" text="Tillbaka" />
+                  <ScrollPane fx:id="confirmationScrollPane" hbarPolicy="NEVER" layoutX="86.0" layoutY="239.0" prefHeight="391.0" prefWidth="1320.0" />
+                  <Text fx:id="totalPriceConfirmation" layoutX="881.0" layoutY="681.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totalt: xxxx kr">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="continueShopping" layoutX="1297.0" layoutY="23.0" mnemonicParsing="false" onAction="#focusMainPane" prefHeight="72.0" prefWidth="153.0" styleClass="continueShoppingButton" text="Fortsätt Handla" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="62.0" fitWidth="55.0" onMouseClicked="#mainView" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/imat/images/cart.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Text fx:id="warningMessage" fill="RED" layoutX="303.0" layoutY="-18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Varning meddelande" textAlignment="CENTER" x="412.0" y="218.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

@@ -1,7 +1,6 @@
 package iMat;
 
 import java.io.IOException;
-import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 
@@ -29,10 +27,12 @@ public class CheckoutProductPanel extends AnchorPane {
 
     private ShoppingItem item;
 
+    iMatController parentController;
+
     private final static double kImageWidth = 100.0;
     private final static double kImageRatio = 0.75;
 
-    public CheckoutProductPanel(ShoppingItem item) {
+    public CheckoutProductPanel(ShoppingItem item, iMatController controller) {
 
 //        ResourceBundle bundle = java.util.ResourceBundle.getBundle("iMat/resources/iMat");
 //        Parent root = FXMLLoader.load(getClass().getResource("imat_about.fxml"), bundle);
@@ -48,10 +48,13 @@ public class CheckoutProductPanel extends AnchorPane {
         }
 
         this.item = item;
+        this.parentController = controller;
+
         nameLabel.setText(item.getProduct().getName());
         pricePerUnit.setText("Pris: " + item.getProduct().getUnit() + ": " + item.getProduct().getPrice() + " kr");
         imageView.setImage(model.getImage(item.getProduct(), kImageWidth, kImageWidth*kImageRatio));
-        updateTotalPrice();
+        updateProductTotalPrice();
+        parentController.updateTotalPrice();
         updateAmount();
 
 //        amountLabel.setText(String.valueOf(getAmount(products)));
@@ -74,8 +77,8 @@ public class CheckoutProductPanel extends AnchorPane {
         }
     }
 
-    private void updateTotalPrice() {
-        totalPrice.setText("Totalt: " + item.getTotal());
+    private void updateProductTotalPrice() {
+        totalPrice.setText("Totalt: " + Math.round(item.getTotal()*10)/10.0 + " kr");
     }
 
     @FXML
@@ -93,7 +96,9 @@ public class CheckoutProductPanel extends AnchorPane {
                 }
             }
         }
-        updateTotalPrice();
+        updateProductTotalPrice();
+        parentController.updateTotalPrice();
+
     }
 
     @FXML
@@ -109,13 +114,17 @@ public class CheckoutProductPanel extends AnchorPane {
                 else{
                     amountLabel.setText(String.valueOf((int) value));
                 }
-                updateTotalPrice();
+                updateProductTotalPrice();
+                parentController.updateTotalPrice();
 
                 return;
             }
         }
         amountLabel.setText(String.valueOf(0));
-        updateTotalPrice();
+
+        updateProductTotalPrice();
+        parentController.updateTotalPrice();
+        parentController.updateCheckoutProductList();
     }
 
     public void deleteAll() {
@@ -124,7 +133,8 @@ public class CheckoutProductPanel extends AnchorPane {
             for (int n = 0; n < end*10; n++) {
                 System.out.println(item.getAmount());
                 model.subtractFromShoppingCart(item.getProduct());
-                updateTotalPrice();
+                updateProductTotalPrice();
+                parentController.updateTotalPrice();
                 updateAmount();
             }
 
@@ -132,9 +142,11 @@ public class CheckoutProductPanel extends AnchorPane {
             for (int i = 0; i < end + 1; i++) {
                 System.out.println(item.getAmount());
                 model.subtractFromShoppingCart(item.getProduct());
-                updateTotalPrice();
+                updateProductTotalPrice();
+                parentController.updateTotalPrice();
                 updateAmount();
             }
         }
+        parentController.updateCheckoutProductList();
     }
 }

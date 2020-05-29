@@ -44,6 +44,7 @@
 .nextAndPreviousButton{
     -fx-background-color: #9ED1FF;
     -fx-background-radius: 12.5px;
+    -fx-font-size: 18px;
     -fx-border-radius: 12.5;
     -fx-border-color: black;
     -fx-border-width: 1;
@@ -53,6 +54,7 @@
 .continueShoppingButton{
     -fx-background-color: #9ED1FF;
     -fx-background-radius: 15px;
+    -fx-font-size: 18px;
     -fx-border-radius: 12.5;
     -fx-border-color: black;
     -fx-border-width: 1;
