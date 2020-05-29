@@ -922,6 +922,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
         model.getShoppingCart().clear();
         mainView();
         purchaseCompleted.toBack();
+        checkoutViewPane.setVisible(false);
+        checkoutViewPane.toBack();
         continueShopping.setVisible(true);
     }
 
