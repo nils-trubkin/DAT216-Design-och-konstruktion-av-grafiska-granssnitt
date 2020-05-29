@@ -1,0 +1,64 @@
+.text-iMat{
+    -fx-font-size: 72px;
+    -fx-fill: #4373ee;
+    -fx-font-weight: Bold
+
+}
+
+.circleProductButton{
+    -fx-background-color: #94BFFF;
+    -fx-background-radius: 32px;
+    /*-fx-background-border-style: solid;*/
+    -fx-font-size: 14px;
+    -fx-text-fill: #000000;
+    -fx-font-weight: Bold;
+}
+
+.circleButtonStep{
+    -fx-background-color: #7493E1;
+    -fx-background-radius: 50px;
+    -fx-font-size: 24px;
+    -fx-opacity:0.44;
+    /*-fx-background-border-style: solid;*/
+    -fx-text-fill: #000000;
+    -fx-text-fill-font-weight: Bold;
+}
+
+.circleButtonStepChosen{
+    -fx-background-color: #7493E1;
+    -fx-background-radius: 50px;
+    /*-fx-background-border-style: solid;*/
+    -fx-font-size: 24px;
+    -fx-text-fill: #000000;
+    -fx-text-fill-font-weight: Bold;
+    -fx-border-radius: 100;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
+}
+
+.productBorder{
+    -fx-border-style: solid;
+}
+
+.nextAndPreviousButton{
+    -fx-background-color: #9ED1FF;
+    -fx-background-radius: 12.5px;
+    -fx-border-radius: 12.5;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
+}
+
+.continueShoppingButton{
+    -fx-background-color: #9ED1FF;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 12.5;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
+
+}
+
+
+

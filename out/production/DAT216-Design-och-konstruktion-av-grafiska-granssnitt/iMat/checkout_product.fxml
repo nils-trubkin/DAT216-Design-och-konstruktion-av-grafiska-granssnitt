@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root prefHeight="145.0" prefWidth="900.0" stylesheets="@Checkout.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">   <children>
+<fx:root prefHeight="145.0" prefWidth="900.0" stylesheets="@checkout.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">   <children>
       <ImageView fx:id="imageView" fitHeight="102.0" fitWidth="154.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@resources/imat/images/noImage.jpg" />
