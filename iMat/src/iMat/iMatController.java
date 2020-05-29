@@ -983,34 +983,17 @@ public class iMatController implements Initializable, ShoppingCartListener {
         stepTwoPane.toFront();
     }
     public void stepThree() {
-        /*if (deliveryInformationNotValid()) {
-            warningMessage.setText("Steg 2 ej ifylld!");
-            warningMessage.setVisible(true);
-        } else {
-            warningMessage.setVisible(false);
 
-        }*/
-        stepThreePane.toFront();
-        warningMessagePopUp();
+        if (deliveryTimeNotValid() || deliveryTimeNotValid()) warningMessagePopUp();
+        else stepThreePane.toFront();
     }
     public void stepFour() {
-
-        setDeliveryLocation();
-//        if (deliveryInformationNotValid() && cardInformationNotValid()) {
-//            warningMessage.setText("Steg 2 och Steg 3 ej ifyllda!");
-//            warningMessage.setVisible(true);
-//        } else if (deliveryInformationNotValid()) {
-//            warningMessage.setText("Steg 2 ej ifylld!");
-//            warningMessage.setVisible(true);
-//        } else if (cardInformationNotValid()) {
-//            warningMessage.setText("Steg 3 ej ifylld!");
-//            warningMessage.setVisible(true);
-//        } else{
-//            warningMessage.setVisible(false);
-//            stepFourPane.toFront();
-//        }
-        updateConfirmationTable();
-        warningMessagePopUp();
+        if (deliveryTimeNotValid() || deliveryTimeNotValid() || cardInformationNotValid()) warningMessagePopUp();
+        else {
+            stepFourPane.toFront();
+            setDeliveryLocation();
+            updateConfirmationTable();
+        }
     }
 
     private void warningMessagePopUp() {
