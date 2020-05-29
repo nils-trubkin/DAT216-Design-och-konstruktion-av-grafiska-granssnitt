@@ -495,6 +495,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handleAllProducts(ActionEvent event) {
+        searchField.setText("");
         List<Product> matches = model.getProducts();
         updateProductList(matches);
         System.out.println("# matching products: " + matches.size());
