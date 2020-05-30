@@ -868,7 +868,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="527.0" layoutY="569.0" text="Dag:">
+                  <Label layoutX="522.0" layoutY="569.0" text="Dag:">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -880,7 +880,7 @@
                   </Label>
                   <Button layoutX="1186.0" layoutY="131.0" mnemonicParsing="false" onAction="#checkOut" prefHeight="49.0" prefWidth="102.0" styleClass="nextAndPreviousButton" text="Tillbaka" />
                   <ComboBox fx:id="checkoutMonthComboBox" layoutX="288.0" layoutY="562.0" prefHeight="50.0" prefWidth="189.0" promptText="Välj Månad" />
-                  <ComboBox fx:id="dayComboBox" layoutX="585.0" layoutY="562.0" prefHeight="50.0" prefWidth="190.0" promptText="Välj Dag" />
+                  <ComboBox fx:id="dayComboBox" layoutX="580.0" layoutY="562.0" prefHeight="50.0" prefWidth="190.0" promptText="Välj Dag" />
                   <ComboBox fx:id="timeComboBox" layoutX="856.0" layoutY="559.0" prefHeight="50.0" prefWidth="328.0" promptText="Välj Klockslag" />
                   <Button layoutX="268.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#checkOut" prefHeight="65.0" prefWidth="65.0" styleClass="circleButtonStep" text="1">
                      <font>
