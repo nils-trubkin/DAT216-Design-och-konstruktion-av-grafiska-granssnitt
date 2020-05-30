@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -119,6 +121,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private Label cardLabel;
     @FXML
     private Button myAccountButton;
+    @FXML private Text savedMessageText;
+    @FXML private Text savedMessageText2;
+    @FXML private Text savedMessageText3;
+
 
     // Checkout Pane
     @FXML private AnchorPane checkoutViewPane;
@@ -183,6 +189,57 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateCart();
 
         // historyPaneInit();
+
+
+        //My account pane Text Fields
+        //limit input size in card number TextField
+        Pattern pattern = Pattern.compile(".{0,16}");
+        TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+        cardNumberTextField.setTextFormatter(formatter);
+        //limit input to integers only
+        cardNumberTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    cardNumberTextField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+
+        Pattern phonePattern = Pattern.compile(".{0,12}");
+        TextFormatter phoneFormatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return phonePattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+
+        telephoneTextField.setTextFormatter(phoneFormatter);
+        telephoneTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    telephoneTextField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+
+        Pattern postcodePattern = Pattern.compile(".{0,5}");
+        TextFormatter postcodeFormatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return postcodePattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+        postcodeTextField.setTextFormatter(postcodeFormatter);
+
+        postcodeTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    postcodeTextField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
 
         // Checkout
         checkoutViewPane.setVisible(false);
@@ -623,8 +680,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
         System.out.println("Loading Account Pane...");
 
         updateAccountPanel();
+        savedMessageText.setVisible(false);
+        savedMessageText2.setVisible(false);
+        savedMessageText3.setVisible(false);
         myAccountPane.toFront();
     }
+
 
     // History pane methods
 
@@ -744,32 +805,75 @@ public class iMatController implements Initializable, ShoppingCartListener {
     //My account methods
 
     public void openAddressView(ActionEvent actionEvent) {
+        savedMessageText.setVisible(false);
+        savedMessageText3.setVisible(false);
+        savedMessageText2.setVisible(false);
         addressPane.toFront();
     }
 
     public void openMyInformationView(ActionEvent actionEvent) {
         myInformationPane.toFront();
+        savedMessageText2.setVisible(false);
+        savedMessageText3.setVisible(false);
+        savedMessageText.setVisible(false);
     }
 
 
     public void openPaymentView(ActionEvent actionEvent) {
         paymentMethodPane.toFront();
+        savedMessageText.setVisible(false);
+        savedMessageText2.setVisible(false);
+        savedMessageText3.setVisible(false);
     }
 
     @FXML
     private void handleSavePaymentInformation(ActionEvent event){
-        updatePaymentInformation();
+        if(cardNumberTextField.getText().equals("") || cardNameTextField.getText().equals("") ||monthComboBox.getSelectionModel().isEmpty()|| yearComboBox.getSelectionModel().isEmpty()){
+            savedMessageText3.setVisible(false);
+            showAlertWithoutHeaderText();
+        }else {
+            updatePaymentInformation();
+            savedMessageText3.setVisible(true);
+            savedMessageText3.setText("Dina uppgifter har sparats!");
+        }
     }
 
 
     @FXML
     private void handleSaveAddressInformation(ActionEvent event){
-        updateAddressInformation();
+        if(streetAddressTextField.getText().equals("") || postcodeTextField.getText().equals("") || cityTextField.getText().equals("")){
+            savedMessageText2.setVisible(false);
+            showAlertWithoutHeaderText();
+        }else {
+            updateAddressInformation();
+            savedMessageText2.setVisible(true);
+            savedMessageText2.setText("Dina uppgifter har sparats!");
+        }
     }
+
 
     @FXML
     private void handleSavePersonalInformation(ActionEvent event){
-        updatePersonalInformation();
+        if(firstNameTextField.getText().equals("") || lastNameTextField.getText().equals("") || emailTextField.getText().equals("") || telephoneTextField.getText().equals("")){
+            savedMessageText.setVisible(false);
+            showAlertWithoutHeaderText();
+        }else {
+            updatePersonalInformation();
+            savedMessageText.setVisible(true);
+            savedMessageText.setText("Dina uppgifter har sparats!");
+        }
+    }
+
+    private void showAlertWithoutHeaderText() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Ofullständiga uppgifter");
+
+        // Header Text: null
+        alert.setHeaderText(null);
+        alert.setContentText("Hoppsan! Du har missat att fylla i något.");
+        alert.setX(500);
+        alert.setY(300);
+        alert.showAndWait();
     }
 
 
