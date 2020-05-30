@@ -40,7 +40,10 @@ public class HistoryListItemDetail extends AnchorPane {
     private void addInfo(){
         historyProductImage.setImage(Model.getInstance().getImage(item.getProduct()));
         historyProductText.setText(item.getProduct().getName());
-        historyProductPriceText.setText(item.getTotal() + "kr");
-        historyProductCountText.setText(item.getAmount() + item.getProduct().getUnitSuffix());
+        historyProductPriceText.setText(Math.round(item.getTotal() * 100) / 100.0 + " kr");
+        if (item.getProduct().getUnitSuffix().equals("kg"))
+            historyProductCountText.setText(Math.round(item.getAmount() * 10) / 10.0 + " " + item.getProduct().getUnitSuffix());
+        else
+            historyProductCountText.setText(Math.round(item.getAmount()) + " " + item.getProduct().getUnitSuffix());
     }
 }

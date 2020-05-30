@@ -1088,15 +1088,21 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
     public void stepThree() {
 
-        if (deliveryTimeNotValid() || deliveryTimeNotValid()) warningMessagePopUp();
-        else stepThreePane.toFront();
+        if (deliveryTimeNotValid() || deliveryTimeNotValid())
+            warningMessagePopUp();
+        else {
+            stepThreePane.toFront();
+            warningMessage.setVisible(false);
+        }
     }
     public void stepFour() {
-        if (deliveryTimeNotValid() || deliveryTimeNotValid() || cardInformationNotValid()) warningMessagePopUp();
+        if (deliveryTimeNotValid() || deliveryTimeNotValid() || cardInformationNotValid())
+            warningMessagePopUp();
         else {
             stepFourPane.toFront();
             setDeliveryLocation();
             updateConfirmationTable();
+            warningMessage.setVisible(false);
         }
     }
 
