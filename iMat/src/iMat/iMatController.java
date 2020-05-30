@@ -246,6 +246,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
 
         checkoutMonthComboBox.getItems().addAll("Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "Septempber", "Oktober", "November", "December");
+        checkoutMonthComboBox.setStyle("-fx-font: 20px \"System\";");
         checkoutMonthComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -255,6 +256,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         });
 
         dayComboBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31);
+        dayComboBox.setStyle("-fx-font: 20px \"System\";");
         dayComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Integer>() {
             @Override
             public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
@@ -263,6 +265,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
             }
         });
         addTime();
+        timeComboBox.setStyle("-fx-font: 20px \"System\";");
         timeComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
