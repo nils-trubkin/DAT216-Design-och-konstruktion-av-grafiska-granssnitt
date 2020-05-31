@@ -276,7 +276,7 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="yearField" alignment="CENTER" layoutX="169.0" layoutY="203.0" onMouseClicked="#yearFieldClear" prefHeight="44.0" prefWidth="72.0" promptText="YYYY">
+                        <TextField fx:id="yearField" alignment="CENTER" layoutX="169.0" layoutY="203.0" prefHeight="44.0" prefWidth="72.0" promptText="YYYY">
                            <font>
                               <Font size="20.0" />
                            </font></TextField>
