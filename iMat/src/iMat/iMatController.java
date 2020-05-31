@@ -1077,7 +1077,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         if (!monthField.getText().equals("MM") && !monthField.getText().equals("")) {
             card.setValidMonth(Integer.parseInt(monthField.getText()));
         }
-        if (!yearField.getText().equals("YY") && !yearField.getText().equals("")) {
+        if (!yearField.getText().equals("YYYY") && !yearField.getText().equals("")) {
             card.setValidYear(Integer.parseInt(yearField.getText()));
         }
         if (!verificationCodeField.getText().equals("")) {
