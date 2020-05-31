@@ -108,6 +108,12 @@
 
 }
 
+.continueShoppingButton:hover {
+    -fx-background-radius: 15px;
+    -fx-border-radius: 12.5;
+    -fx-background-color: #BED8FF;
+    -fx-text-fill: #ffffff;
+}
 .continueShoppingButton:pressed {
     -fx-background-radius: 15px;
     -fx-border-radius: 12.5;
