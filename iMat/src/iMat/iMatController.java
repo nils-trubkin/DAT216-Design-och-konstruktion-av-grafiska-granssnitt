@@ -281,6 +281,69 @@ public class iMatController implements Initializable, ShoppingCartListener {
             }
         });
         model.getShoppingCart().addShoppingCartListener(this);
+
+
+        Pattern cardNumberPattern = Pattern.compile(".{0,16}");
+        TextFormatter cardNumberFormatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return cardNumberPattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+
+        cardNumberField.setTextFormatter(cardNumberFormatter);
+        cardNumberField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    cardNumberField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+
+
+            Pattern verificationCodePattern = Pattern.compile(".{0,3}");
+        TextFormatter verificationCodeFormatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return verificationCodePattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+
+        verificationCodeField.setTextFormatter(verificationCodeFormatter);
+        verificationCodeField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    verificationCodeField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        
+        Pattern monthPattern = Pattern.compile(".{0,2}");
+        TextFormatter monthFormatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return monthPattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+
+        monthField.setTextFormatter(monthFormatter);
+        monthField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    monthField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        
+        Pattern yearPattern = Pattern.compile(".{0,2}");
+        TextFormatter yearFormatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return yearPattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+
+        yearField.setTextFormatter(yearFormatter);
+        yearField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    yearField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+
         updateProductList();
         updateConfirmationTable();
 
