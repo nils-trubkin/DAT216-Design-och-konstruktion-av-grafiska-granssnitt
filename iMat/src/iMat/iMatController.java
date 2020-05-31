@@ -323,11 +323,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
         monthField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (!oldValue.equals("MM") && !oldValue.equals("")) {
                     if (!newValue.matches("\\d*")) {
                         monthField.setText(newValue.replaceAll("[^\\d]", ""));
                     }
-                }
             }
         });
         
@@ -340,10 +338,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
         yearField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (!oldValue.equals("YYYY") && !oldValue.equals("")) {
                     if (!newValue.matches("\\d*")) {
                         yearField.setText(newValue.replaceAll("[^\\d]", ""));
-                    }
                 }
             }
         });
@@ -354,6 +350,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         setDeliveryLocation();
         updateCardInformation();
         finishPurchase();
+
     }
 
     private void updateProductList() {
@@ -1067,8 +1064,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
     //Checkout Methods:
     private void updateCardInformation() {
         deliveryAddress.setText(customer.getAddress());
+
         cardHolderNameField.setText(card.getHoldersName());
-        cardNumberField.setText(card.getCardNumber());
+        cardNumberField.setText(String.valueOf(card.getCardNumber()));
         monthField.setText(String.valueOf(card.getValidMonth()));
         yearField.setText(String.valueOf(card.getValidYear()));
         verificationCodeField.setText(String.valueOf(card.getVerificationCode()));
@@ -1077,17 +1075,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void finishPurchase() {
         customer.setAddress(deliveryAddress.getText());
         card.setHoldersName(cardHolderNameField.getText());
-        card.setCardNumber(cardNumberField.getText());
-        if (!monthField.getText().equals("MM") && !monthField.getText().equals("")) {
-            card.setValidMonth(Integer.parseInt(monthField.getText()));
-        }
-        if (!yearField.getText().equals("YYYY") && !yearField.getText().equals("")) {
-            card.setValidYear(Integer.parseInt(yearField.getText()));
-        }
-        if (!verificationCodeField.getText().equals("")) {
-            card.setVerificationCode(Integer.parseInt(verificationCodeField.getText()));
-        }
-
+        if (!cardNumberField.getText().isEmpty()) card.setCardNumber(cardNumberField.getText());
+        if (!monthField.getText().isEmpty())card.setValidMonth(Integer.parseInt(monthField.getText()));
+        if (!yearField.getText().isEmpty()) card.setValidYear(Integer.parseInt(yearField.getText()));
+        if (!verificationCodeField.getText().isEmpty())card.setVerificationCode(Integer.parseInt(verificationCodeField.getText()));
         model.placeOrder();
     }
 
@@ -1109,12 +1100,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
-    public void monthFieldClear() {
-        if (monthField.getText().equals("MM")) monthField.setText("");
-    }
-    public void yearFieldClear() {
-        if (yearField.getText().equals("YY")) yearField.setText("");
-    }
 
     public void updateCheckoutProductList() {
         updateTotalPrice();
@@ -1290,17 +1275,16 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     private boolean deliveryAddressNotValid() {
-        return deliveryAddress.getText().equals("");
+        return deliveryAddress.getText().isEmpty();
     }
 
     private boolean deliveryTimeNotValid() {
-        return monthValue.equals("") || dayValue == 0 || timeValue.equals("");
+        return monthValue.isEmpty() || dayValue == 0 || timeValue.isEmpty() ;
     }
 
     private boolean cardInformationNotValid() {
-        return cardHolderNameField.getText().equals("") || cardNumberField.getText().equals("")
-                || monthField.getText().equals("") || monthField.getText().equals("MM")
-                || yearField.getText().equals("") || yearField.getText().equals("YY")
-                || verificationCodeField.getText().equals("");
+        return cardHolderNameField.getText().isEmpty() || cardNumberField.getText().isEmpty()
+                || monthField.getText().isEmpty() || yearField.getText().isEmpty()
+                || verificationCodeField.getText().isEmpty();
     }
 }
