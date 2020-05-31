@@ -184,9 +184,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private final Model model = Model.getInstance();
     List<Product> currentProductList;
 
-    private Customer customer = model.getCustomer();
-    private CreditCard card = model.getCreditCard();
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -727,6 +724,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     protected void focusCheckoutPane (ActionEvent event){
         System.out.println("Loading Checkout Pane...");
+        updateCardInformation();
         updateCheckoutProductList();
         checkoutViewPane.setVisible(true);
         checkoutViewPane.toFront();
@@ -1071,6 +1069,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
     //Checkout Methods:
     private void updateCardInformation() {
+        Customer customer = model.getCustomer();
+        CreditCard card = model.getCreditCard();
         deliveryAddress.setText(customer.getAddress());
 
         cardHolderNameField.setText(card.getHoldersName());
@@ -1081,6 +1081,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     private void finishPurchase() {
+        Customer customer = model.getCustomer();
+        CreditCard card = model.getCreditCard();
         customer.setAddress(deliveryAddress.getText());
         card.setHoldersName(cardHolderNameField.getText());
         if (!cardNumberField.getText().isEmpty())
@@ -1229,6 +1231,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         checkoutViewPane.toFront();
     }
     public void checkOut() {
+        updateCardInformation();
         stepOnePane.toFront();
         updateCheckoutProductList();
         warningMessage.setVisible(false);
