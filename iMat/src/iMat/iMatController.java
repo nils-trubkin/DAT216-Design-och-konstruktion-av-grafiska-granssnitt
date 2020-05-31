@@ -1056,10 +1056,18 @@ public class iMatController implements Initializable, ShoppingCartListener {
         c.setHoldersName(cardNameTextField.getText());
 
         String selectedValue = (String) monthComboBox.getSelectionModel().getSelectedItem();
-        c.setValidMonth(Integer.parseInt(selectedValue));
+        try{
+            c.setValidMonth(Integer.parseInt(selectedValue));
+        } catch(NumberFormatException ex){ // handle your exception
+            System.out.println(ex);
+        }
 
         selectedValue = (String) yearComboBox.getSelectionModel().getSelectedItem();
-        c.setValidYear(Integer.parseInt(selectedValue));
+        try{
+            c.setValidYear(Integer.parseInt(selectedValue));
+        } catch(NumberFormatException ex){ // handle your exception
+            System.out.println(ex);
+        }
     }
     //Checkout Methods:
     private void updateCardInformation() {
@@ -1075,10 +1083,31 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void finishPurchase() {
         customer.setAddress(deliveryAddress.getText());
         card.setHoldersName(cardHolderNameField.getText());
-        if (!cardNumberField.getText().isEmpty()) card.setCardNumber(cardNumberField.getText());
-        if (!monthField.getText().isEmpty())card.setValidMonth(Integer.parseInt(monthField.getText()));
-        if (!yearField.getText().isEmpty()) card.setValidYear(Integer.parseInt(yearField.getText()));
-        if (!verificationCodeField.getText().isEmpty())card.setVerificationCode(Integer.parseInt(verificationCodeField.getText()));
+        if (!cardNumberField.getText().isEmpty())
+            card.setCardNumber(cardNumberField.getText());
+        if (!monthField.getText().isEmpty()) {
+            try {
+                card.setValidMonth(Integer.parseInt(monthField.getText()));
+            } catch (NumberFormatException ex) {
+                System.out.println(ex);
+            }
+        }
+        if (!yearField.getText().isEmpty()){
+            try{
+                card.setValidYear(Integer.parseInt(yearField.getText()));
+            }
+            catch (NumberFormatException ex){
+                System.out.println(ex);
+            }
+        }
+        if (!verificationCodeField.getText().isEmpty()){
+            try{
+                card.setVerificationCode(Integer.parseInt(verificationCodeField.getText()));
+            }
+            catch (NumberFormatException ex){
+                System.out.println(ex);
+            }
+        }
         model.placeOrder();
     }
 
