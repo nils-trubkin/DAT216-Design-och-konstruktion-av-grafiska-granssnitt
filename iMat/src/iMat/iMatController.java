@@ -323,13 +323,15 @@ public class iMatController implements Initializable, ShoppingCartListener {
         monthField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    monthField.setText(newValue.replaceAll("[^\\d]", ""));
+                if (!oldValue.equals("MM") && !oldValue.equals("")) {
+                    if (!newValue.matches("\\d*")) {
+                        monthField.setText(newValue.replaceAll("[^\\d]", ""));
+                    }
                 }
             }
         });
         
-        Pattern yearPattern = Pattern.compile(".{0,2}");
+        Pattern yearPattern = Pattern.compile(".{0,4}");
         TextFormatter yearFormatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return yearPattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
@@ -338,8 +340,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
         yearField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    yearField.setText(newValue.replaceAll("[^\\d]", ""));
+                if (!oldValue.equals("YYYY") && !oldValue.equals("")) {
+                    if (!newValue.matches("\\d*")) {
+                        yearField.setText(newValue.replaceAll("[^\\d]", ""));
+                    }
                 }
             }
         });
@@ -1223,7 +1227,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void stepThree() {
 
         if (deliveryTimeNotValid() || deliveryTimeNotValid())
-            warningMessagePopUp();
+            warningMessagePopUpStepThree();
         else {
             stepThreePane.toFront();
             warningMessage.setVisible(false);
@@ -1231,7 +1235,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
     public void stepFour() {
         if (deliveryTimeNotValid() || deliveryTimeNotValid() || cardInformationNotValid())
-            warningMessagePopUp();
+            warningMessagePopUpStepFour();
         else {
             stepFourPane.toFront();
             setDeliveryLocation();
@@ -1240,22 +1244,45 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
-    private void warningMessagePopUp() {
+    private void warningMessagePopUpStepThree() {
         StringBuilder sb = new StringBuilder();
         sb.append("Fyll i");
         int warnings = 0;
         if (deliveryAddressNotValid()) warnings++;
         if (deliveryTimeNotValid()) warnings++;
-        if (cardInformationNotValid()) warnings++;
 
         if (deliveryAddressNotValid()) sb.append(" leveransadress");
         if (warnings == 2) sb.append(" och");
-        if (warnings == 3) sb.append(",");
 
         if (deliveryTimeNotValid()) sb.append(" leveranstid");
-        if (warnings == 3) sb.append(" och");
 
-        if (cardInformationNotValid()) sb.append(" kortuppgifter");
+        sb.append(" för att fortsätta.");
+        warningMessage.setText(sb.toString());
+        warningMessage.setVisible(true);
+        warningMessage.toFront();
+    }
+
+    private void warningMessagePopUpStepFour() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Fyll i");
+        int warnings = 0;
+
+        if (deliveryAddressNotValid()) warnings++;
+        if (deliveryTimeNotValid()) warnings++;
+        if (cardInformationNotValid()) warnings++;
+
+        if (warnings == 1) {
+            if (deliveryAddressNotValid()) sb.append(" leveransadress");
+            else if (deliveryTimeNotValid()) sb.append(" leveranstid");
+            else if (cardInformationNotValid()) sb.append(" kortuppgifter");
+        }
+        else if (warnings == 2) {
+            if (deliveryTimeNotValid() && deliveryAddressNotValid())  sb.append(" leveranstid och leveransadress");
+            else if (deliveryAddressNotValid() && cardInformationNotValid()) sb.append(" leveransadress och kortuppgifter");
+            else if (cardInformationNotValid() && deliveryTimeNotValid()) sb.append(" leveranstid och kortuppgifter");
+        }
+        else if (warnings == 3) sb.append(" leveranstid, leveransadress och kortuppgifter");
+
         sb.append(" för att fortsätta.");
         warningMessage.setText(sb.toString());
         warningMessage.setVisible(true);
