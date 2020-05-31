@@ -9,7 +9,7 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
 
-public class HistoryListItemDetail extends AnchorPane {
+public class OrderDetailListItem extends AnchorPane {
 
     @FXML private ImageView historyProductImage;
     @FXML private Text historyProductText;
@@ -19,7 +19,7 @@ public class HistoryListItemDetail extends AnchorPane {
     ShoppingItem item;
     iMatController parentController;
 
-    public HistoryListItemDetail(ShoppingItem item, iMatController controller){
+    public OrderDetailListItem(ShoppingItem item, iMatController controller){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("history_list_item_v.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

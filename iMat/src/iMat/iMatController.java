@@ -54,20 +54,27 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private ScrollPane cartScrollPane;
     @FXML
     private Label totalLabel;
-    @FXML
-    private Button historyButtonMain;
 
-    // History pane
+    // History & Saved Lists pane
+    // Both of these pages share the same pane
     @FXML
-    private AnchorPane historyViewPane;
+    private AnchorPane listsViewPane;
     @FXML
     private FlowPane historyFlowPaneMain;
     @FXML
     private FlowPane historyFlowPaneDetail;
     @FXML
+    private Text historyDetailDescriptionText;
+    @FXML
     private Text historyDetailDateText;
     @FXML
     private Text historyTotalPriceText;
+    @FXML
+    private Text largeInfoText1;
+    @FXML
+    private Button saveAsListButton;
+
+    private List<SavedList> savedLists = new ArrayList<>();
 
 
     // My account pane
@@ -667,7 +674,15 @@ public class iMatController implements Initializable, ShoppingCartListener {
         System.out.println("Loading History Pane...");
 
         historyPaneInit();
-        historyViewPane.toFront();
+        listsViewPane.toFront();
+    }
+
+    @FXML
+    protected void focusSavedListsPane (ActionEvent event){
+        System.out.println("Loading Saved Lists Pane...");
+
+        savedListsPaneInit();
+        listsViewPane.toFront();
     }
 
     @FXML
@@ -690,9 +705,42 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
 
+    // Saved Lists Pane Methods
+
+    // Initializes the Saved Lists pane
+    // Should be run every time it is switched to
+    public void savedListsPaneInit(){
+        //List<Order> orders = IMatDataHandler.getInstance().;
+        historyDetailDateText.setText("Ingen Lista Vald");
+        historyDetailDescriptionText.setText("Lista");
+        saveAsListButton.setDisable(true);
+
+        historyFlowPaneMain.getChildren().clear();
+        historyFlowPaneDetail.getChildren().clear();
+
+        updateHistoryListMain(savedLists, "");
+
+        historyTotalPriceText.setText("");
+
+        largeInfoText1.setText("Namn");
+
+        currentList = null;
+    }
+
+    @FXML
+    protected void saveCartAsFavorite(Event event){
+        System.out.println("Saving History as Favourite...");
+
+        if (IMatDataHandler.getInstance().getShoppingCart().getItems().size() == 0) {
+            throw new NullPointerException("No Items in Cart");
+        }
+
+        savedLists.add(new SavedList(IMatDataHandler.getInstance().getShoppingCart().getItems(), "Saved List " + (savedLists.size() + 1)));
+    }
+
     // History pane methods
 
-    private Order currentOrderHistory;
+    private List<ShoppingItem> currentList;
 
     @FXML
     protected void addHistoryToCart(Event event){
@@ -701,7 +749,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         IMatDataHandler handler = IMatDataHandler.getInstance();
         ShoppingCart cart = handler.getShoppingCart();
 
-        List<ShoppingItem> items = currentOrderHistory.getItems();
+        List<ShoppingItem> items = List.copyOf(currentList);
         for (ShoppingItem item : items){
             cart.addItem(item);
         }
@@ -709,7 +757,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     protected void saveHistoryAsFavorite(Event event){
-        System.out.println("(NYI) Saving History as Favourite");
+        System.out.println("Saving History as Favourite...");
+
+        if (currentList == null) {
+            throw new NullPointerException("No list selected");
+        }
+
+        savedLists.add(new SavedList(currentList, "Saved List " + (savedLists.size() + 1)));
     }
 
     // Initializes the history pane
@@ -717,6 +771,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void historyPaneInit(){
         List<Order> orders = IMatDataHandler.getInstance().getOrders();
         historyDetailDateText.setText("Ingen Beställning Vald");
+        historyDetailDescriptionText.setText("Beställning");
+        saveAsListButton.setDisable(false);
+
+        historyFlowPaneMain.getChildren().clear();
+        historyFlowPaneDetail.getChildren().clear();
 
         //orders.add(createTestOrder());
 
@@ -724,7 +783,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
         historyTotalPriceText.setText("");
 
-        currentOrderHistory = null;
+        largeInfoText1.setText("Beställning");
+
+        currentList = null;
     }
 
     // Updates the product detail view with the given products
@@ -732,32 +793,39 @@ public class iMatController implements Initializable, ShoppingCartListener {
         historyFlowPaneMain.getChildren().clear();
 
         for (Order order : orders){
-            historyFlowPaneMain.getChildren().add(new HistoryListItemMain(order, this));
+            historyFlowPaneMain.getChildren().add(new OrderOverviewListItem(order.getItems(), order.getDate().toString(), this));
+        }
+    }
+
+    public void updateHistoryListMain(List<SavedList> savedLists, String t){
+        historyFlowPaneMain.getChildren().clear();
+
+        for (SavedList list : savedLists){
+            historyFlowPaneMain.getChildren().add(new OrderOverviewListItem(list.items, list.description, this));
         }
     }
 
     // Updates the product detail view with the given products
-    public void updateHistoryListDetail(Order order){
+    public void updateDetailList(List<ShoppingItem> items, String description){
         System.out.println("Sorting Detail View...");
 
-        List<ShoppingItem> items = order.getItems();
         insertionSort(items);
         System.out.println("Sorting Finished");
 
         historyFlowPaneDetail.getChildren().clear();
 
-        historyDetailDateText.setText(order.getDate().toString());
+        historyDetailDateText.setText(description);
 
         int totalPrice = 0;
 
         for (ShoppingItem shoppingItem : items){
-            historyFlowPaneDetail.getChildren().add(new HistoryListItemDetail(shoppingItem, this));
+            historyFlowPaneDetail.getChildren().add(new OrderDetailListItem(shoppingItem, this));
             totalPrice += shoppingItem.getTotal();
         }
 
         historyTotalPriceText.setText(totalPrice + " kr");
 
-        currentOrderHistory = order;
+        currentList = items;
     }
 
     // Insertion sort.

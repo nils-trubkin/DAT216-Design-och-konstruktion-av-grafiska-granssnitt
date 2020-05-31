@@ -11,16 +11,17 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 import java.io.IOException;
 import java.util.List;
 
-public class HistoryListItemMain extends AnchorPane {
+public class OrderOverviewListItem extends AnchorPane {
 
     @FXML private Text historyOrderDateText;
     @FXML private Text historyOrderCountText;
     @FXML private Text historyOrderPriceText;
 
-    Order order;
+    List<ShoppingItem> items;
     iMatController parentController;
+    String description;
 
-    public HistoryListItemMain(Order order, iMatController controller){
+    public OrderOverviewListItem(List<ShoppingItem> items, String description, iMatController controller){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("history_list_item.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -31,8 +32,9 @@ public class HistoryListItemMain extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        this.order = order;
+        this.items = items;
         this.parentController = controller;
+        this.description = description;
 
         addInfo();
     }
@@ -42,20 +44,18 @@ public class HistoryListItemMain extends AnchorPane {
     @FXML
     protected void onClick(Event event){
         System.out.println("Loading Previous Order...");
-        parentController.updateHistoryListDetail(order);
+        parentController.updateDetailList(items, description);
     }
 
     // Adds all order information to the image and text components
     private void addInfo(){
-        historyOrderDateText.setText(order.getDate().toString());
-        historyOrderCountText.setText(order.getItems().size() + "st");
-        historyOrderPriceText.setText(getOrderPrice(order) + "kr");
+        historyOrderDateText.setText(description);
+        historyOrderCountText.setText(items.size() + "st");
+        historyOrderPriceText.setText(getOrderPrice(items) + "kr");
     }
 
     // Returns the total price of an order
-    private int getOrderPrice(Order order){
-        List<ShoppingItem> items = order.getItems();
-
+    private int getOrderPrice(List<ShoppingItem> items){
         int totalCost = 0;
 
         for (ShoppingItem item : items){
